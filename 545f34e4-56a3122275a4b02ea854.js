@@ -1,0 +1,2 @@
+(self.webpackChunkgas_companion_docs=self.webpackChunkgas_companion_docs||[]).push([[980],{60782:function(n,t,a){"use strict";a.d(t,{vHB:function(){return o}});var c=a(51046);function o(n){return(0,c.w_)({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"}}]})(n)}}}]);
+//# sourceMappingURL=545f34e4-56a3122275a4b02ea854.js.map
