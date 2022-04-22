@@ -1,0 +1,483 @@
+
+<!doctype html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark_dimmed">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/_static/css/primer.css">
+    <style>
+        .markdown-content {
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+        }
+    </style>
+    <title>Console Commands</title>
+</head>
+
+<body>
+    
+<div class="Layout">
+    <div class="Layout-main">
+        <main class="container-xl p-6">
+
+            
+    
+    <nav aria-label="Breadcrumb" class="mb-3">
+        <ol>
+                <li class="breadcrumb-item">
+                    <a href="/">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="/topics/">Topics</a>
+                </li>
+                <li class="breadcrumb-item breadcrumb-item-selected">
+                    <a href="/console-commands/">Console Commands</a>
+                </li>
+        </ol>
+    </nav>
+
+
+            
+<article class="markdown-body">
+    <p>GAS Companion provides a few Console Commands to help in debugging you can access via the built-in debug console. This is done via an Engine Subsystem that registers custom commands to the Console Manager.</p>
+<h2 id="gas-companion-commands" tabindex="-1">GAS Companion Commands</h2>
+<p><img src="commands.png" alt=""></p>
+<h3 id="gascompanion.debug.abilityqueue" tabindex="-1">GASCompanion.Debug.AbilityQueue</h3>
+<p>This command shows / hides the <a href="/ability-queue-system#debug-widget">Ability Queue Debug Widget</a></p>
+<p><img src="ability-queue-debug-widget.png" alt=""></p>
+<p>Here is a brief description of the debug widget:</p>
+<ul>
+<li><code>Ability Queue Enabled</code> whether the ability queue is enabled for the player character</li>
+<li><code>Ability Queue Opened</code> whether the ability queue is currently opened via the ability or anim montages. Abilities can be queued only within this window.</li>
+<li><code>Allow All Abilities</code> the queue system requires a list of abilities to be allowed for activation. This boolean can be turned on in abilities or within anim montages (via notify state) state which will consider <em>all</em> abilities for activation.</li>
+<li><code>Current Queued Ability</code> is updated when an ability attempts to activate within the ability queue opened window and fail to do so, setting it up for activation when the current ability ends.</li>
+<li><code>Ability Queue Opened From Montages</code> at the bottom right displays a list of anim montages from which the ability queue was opened via notify state (<code>AbilityQueueWindow</code>)</li>
+</ul>
+<p>When using this command, make sure your Character Blueprint has the corresponding component available. If not the command will fail and warn you about the missing component.</p>
+<p><img src="no_ability_queue_component.png" alt=""></p>
+<h3 id="gascompanion.debug.combo" tabindex="-1">GASCompanion.Debug.Combo</h3>
+<p>This command shows / hides the <a href="/melee-ability/#debug-combo-widget">Combo Debug Widget</a></p>
+<p><img src="../melee-ability/combo.gif" alt=""></p>
+<p>Here is a brief description of the debug widget:</p>
+<ul>
+<li><code>Combo Window Opened</code> whether the combo window is currently enabled for the player character (done with anim montages notifiers)</li>
+<li><code>Should Trigger Combo</code> indicates the player has queued an input for activation of the next combo montage</li>
+<li><code>Request Trigger Combo</code> turned on by the Trigger Combo notifier, the exact time within the Combo Window to activate the next combo montage if the player registered an input within the combo window</li>
+<li><code>Next Combo Activate</code> is updated when the following combo montage has been activated, used when closing the combo window to know if combo needs to be reset</li>
+<li><code>Combo Index</code> the current combo index, ranging from 0 to the size of the Montages list in the Combo Ability</li>
+</ul>
+<p>When using this command, make sure your Character Blueprint has the corresponding component available. If not the command will fail and warn you about the missing component.</p>
+<p><img src="no_combo_component.png" alt=""></p>
+<h2 id="gas-gameplay-debugger" tabindex="-1">GAS Gameplay Debugger</h2>
+<p>Alongside GAS Companion custom commands, the engine's gameplay debugger for GAS is an invaluable resource to help debugging your Attributes, Abilities and Effects.</p>
+<p>See <a href="https://github.com/tranek/GASDocumentation#debugging">GASDocumentation Debugging section</a> for more information about the two below commands.</p>
+<ul>
+<li><code>showdebug abilitysystem</code> - Opens / Close GAS Gameplay debugger.</li>
+<li><code>AbilitySystem.Debug.NextCategory</code> - Navigate to the the next page for the gameplay debugger. First one is the Attributes, second one is for Gameplay Effects, third and final one is for Gameplay Abilities.</li>
+<li><code>AbilitySystem.Debug.NextTarget</code> / <code>AbilitySystem.Debug.PrevTarget</code> These two commands allow you to cycle through all the ability system component available in the world and switch the debug target.</li>
+</ul>
+
+</article>
+
+        </main>
+    </div>
+
+    <div class="Layout-sidebar color-bg-subtle ">
+        
+        
+        
+
+        
+
+        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/install/"
+                    >
+                        Installation
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Getting Started</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/quick-start/"
+                    >
+                        Quick Start
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/asc-on-player-state/"
+                    >
+                        Setting up ASC on Player State
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/getting-started/modular-game-features/"
+                    >
+                        Modular Game Features
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Configuration</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/config/ability-system-globals/"
+                    >
+                        Ability System Globals Configuration
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/config/ga-definitions/"
+                    >
+                        Gameplay Ability Definitions
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/config/ge-definitions/"
+                    >
+                        Gameplay Effect Definitions
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Attributes</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/attributes/attributes-wizard/"
+                    >
+                        Attributes Wizard
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/attributes/attributes-events/"
+                    >
+                        Attributes Events
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Abilities</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/melee-ability/"
+                    >
+                        Melee Base Ability
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Topics</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/ability-queue-system/"
+                    >
+                        Ability Queue System
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/ignore-ability-cost/"
+                    >
+                        Loosely Check Ability Cost
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                         aria-current="page" 
+                        href="/console-commands/"
+                    >
+                        Console Commands
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/working-with-ai/"
+                    >
+                        Working with AI
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/working-with-ui/"
+                    >
+                        Working with UI
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">More</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/changelog/"
+                    >
+                        Changelog
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Upgrade Guides</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/upgrade-guide/cpp/"
+                    >
+                        v5 Upgrade Guide (CPP usage)
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/upgrade-guide/"
+                    >
+                        v5 Upgrade Guide
+                    </a>
+                </span></nav><h4 class="color-fg-muted mt-4 mb-2 h3">API</h4><h5 class="color-fg-muted mb-2 pb-1 border-bottom">AI</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/AI/GSCBTTask_BlueprintBase/"
+                    >
+                        GSCBTTask_BlueprintBase
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Abilities/Attributes</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Abilities/Attributes/GSCAttributeSet/"
+                    >
+                        GSCAttributeSet
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Abilities/Tasks</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/Tasks/GSCAbilityTask_NetworkSyncPoint/"
+                    >
+                        GSCAbilityTask_NetworkSyncPoint
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Abilities/Tasks/GSCTask_PlayMontageWaitForEvent/"
+                    >
+                        GSCTask_PlayMontageWaitForEvent
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Abilities</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/GSCAbilitySystemComponent/"
+                    >
+                        GSCAbilitySystemComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/GSCBlueprintFunctionLibrary/"
+                    >
+                        GSCBlueprintFunctionLibrary
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/GSCGameplayAbility/"
+                    >
+                        GSCGameplayAbility
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/GSCGameplayAbility_MeleeBase/"
+                    >
+                        GSCGameplayAbility_MeleeBase
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Abilities/GSCTargetType/"
+                    >
+                        GSCTargetType
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Animations</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Animations/GSCAbilityQueueNotifyState/"
+                    >
+                        GSCAbilityQueueNotifyState
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Animations/GSCComboWindowNotifyState/"
+                    >
+                        GSCComboWindowNotifyState
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Components</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCAbilityInputBindingComponent/"
+                    >
+                        GSCAbilityInputBindingComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCAbilityQueueComponent/"
+                    >
+                        GSCAbilityQueueComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCComboManagerComponent/"
+                    >
+                        GSCComboManagerComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCCoreComponent/"
+                    >
+                        GSCCoreComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCLinkAnimLayersComponent/"
+                    >
+                        GSCLinkAnimLayersComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Components/GSCPlayerControlsComponent/"
+                    >
+                        GSCPlayerControlsComponent
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Core/Editor</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Core/Editor/GSCExampleMapManager/"
+                    >
+                        GSCExampleMapManager
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Core/Settings</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Core/Settings/GSCDeveloperSettings/"
+                    >
+                        GSCDeveloperSettings
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">GameFeatures/Actions</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/GameFeatures/Actions/GSCGameFeatureAction_AddAbilities/"
+                    >
+                        GSCGameFeatureAction_AddAbilities
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/GameFeatures/Actions/GSCGameFeatureAction_AddAnimLayers/"
+                    >
+                        GSCGameFeatureAction_AddAnimLayers
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/GameFeatures/Actions/GSCGameFeatureAction_AddInputMappingContext/"
+                    >
+                        GSCGameFeatureAction_AddInputMappingContext
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">ModularGameplayActors</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/ModularGameplayActors/GSCModularActor/"
+                    >
+                        GSCModularActor
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/ModularGameplayActors/GSCModularCharacter/"
+                    >
+                        GSCModularCharacter
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/ModularGameplayActors/GSCModularDefaultPawn/"
+                    >
+                        GSCModularDefaultPawn
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/ModularGameplayActors/GSCModularPawn/"
+                    >
+                        GSCModularPawn
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/ModularGameplayActors/GSCModularPlayerState/"
+                    >
+                        GSCModularPlayerState
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Subsystems</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Subsystems/GSCConsoleManagerSubsystem/"
+                    >
+                        GSCConsoleManagerSubsystem
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Templates</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Templates/GSCTemplate_GameplayEffectDefinition/"
+                    >
+                        GSCTemplate_GameplayEffectDefinition
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">UI</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/UI/GSCUWDebugAbilityQueue/"
+                    >
+                        GSCUWDebugAbilityQueue
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/UI/GSCUWDebugComboWidget/"
+                    >
+                        GSCUWDebugComboWidget
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/UI/GSCUWHud/"
+                    >
+                        GSCUWHud
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/UI/GSCUserWidget/"
+                    >
+                        GSCUserWidget
+                    </a>
+                </span></nav></aside>
+    </div>
+</div>
+
+</body>
+
+</html>

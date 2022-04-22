@@ -1,0 +1,516 @@
+
+<!doctype html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark_dimmed">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/_static/css/primer.css">
+    <style>
+        .markdown-content {
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+        }
+    </style>
+    <title>Attributes Events</title>
+</head>
+
+<body>
+    
+<div class="Layout">
+    <div class="Layout-main">
+        <main class="container-xl p-6">
+
+            
+    
+    <nav aria-label="Breadcrumb" class="mb-3">
+        <ol>
+                <li class="breadcrumb-item">
+                    <a href="/">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="/attributes/">Attributes</a>
+                </li>
+                <li class="breadcrumb-item breadcrumb-item-selected">
+                    <a href="/attributes/attributes-events/">Attributes Events</a>
+                </li>
+        </ol>
+    </nav>
+
+
+            
+<article class="markdown-body">
+    <p>Custom attributes, either created manually or generated through the <a href="/attributes/attributes-wizard/">Attributes Wizard</a>, may need to implement some attributes management.</p>
+<p>To that end, <code>GSC Core Component</code>, exposes Blueprint Assignable Events for <a href="https://github.com/tranek/GASDocumentation#concepts-as-preattributechange"><code>PreAttributeChange</code></a> and <a href="https://github.com/tranek/GASDocumentation#concepts-as-postgameplayeffectexecute"><code>PostGamepayEffectExecute</code></a> that lets you handle attribute changes from Blueprints, like clamp or adjust the value of an attribute when it's associated max attribute changes.</p>
+<p><em><strong>Note:</strong></em> <em>The use of these events are totally optional, you can use the generated c++ attribute set to handle attribute changes in c++, like you would usually do in vanilla GAS.</em></p>
+<h2 id="adding-the-core-component" tabindex="-1">Adding the Core Component</h2>
+<p><code>GSCCoreComponent</code> is not added to the new Modular Actors classes by default, which means that this is something you need to do manually in your Blueprints.</p>
+<p>To do so, simply click the <code>Add Component</code> button in the components view, and search for <code>GSCCore</code></p>
+<p><img src="add_component.png" alt=""></p>
+<h3 id="postgameplayeffectexecute" tabindex="-1">PostGameplayEffectExecute</h3>
+<p>Let's start with <code>PostGameplayEffectExecute</code> event. Open your Player Character Blueprint.</p>
+<p>To implement the event, you need to select <code>GSC Core Component</code>, right-click and choose <code>Add Event &gt; OnPostGameplayEffectExecute</code></p>
+<p><img src="component_add_event.png" alt=""></p>
+<p>Alternately, you can also use the details panel with <code>GSC Core Component</code> selected</p>
+<p><img src="component_add_event_details_panel.png" alt=""></p>
+<p>You'll be granted with the corresponding <a href="/api/Components/GSCCoreComponent#onpostgameplayeffectexecute"><code>OnPostGameplayEffectExecute</code></a> event node.</p>
+<p><img src="execute_node.png" alt=""></p>
+<p>This is the ideal place to perform action like <code>Clamp</code> on your attributes. For instance, if you want your attributes to always have values within a certain range.</p>
+<p>This is already done for the &quot;default&quot; Attributes (Health, Stamina, Mana) but any new attributes you generated via the <a href="/attributes/attributes-wizard#add-attributeset-c-class-wizard">Attributes Class Wizard</a> may need special care here.</p>
+<p>Drag off the pin for <code>Attribute</code> and type <code>Switch on Gameplay Attribute</code>.</p>
+<p><img src="switch-on-attribute.png" alt=""></p>
+<p>This is a custom GAS Companion node made to ease the process of branching conditions in Blueprints based off Gameplay Attributes. Select the switch node, and define new Cases in the details panel (on the right of the Blueprint Graph by default) by clicking the <code>+</code> icon next to &quot;Pin Attributes&quot;.</p>
+<p><img src="switch-details.png" alt=""></p>
+<p>And select the Gameplay Attribute you want to define as a test case.</p>
+<p><img src="switch-details-vitality.png" alt=""></p>
+<p>In this instance, this is going to be <code>StatsAttributeSet.Vitality</code> we generated in the previous page.</p>
+<p>Now, drag off the switch test case and type <a href="/api/Components/GSCCoreComponent#clampattributevalue"><code>ClampAttributeValue</code></a>.</p>
+<p><img src="component_clamp.png" alt=""></p>
+<p>This helper function is made to do what you would usually do in the <code>PostGameplayEffectExecute</code> method of your AttributeSet in c++. Choose the Attribute you want to affect, and the minimum / maximum values.</p>
+<p>If you have an associated MaxAttribute, you can use it for the higher bound of the clamp with the <a href="/api/Components/GSCCoreComponent#getattributevalue"><code>GetAttributeValue</code></a> function.</p>
+<p><img src="component_clamp_max_attribute.png" alt=""></p>
+<p>If you have an associated MinAttribute, you can use that as well using the same method (but make sure to plug the return value of the Attribute getter to the Min Value pin)</p>
+<p>You can add as many Attribute switch case as you want, and clamp all the attributes you wish. To improve readability, it is then advised to collapse some of those nodes in their own Blueprint function.</p>
+<p><img src="collapse-nodes-to-function.png" alt=""></p>
+<p><img src="postge-execute-with-collapsed-function.png" alt=""></p>
+<h3 id="preattributechange" tabindex="-1">PreAttributeChange</h3>
+<p>This event is commonly used to adjust the value of an Attribute when its Max associated Attribute change. For instance, you have the Vitality Attribute current value set to 40% of MaxVitality Attribute value (eg. Vitality: 50, MaxVitality: 200).</p>
+<p>If the MaxVitality Attribute changes (with a level up or another Gameplay Effect), you might want to adjust the value of Vitality to reflect that. Let's demonstrate that use case.</p>
+<p><em><strong>Note:</strong></em> <em>&quot;Default&quot; attributes PreAttribute change for Health, Stamina and Mana is already handled by the plugin.</em></p>
+<p>Like we did for the PostGameplayEffectExecute, implement the <a href="/api/Components/GSCCoreComponent#onpreattributechange"><code>OnPreAttributeChange</code></a> event node (by selecting <code>GSC Core Component</code>) and create a <code>Switch on Gameplay Attribute</code> node, followed by an <a href="/api/Components/GSCCoreComponent#adjustattributeformaxchange"><code>AdjustAttributeForMaxChange</code></a> function call.</p>
+<p><img src="on-preattribute-change.png" alt=""></p>
+<p>Make sure to react to <strong>Max Attributes</strong> though and to affect the related attribute. It's easy to enter an infinite loop if you misuse attributes there, in which case the Engine will warn you.</p>
+<p>In this case, we only react when MaxVitality changes, and we adjust the related Vitality attribute using MaxVitality as the Max Attribute parameter of <a href="/api/Components/GSCCoreComponent#adjustattributeformaxchange"><code>AdjustAttributeForMaxChange</code></a>. Lastly, we use the <code>NewValue</code> float from the event as the <code>NewMaxValue</code> of <a href="/api/Components/GSCCoreComponent#adjustattributeformaxchange"><code>AdjustAttributeForMaxChange</code></a>.</p>
+<h2 id="test-in-game" tabindex="-1">Test in Game</h2>
+<h3 id="test-the-clamp-(in-postgameplayeffectexecute)" tabindex="-1">Test the Clamp (in PostGameplayEffectExecute)</h3>
+<p>Initialize the value of your attributes with a Gameplay Effect, and set this effect as the <code>Startup Attributes</code> of your character (if you haven't one already)</p>
+<p><img src="character-startup-attributes.png" alt=""></p>
+<p>Here's the attribute modifiers from my <code>GE_Player_Attributes</code> effect.</p>
+<p><img src="ge-player-attributes.png" alt=""></p>
+<p>First, we'll test the clamping we did in <a href="/api/Components/GSCCoreComponent#onpostgameplayeffectexecute"><code>OnPostGameplayEffectExecute</code></a>. We'll create a regen Gameplay Effect for this purpose. It'll continuously increase the Vitality Attribute, until it reaches the MaxVitality value.</p>
+<p>Create a new Gameplay Effect.</p>
+<p><img src="new-ge.png" alt=""></p>
+<p>With <code>Infinite</code> Duration, a period in seconds and an Attribute <code>Additive</code> modifier for <code>StatsAttributeSet.Vitality</code> and a scalable float.</p>
+<p><img src="regen-ge-details.png" alt=""></p>
+<p><em>Here, we add 5 Vitality every 1 seconds</em></p>
+<p>Add this Gameplay Effect to your <code>Startup Effects</code> array on your character.</p>
+<p><img src="startup-effects.png" alt=""></p>
+<p>Now, launch the Game in PIE (Play in Editor) and use the <code>GSC_ShowDebugAbilitySystem</code> command (or <code>showdebug abilitysystem</code>). Type <code>²</code> within the game to open the command prompt.</p>
+<p><img src="vitality-attributes.png" alt=""></p>
+<p>You should see the Vitality attribute going from 50 to 200 (the MaxVitality value) if we did everything correctly. If we didn't clamp, Vitality would increase forever.</p>
+<h3 id="test-the-adjustment-(in-preattributechange)" tabindex="-1">Test the Adjustment (in PreAttributeChange)</h3>
+<p>We'll now do a similar setup, but instead of creating a regenerate effect, we'll create a GameplayEffect that increase the MaxVitality attribute to apply when we hit a Keyboard input, to see if the related Vitality value is changed accordingly.</p>
+<p>First, let's create the test GameplayEffect. This is going to be an <code>Instant</code> GameplayEffect with <code>StatsAttributeSet.MaxVitality</code> as an <code>Additive</code> modifier and a scalable float magnitude of <code>100</code>.</p>
+<p><img src="ge-test-addmax.png" alt=""></p>
+<p>Now, open your character Blueprint and add a Keyboard input event of your choosing. From there, drag off the input event and implement the following:</p>
+<p><img src="test-ge-input.png" alt=""><br>
+<em><strong>Note</strong> <code>GetASC</code> has been deprecated and removed since this guide was written. Replace it with <code>GetAbilitySystemComponent</code> method available in Gameplay Abilities Blueprint library, and passing <code>self</code> reference for the Actor parameter.</em></p>
+<p>Make sure to configure your test GameplayEffect in the <code>Gameplay Effect Class</code> parameter.</p>
+<p>We can now launch the game in PIE mode, open the gameplay debugger with <code>showdebug abilitysystem</code> command and hit the Keyboard input we added (maybe remove the Vitality regeneration effect from the character's Startup Effects so that it doesn't interfere with our testing).</p>
+<p><img src="ge-adjust-debug-test.png" alt=""></p>
+<p>The Vitality attribute should change anytime we hit the keyboard input, keeping its relative ratio to MaxVitality.</p>
+<p>This concludes the introduction of AttributeSet Events exposed to Character Blueprints.</p>
+
+</article>
+
+        </main>
+    </div>
+
+    <div class="Layout-sidebar color-bg-subtle ">
+        
+        
+        
+
+        
+
+        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/install/"
+                    >
+                        Installation
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Getting Started</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/quick-start/"
+                    >
+                        Quick Start
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/asc-on-player-state/"
+                    >
+                        Setting up ASC on Player State
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/getting-started/modular-game-features/"
+                    >
+                        Modular Game Features
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Configuration</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/config/ability-system-globals/"
+                    >
+                        Ability System Globals Configuration
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/config/ga-definitions/"
+                    >
+                        Gameplay Ability Definitions
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/config/ge-definitions/"
+                    >
+                        Gameplay Effect Definitions
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Attributes</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/attributes/attributes-wizard/"
+                    >
+                        Attributes Wizard
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                         aria-current="page" 
+                        href="/attributes/attributes-events/"
+                    >
+                        Attributes Events
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Abilities</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/melee-ability/"
+                    >
+                        Melee Base Ability
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Topics</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/ability-queue-system/"
+                    >
+                        Ability Queue System
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/ignore-ability-cost/"
+                    >
+                        Loosely Check Ability Cost
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/console-commands/"
+                    >
+                        Console Commands
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/working-with-ai/"
+                    >
+                        Working with AI
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/working-with-ui/"
+                    >
+                        Working with UI
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">More</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/changelog/"
+                    >
+                        Changelog
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Upgrade Guides</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/upgrade-guide/cpp/"
+                    >
+                        v5 Upgrade Guide (CPP usage)
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/upgrade-guide/"
+                    >
+                        v5 Upgrade Guide
+                    </a>
+                </span></nav><h4 class="color-fg-muted mt-4 mb-2 h3">API</h4><h5 class="color-fg-muted mb-2 pb-1 border-bottom">AI</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/AI/GSCBTTask_BlueprintBase/"
+                    >
+                        GSCBTTask_BlueprintBase
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Abilities/Attributes</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Abilities/Attributes/GSCAttributeSet/"
+                    >
+                        GSCAttributeSet
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Abilities/Tasks</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/Tasks/GSCAbilityTask_NetworkSyncPoint/"
+                    >
+                        GSCAbilityTask_NetworkSyncPoint
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Abilities/Tasks/GSCTask_PlayMontageWaitForEvent/"
+                    >
+                        GSCTask_PlayMontageWaitForEvent
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Abilities</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/GSCAbilitySystemComponent/"
+                    >
+                        GSCAbilitySystemComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/GSCBlueprintFunctionLibrary/"
+                    >
+                        GSCBlueprintFunctionLibrary
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/GSCGameplayAbility/"
+                    >
+                        GSCGameplayAbility
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/GSCGameplayAbility_MeleeBase/"
+                    >
+                        GSCGameplayAbility_MeleeBase
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Abilities/GSCTargetType/"
+                    >
+                        GSCTargetType
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Animations</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Animations/GSCAbilityQueueNotifyState/"
+                    >
+                        GSCAbilityQueueNotifyState
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Animations/GSCComboWindowNotifyState/"
+                    >
+                        GSCComboWindowNotifyState
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Components</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCAbilityInputBindingComponent/"
+                    >
+                        GSCAbilityInputBindingComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCAbilityQueueComponent/"
+                    >
+                        GSCAbilityQueueComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCComboManagerComponent/"
+                    >
+                        GSCComboManagerComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCCoreComponent/"
+                    >
+                        GSCCoreComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCLinkAnimLayersComponent/"
+                    >
+                        GSCLinkAnimLayersComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Components/GSCPlayerControlsComponent/"
+                    >
+                        GSCPlayerControlsComponent
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Core/Editor</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Core/Editor/GSCExampleMapManager/"
+                    >
+                        GSCExampleMapManager
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Core/Settings</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Core/Settings/GSCDeveloperSettings/"
+                    >
+                        GSCDeveloperSettings
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">GameFeatures/Actions</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/GameFeatures/Actions/GSCGameFeatureAction_AddAbilities/"
+                    >
+                        GSCGameFeatureAction_AddAbilities
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/GameFeatures/Actions/GSCGameFeatureAction_AddAnimLayers/"
+                    >
+                        GSCGameFeatureAction_AddAnimLayers
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/GameFeatures/Actions/GSCGameFeatureAction_AddInputMappingContext/"
+                    >
+                        GSCGameFeatureAction_AddInputMappingContext
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">ModularGameplayActors</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/ModularGameplayActors/GSCModularActor/"
+                    >
+                        GSCModularActor
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/ModularGameplayActors/GSCModularCharacter/"
+                    >
+                        GSCModularCharacter
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/ModularGameplayActors/GSCModularDefaultPawn/"
+                    >
+                        GSCModularDefaultPawn
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/ModularGameplayActors/GSCModularPawn/"
+                    >
+                        GSCModularPawn
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/ModularGameplayActors/GSCModularPlayerState/"
+                    >
+                        GSCModularPlayerState
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Subsystems</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Subsystems/GSCConsoleManagerSubsystem/"
+                    >
+                        GSCConsoleManagerSubsystem
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Templates</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Templates/GSCTemplate_GameplayEffectDefinition/"
+                    >
+                        GSCTemplate_GameplayEffectDefinition
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">UI</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/UI/GSCUWDebugAbilityQueue/"
+                    >
+                        GSCUWDebugAbilityQueue
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/UI/GSCUWDebugComboWidget/"
+                    >
+                        GSCUWDebugComboWidget
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/UI/GSCUWHud/"
+                    >
+                        GSCUWHud
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/UI/GSCUserWidget/"
+                    >
+                        GSCUserWidget
+                    </a>
+                </span></nav></aside>
+    </div>
+</div>
+
+</body>
+
+</html>

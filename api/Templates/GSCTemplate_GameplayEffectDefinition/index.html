@@ -1,0 +1,636 @@
+
+<!doctype html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark_dimmed">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/_static/css/primer.css">
+    <style>
+        .markdown-content {
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+        }
+    </style>
+    <title>GAS Companion Documentation</title>
+</head>
+
+<body>
+    
+<div class="Layout">
+    <div class="Layout-main">
+        <main class="container-xl p-6">
+
+            
+    
+    <nav aria-label="Breadcrumb" class="mb-3">
+        <ol>
+                <li class="breadcrumb-item">
+                    <a href="/api/">API</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="/api/Templates/">Templates</a>
+                </li>
+                <li class="breadcrumb-item breadcrumb-item-selected">
+                    <a href="/api/Templates/GSCTemplate_GameplayEffectDefinition/">GSCTemplate_GameplayEffectDefinition</a>
+                </li>
+        </ol>
+    </nav>
+
+
+            
+<article class="markdown-body">
+
+    <h1 id="gsctemplate_gameplayeffectdefinition" tabindex="-1">GSCTemplate_GameplayEffectDefinition</h1>
+<p>Parent class for Gameplay Effect Templates.</p>
+<p>Templates are one of special kind. They are only meant to be used to create other Gameplay Effect<br>
+based on their Class Default Object, and not meant to be used directly or inherited.</p>
+<p>These are not child of UGameplayEffect, but rather an UObject sharing the exact same properties as UGameplayEffect.</p>
+<p>This class exists only to allow creation of GE templates Blueprint, that can be configured in Project Settings, without<br>
+having them interfere with standard Gameplay Effects dropdown in properties and nodes like ApplyGameplayEffect.</p>
+<p>When a new GE is created from a template, a real UGameplayEffect Blueprint is created based on the properties defined by the template.</p>
+<h2 id="table-of-contents" tabindex="-1">Table of Contents</h2>
+<ul>
+<li>
+<p><a href="#properties">Properties</a></p>
+<ul>
+<li><a href="#durationpolicy">DurationPolicy</a></li>
+<li><a href="#durationmagnitude">DurationMagnitude</a></li>
+<li><a href="#period">Period</a></li>
+<li><a href="#bexecuteperiodiceffectonapplication">bExecutePeriodicEffectOnApplication</a></li>
+<li><a href="#periodicinhibitionpolicy">PeriodicInhibitionPolicy</a></li>
+<li><a href="#modifiers">Modifiers</a></li>
+<li><a href="#executions">Executions</a></li>
+<li><a href="#chancetoapplytotarget">ChanceToApplyToTarget</a></li>
+<li><a href="#applicationrequirements">ApplicationRequirements</a></li>
+<li><a href="#conditionalgameplayeffects">ConditionalGameplayEffects</a></li>
+<li><a href="#overfloweffects">OverflowEffects</a></li>
+<li><a href="#bdenyoverflowapplication">bDenyOverflowApplication</a></li>
+<li><a href="#bclearstackonoverflow">bClearStackOnOverflow</a></li>
+<li><a href="#prematureexpirationeffectclasses">PrematureExpirationEffectClasses</a></li>
+<li><a href="#routineexpirationeffectclasses">RoutineExpirationEffectClasses</a></li>
+<li><a href="#brequiremodifiersuccesstotriggercues">bRequireModifierSuccessToTriggerCues</a></li>
+<li><a href="#bsuppressstackingcues">bSuppressStackingCues</a></li>
+<li><a href="#gameplaycues">GameplayCues</a></li>
+<li><a href="#uidata">UIData</a></li>
+<li><a href="#inheritablegameplayeffecttags">InheritableGameplayEffectTags</a></li>
+<li><a href="#inheritableownedtagscontainer">InheritableOwnedTagsContainer</a></li>
+<li><a href="#ongoingtagrequirements">OngoingTagRequirements</a></li>
+<li><a href="#applicationtagrequirements">ApplicationTagRequirements</a></li>
+<li><a href="#removaltagrequirements">RemovalTagRequirements</a></li>
+<li><a href="#removegameplayeffectswithtags">RemoveGameplayEffectsWithTags</a></li>
+<li><a href="#grantedapplicationimmunitytags">GrantedApplicationImmunityTags</a></li>
+<li><a href="#grantedapplicationimmunityquery">GrantedApplicationImmunityQuery</a></li>
+<li><a href="#removegameplayeffectquery">RemoveGameplayEffectQuery</a></li>
+<li><a href="#stackingtype">StackingType</a></li>
+<li><a href="#stacklimitcount">StackLimitCount</a></li>
+<li><a href="#stackdurationrefreshpolicy">StackDurationRefreshPolicy</a></li>
+<li><a href="#stackperiodresetpolicy">StackPeriodResetPolicy</a></li>
+<li><a href="#stackexpirationpolicy">StackExpirationPolicy</a></li>
+<li><a href="#grantedabilities">GrantedAbilities</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="properties" tabindex="-1">Properties</h2>
+<h3 id="durationpolicy" tabindex="-1">DurationPolicy</h3>
+<p><strong>Type</strong> <code>EGameplayEffectDurationType</code></p>
+<p>Duration Policy:<br>
+Policy for the duration of this effect</p>
+<h3 id="durationmagnitude" tabindex="-1">DurationMagnitude</h3>
+<p><strong>Type</strong> <code>FGameplayEffectModifierMagnitude</code></p>
+<p>Duration Magnitude:<br>
+Duration in seconds. 0.0 for instantaneous effects; -1.0 for infinite duration.</p>
+<h3 id="period" tabindex="-1">Period</h3>
+<p><strong>Type</strong> <code>FScalableFloat</code></p>
+<p>Period:<br>
+Period in seconds. 0.0 for non-periodic effects</p>
+<h3 id="bexecuteperiodiceffectonapplication" tabindex="-1">bExecutePeriodicEffectOnApplication</h3>
+<p><strong>Type</strong> <code>bool</code></p>
+<p>Execute Periodic Effect on Application:<br>
+If true, the effect executes on application and then at every period interval. If false, no execution occurs until the first period elapses.</p>
+<h3 id="periodicinhibitionpolicy" tabindex="-1">PeriodicInhibitionPolicy</h3>
+<p><strong>Type</strong> <code>EGameplayEffectPeriodInhibitionRemovedPolicy</code></p>
+<p>Periodic Inhibition Policy</p>
+<h3 id="modifiers" tabindex="-1">Modifiers</h3>
+<p><strong>Type</strong> <code>Array of FGameplayModifierInfo</code></p>
+<p>Modifiers:<br>
+Array of modifiers that will affect the target of this effect</p>
+<h3 id="executions" tabindex="-1">Executions</h3>
+<p><strong>Type</strong> <code>Array of FGameplayEffectExecutionDefinition</code></p>
+<p>Executions</p>
+<h3 id="chancetoapplytotarget" tabindex="-1">ChanceToApplyToTarget</h3>
+<p><strong>Type</strong> <code>FScalableFloat</code></p>
+<p>Chance to Apply to Target:<br>
+Probability that this gameplay effect will be applied to the target actor (0.0 for never, 1.0 for always)</p>
+<h3 id="applicationrequirements" tabindex="-1">ApplicationRequirements</h3>
+<p><strong>Type</strong> <code>Array of UGameplayEffectCustomApplicationRequirement</code></p>
+<p>Application Requirements</p>
+<h3 id="conditionalgameplayeffects" tabindex="-1">ConditionalGameplayEffects</h3>
+<p><strong>Type</strong> <code>Array of FConditionalGameplayEffect</code></p>
+<p>Conditional Gameplay Effects:<br>
+other gameplay effects that will be applied to the target of this effect if this effect applies</p>
+<h3 id="overfloweffects" tabindex="-1">OverflowEffects</h3>
+<p><strong>Type</strong> <code>Array of UGameplayEffect</code></p>
+<p>Overflow Effects:<br>
+Effects to apply when a stacking effect &quot;overflows&quot; its stack count through another attempted application. Added whether the overflow application succeeds or not.</p>
+<h3 id="bdenyoverflowapplication" tabindex="-1">bDenyOverflowApplication</h3>
+<p><strong>Type</strong> <code>bool</code></p>
+<p>Deny Overflow Application:<br>
+If true, stacking attempts made while at the stack count will fail, resulting in the duration and context not being refreshed</p>
+<h3 id="bclearstackonoverflow" tabindex="-1">bClearStackOnOverflow</h3>
+<p><strong>Type</strong> <code>bool</code></p>
+<p>Clear Stack on Overflow:<br>
+If true, the entire stack of the effect will be cleared once it overflows</p>
+<h3 id="prematureexpirationeffectclasses" tabindex="-1">PrematureExpirationEffectClasses</h3>
+<p><strong>Type</strong> <code>Array of UGameplayEffect</code></p>
+<p>Premature Expiration Effect Classes:<br>
+Effects to apply when this effect is made to expire prematurely (like via a forced removal, clear tags, etc.); Only works for effects with a duration</p>
+<h3 id="routineexpirationeffectclasses" tabindex="-1">RoutineExpirationEffectClasses</h3>
+<p><strong>Type</strong> <code>Array of UGameplayEffect</code></p>
+<p>Routine Expiration Effect Classes:<br>
+Effects to apply when this effect expires naturally via its duration; Only works for effects with a duration</p>
+<h3 id="brequiremodifiersuccesstotriggercues" tabindex="-1">bRequireModifierSuccessToTriggerCues</h3>
+<p><strong>Type</strong> <code>bool</code></p>
+<p>Require Modifier Success to Trigger Cues:<br>
+If true, cues will only trigger when GE modifiers succeed being applied (whether through modifiers or executions)</p>
+<h3 id="bsuppressstackingcues" tabindex="-1">bSuppressStackingCues</h3>
+<p><strong>Type</strong> <code>bool</code></p>
+<p>Suppress Stacking Cues:<br>
+If true, GameplayCues will only be triggered for the first instance in a stacking GameplayEffect.</p>
+<h3 id="gameplaycues" tabindex="-1">GameplayCues</h3>
+<p><strong>Type</strong> <code>Array of FGameplayEffectCue</code></p>
+<p>Gameplay Cues:<br>
+Cues to trigger non-simulated reactions in response to this GameplayEffect such as sounds, particle effects, etc</p>
+<h3 id="uidata" tabindex="-1">UIData</h3>
+<p><strong>Type</strong> <code>UGameplayEffectUIData*</code></p>
+<p>UIData:<br>
+Data for the UI representation of this effect. This should include things like text, icons, etc. Not available in server-only builds.</p>
+<h3 id="inheritablegameplayeffecttags" tabindex="-1">InheritableGameplayEffectTags</h3>
+<p><strong>Type</strong> <code>FInheritedTagContainer</code></p>
+<p>Inheritable Gameplay Effect Tags:<br>
+The GameplayEffect's Tags: tags the the GE <em>has</em> and DOES NOT give to the actor.</p>
+<h3 id="inheritableownedtagscontainer" tabindex="-1">InheritableOwnedTagsContainer</h3>
+<p><strong>Type</strong> <code>FInheritedTagContainer</code></p>
+<p>Inheritable Owned Tags Container:<br>
+&quot;These tags are applied to the actor I am applied to&quot;</p>
+<h3 id="ongoingtagrequirements" tabindex="-1">OngoingTagRequirements</h3>
+<p><strong>Type</strong> <code>FGameplayTagRequirements</code></p>
+<p>Ongoing Tag Requirements:<br>
+Once Applied, these tags requirements are used to determined if the GameplayEffect is &quot;on&quot; or &quot;off&quot;. A GameplayEffect can be off and do nothing, but still applied.</p>
+<h3 id="applicationtagrequirements" tabindex="-1">ApplicationTagRequirements</h3>
+<p><strong>Type</strong> <code>FGameplayTagRequirements</code></p>
+<p>Application Tag Requirements:<br>
+Tag requirements for this GameplayEffect to be applied to a target. This is pass/fail at the time of application. If fail, this GE fails to apply.</p>
+<h3 id="removaltagrequirements" tabindex="-1">RemovalTagRequirements</h3>
+<p><strong>Type</strong> <code>FGameplayTagRequirements</code></p>
+<p>Removal Tag Requirements:<br>
+Tag requirements that if met will remove this effect. Also prevents effect application.</p>
+<h3 id="removegameplayeffectswithtags" tabindex="-1">RemoveGameplayEffectsWithTags</h3>
+<p><strong>Type</strong> <code>FInheritedTagContainer</code></p>
+<p>Remove Gameplay Effects with Tags:<br>
+GameplayEffects that <em>have</em> tags in this container will be cleared upon effect application.</p>
+<h3 id="grantedapplicationimmunitytags" tabindex="-1">GrantedApplicationImmunityTags</h3>
+<p><strong>Type</strong> <code>FGameplayTagRequirements</code></p>
+<p>Granted Application Immunity Tags:<br>
+Grants the owner immunity from these source tags.</p>
+<h3 id="grantedapplicationimmunityquery" tabindex="-1">GrantedApplicationImmunityQuery</h3>
+<p><strong>Type</strong> <code>FGameplayEffectQuery</code></p>
+<p>Granted Application Immunity Query:<br>
+Grants immunity to GameplayEffects that match this query. Queries are more powerful but slightly slower than GrantedApplicationImmunityTags.</p>
+<h3 id="removegameplayeffectquery" tabindex="-1">RemoveGameplayEffectQuery</h3>
+<p><strong>Type</strong> <code>FGameplayEffectQuery</code></p>
+<p>Remove Gameplay Effect Query:<br>
+On Application of an effect, any active effects with this this query that matches against the added effect will be removed. Queries are more powerful but slightly slower than RemoveGameplayEffectsWithTags.</p>
+<h3 id="stackingtype" tabindex="-1">StackingType</h3>
+<p><strong>Type</strong> <code>EGameplayEffectStackingType</code></p>
+<p>Stacking Type:<br>
+How this GameplayEffect stacks with other instances of this same GameplayEffect</p>
+<h3 id="stacklimitcount" tabindex="-1">StackLimitCount</h3>
+<p><strong>Type</strong> <code>int32</code></p>
+<p>Stack Limit Count:<br>
+Stack limit for StackingType</p>
+<h3 id="stackdurationrefreshpolicy" tabindex="-1">StackDurationRefreshPolicy</h3>
+<p><strong>Type</strong> <code>EGameplayEffectStackingDurationPolicy</code></p>
+<p>Stack Duration Refresh Policy:<br>
+Policy for how the effect duration should be refreshed while stacking</p>
+<h3 id="stackperiodresetpolicy" tabindex="-1">StackPeriodResetPolicy</h3>
+<p><strong>Type</strong> <code>EGameplayEffectStackingPeriodPolicy</code></p>
+<p>Stack Period Reset Policy:<br>
+Policy for how the effect period should be reset (or not) while stacking</p>
+<h3 id="stackexpirationpolicy" tabindex="-1">StackExpirationPolicy</h3>
+<p><strong>Type</strong> <code>EGameplayEffectStackingExpirationPolicy</code></p>
+<p>Stack Expiration Policy:<br>
+Policy for how to handle duration expiring on this gameplay effect</p>
+<h3 id="grantedabilities" tabindex="-1">GrantedAbilities</h3>
+<p><strong>Type</strong> <code>Array of FGameplayAbilitySpecDef</code></p>
+<p>Granted Abilities:<br>
+Granted abilities</p>
+
+
+    <hr />
+    <p>Generated on Fri, 22 Apr 2022 19:06:13 GMT</p>
+
+</article
+
+
+        </main>
+    </div>
+
+    <div class="Layout-sidebar color-bg-subtle ">
+        
+        
+        
+
+        
+
+        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/install/"
+                    >
+                        Installation
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Getting Started</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/quick-start/"
+                    >
+                        Quick Start
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/asc-on-player-state/"
+                    >
+                        Setting up ASC on Player State
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/getting-started/modular-game-features/"
+                    >
+                        Modular Game Features
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Configuration</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/config/ability-system-globals/"
+                    >
+                        Ability System Globals Configuration
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/config/ga-definitions/"
+                    >
+                        Gameplay Ability Definitions
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/config/ge-definitions/"
+                    >
+                        Gameplay Effect Definitions
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Attributes</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/attributes/attributes-wizard/"
+                    >
+                        Attributes Wizard
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/attributes/attributes-events/"
+                    >
+                        Attributes Events
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Abilities</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/melee-ability/"
+                    >
+                        Melee Base Ability
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Topics</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/ability-queue-system/"
+                    >
+                        Ability Queue System
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/ignore-ability-cost/"
+                    >
+                        Loosely Check Ability Cost
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/console-commands/"
+                    >
+                        Console Commands
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/working-with-ai/"
+                    >
+                        Working with AI
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/working-with-ui/"
+                    >
+                        Working with UI
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">More</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/changelog/"
+                    >
+                        Changelog
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Upgrade Guides</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/upgrade-guide/cpp/"
+                    >
+                        v5 Upgrade Guide (CPP usage)
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/upgrade-guide/"
+                    >
+                        v5 Upgrade Guide
+                    </a>
+                </span></nav><h4 class="color-fg-muted mt-4 mb-2 h3">API</h4><h5 class="color-fg-muted mb-2 pb-1 border-bottom">AI</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/AI/GSCBTTask_BlueprintBase/"
+                    >
+                        GSCBTTask_BlueprintBase
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Abilities/Attributes</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Abilities/Attributes/GSCAttributeSet/"
+                    >
+                        GSCAttributeSet
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Abilities/Tasks</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/Tasks/GSCAbilityTask_NetworkSyncPoint/"
+                    >
+                        GSCAbilityTask_NetworkSyncPoint
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Abilities/Tasks/GSCTask_PlayMontageWaitForEvent/"
+                    >
+                        GSCTask_PlayMontageWaitForEvent
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Abilities</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/GSCAbilitySystemComponent/"
+                    >
+                        GSCAbilitySystemComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/GSCBlueprintFunctionLibrary/"
+                    >
+                        GSCBlueprintFunctionLibrary
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/GSCGameplayAbility/"
+                    >
+                        GSCGameplayAbility
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Abilities/GSCGameplayAbility_MeleeBase/"
+                    >
+                        GSCGameplayAbility_MeleeBase
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Abilities/GSCTargetType/"
+                    >
+                        GSCTargetType
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Animations</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Animations/GSCAbilityQueueNotifyState/"
+                    >
+                        GSCAbilityQueueNotifyState
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Animations/GSCComboWindowNotifyState/"
+                    >
+                        GSCComboWindowNotifyState
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Components</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCAbilityInputBindingComponent/"
+                    >
+                        GSCAbilityInputBindingComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCAbilityQueueComponent/"
+                    >
+                        GSCAbilityQueueComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCComboManagerComponent/"
+                    >
+                        GSCComboManagerComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCCoreComponent/"
+                    >
+                        GSCCoreComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/Components/GSCLinkAnimLayersComponent/"
+                    >
+                        GSCLinkAnimLayersComponent
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Components/GSCPlayerControlsComponent/"
+                    >
+                        GSCPlayerControlsComponent
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Core/Editor</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Core/Editor/GSCExampleMapManager/"
+                    >
+                        GSCExampleMapManager
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Core/Settings</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Core/Settings/GSCDeveloperSettings/"
+                    >
+                        GSCDeveloperSettings
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">GameFeatures/Actions</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/GameFeatures/Actions/GSCGameFeatureAction_AddAbilities/"
+                    >
+                        GSCGameFeatureAction_AddAbilities
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/GameFeatures/Actions/GSCGameFeatureAction_AddAnimLayers/"
+                    >
+                        GSCGameFeatureAction_AddAnimLayers
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/GameFeatures/Actions/GSCGameFeatureAction_AddInputMappingContext/"
+                    >
+                        GSCGameFeatureAction_AddInputMappingContext
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">ModularGameplayActors</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/ModularGameplayActors/GSCModularActor/"
+                    >
+                        GSCModularActor
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/ModularGameplayActors/GSCModularCharacter/"
+                    >
+                        GSCModularCharacter
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/ModularGameplayActors/GSCModularDefaultPawn/"
+                    >
+                        GSCModularDefaultPawn
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/ModularGameplayActors/GSCModularPawn/"
+                    >
+                        GSCModularPawn
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/ModularGameplayActors/GSCModularPlayerState/"
+                    >
+                        GSCModularPlayerState
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Subsystems</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/Subsystems/GSCConsoleManagerSubsystem/"
+                    >
+                        GSCConsoleManagerSubsystem
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Templates</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                         aria-current="page" 
+                        href="/api/Templates/GSCTemplate_GameplayEffectDefinition/"
+                    >
+                        GSCTemplate_GameplayEffectDefinition
+                    </a>
+                </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">UI</h5>
+            <nav class="SideNav"><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/UI/GSCUWDebugAbilityQueue/"
+                    >
+                        GSCUWDebugAbilityQueue
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/UI/GSCUWDebugComboWidget/"
+                    >
+                        GSCUWDebugComboWidget
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"
+                        
+                        href="/api/UI/GSCUWHud/"
+                    >
+                        GSCUWHud
+                    </a>
+                </span><span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"
+                        
+                        href="/api/UI/GSCUserWidget/"
+                    >
+                        GSCUserWidget
+                    </a>
+                </span></nav></aside>
+    </div>
+</div>
+
+</body>
+
+</html>
