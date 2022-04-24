@@ -27,12 +27,10 @@
     <div class="Layout-main">
         <div class="container-xl px-md-6">
             <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
-                <div class="Layout-sidebar py-6">
+                <div class="Layout-sidebar py-6 position-sticky top-0 overflow-y-auto" style="height: 100vh;">
                     <nav class="position-sticky top-4" >
         <h2 class="f5 pl-2">On this page</h2>
         <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
-                <a href="#table-of-contents" class="ActionList-item-label no-underline">Table of Contents</a>
-            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#properties" class="ActionList-item-label no-underline">Properties</a>
             </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#durationpolicy" class="ActionList-item-label no-underline">DurationPolicy</a>
@@ -135,48 +133,6 @@ based on their Class Default Object, and not meant to be used directly or inheri
 <p>This class exists only to allow creation of GE templates Blueprint, that can be configured in Project Settings, without<br>
 having them interfere with standard Gameplay Effects dropdown in properties and nodes like ApplyGameplayEffect.</p>
 <p>When a new GE is created from a template, a real UGameplayEffect Blueprint is created based on the properties defined by the template.</p>
-<h2 id="table-of-contents" tabindex="-1">Table of Contents <a class="direct-link" href="#table-of-contents">#</a></h2>
-<ul>
-<li>
-<p><a href="#properties">Properties</a></p>
-<ul>
-<li><a href="#durationpolicy">DurationPolicy</a></li>
-<li><a href="#durationmagnitude">DurationMagnitude</a></li>
-<li><a href="#period">Period</a></li>
-<li><a href="#bexecuteperiodiceffectonapplication">bExecutePeriodicEffectOnApplication</a></li>
-<li><a href="#periodicinhibitionpolicy">PeriodicInhibitionPolicy</a></li>
-<li><a href="#modifiers">Modifiers</a></li>
-<li><a href="#executions">Executions</a></li>
-<li><a href="#chancetoapplytotarget">ChanceToApplyToTarget</a></li>
-<li><a href="#applicationrequirements">ApplicationRequirements</a></li>
-<li><a href="#conditionalgameplayeffects">ConditionalGameplayEffects</a></li>
-<li><a href="#overfloweffects">OverflowEffects</a></li>
-<li><a href="#bdenyoverflowapplication">bDenyOverflowApplication</a></li>
-<li><a href="#bclearstackonoverflow">bClearStackOnOverflow</a></li>
-<li><a href="#prematureexpirationeffectclasses">PrematureExpirationEffectClasses</a></li>
-<li><a href="#routineexpirationeffectclasses">RoutineExpirationEffectClasses</a></li>
-<li><a href="#brequiremodifiersuccesstotriggercues">bRequireModifierSuccessToTriggerCues</a></li>
-<li><a href="#bsuppressstackingcues">bSuppressStackingCues</a></li>
-<li><a href="#gameplaycues">GameplayCues</a></li>
-<li><a href="#uidata">UIData</a></li>
-<li><a href="#inheritablegameplayeffecttags">InheritableGameplayEffectTags</a></li>
-<li><a href="#inheritableownedtagscontainer">InheritableOwnedTagsContainer</a></li>
-<li><a href="#ongoingtagrequirements">OngoingTagRequirements</a></li>
-<li><a href="#applicationtagrequirements">ApplicationTagRequirements</a></li>
-<li><a href="#removaltagrequirements">RemovalTagRequirements</a></li>
-<li><a href="#removegameplayeffectswithtags">RemoveGameplayEffectsWithTags</a></li>
-<li><a href="#grantedapplicationimmunitytags">GrantedApplicationImmunityTags</a></li>
-<li><a href="#grantedapplicationimmunityquery">GrantedApplicationImmunityQuery</a></li>
-<li><a href="#removegameplayeffectquery">RemoveGameplayEffectQuery</a></li>
-<li><a href="#stackingtype">StackingType</a></li>
-<li><a href="#stacklimitcount">StackLimitCount</a></li>
-<li><a href="#stackdurationrefreshpolicy">StackDurationRefreshPolicy</a></li>
-<li><a href="#stackperiodresetpolicy">StackPeriodResetPolicy</a></li>
-<li><a href="#stackexpirationpolicy">StackExpirationPolicy</a></li>
-<li><a href="#grantedabilities">GrantedAbilities</a></li>
-</ul>
-</li>
-</ul>
 <h2 id="properties" tabindex="-1">Properties <a class="direct-link" href="#properties">#</a></h2>
 <h3 id="durationpolicy" tabindex="-1">DurationPolicy <a class="direct-link" href="#durationpolicy">#</a></h3>
 <p><strong>Type</strong> <code>EGameplayEffectDurationType</code></p>
@@ -314,7 +270,7 @@ Granted abilities</p>
 
 
     <hr />
-    <p>Generated on Sun, 24 Apr 2022 23:42:22 GMT</p>
+    <p>Generated on Sun, 24 Apr 2022 23:57:25 GMT</p>
 
 </article
 

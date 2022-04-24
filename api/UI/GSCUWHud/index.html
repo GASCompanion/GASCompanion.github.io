@@ -27,12 +27,10 @@
     <div class="Layout-main">
         <div class="container-xl px-md-6">
             <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
-                <div class="Layout-sidebar py-6">
+                <div class="Layout-sidebar py-6 position-sticky top-0 overflow-y-auto" style="height: 100vh;">
                     <nav class="position-sticky top-4" >
         <h2 class="f5 pl-2">On this page</h2>
         <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
-                <a href="#table-of-contents" class="ActionList-item-label no-underline">Table of Contents</a>
-            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#properties" class="ActionList-item-label no-underline">Properties</a>
             </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#healthtext" class="ActionList-item-label no-underline">HealthText</a>
@@ -100,35 +98,6 @@ owner actor based on Owning Player controller (when Widget is created from Bluep
 <p>If you'd like to use a user widget with a Widget Component, use UGSCUserWidget instead and manually invoke InitializeWithAbilitySystem().</p>
 <p>The other main difference with UGSCUserWidget is that this class also defines widget optional binding for<br>
 Health / Stamina / Mana attributes from UGSCAttributeSet.</p>
-<h2 id="table-of-contents" tabindex="-1">Table of Contents <a class="direct-link" href="#table-of-contents">#</a></h2>
-<ul>
-<li>
-<p><a href="#properties">Properties</a></p>
-<ul>
-<li><a href="#healthtext">HealthText</a></li>
-<li><a href="#healthprogressbar">HealthProgressBar</a></li>
-<li><a href="#staminatext">StaminaText</a></li>
-<li><a href="#staminaprogressbar">StaminaProgressBar</a></li>
-<li><a href="#manatext">ManaText</a></li>
-<li><a href="#manaprogressbar">ManaProgressBar</a></li>
-</ul>
-</li>
-<li>
-<p><a href="#functions">Functions</a></p>
-<ul>
-<li><a href="#setstaminapercentage">SetStaminaPercentage</a></li>
-<li><a href="#setstamina">SetStamina</a></li>
-<li><a href="#setmaxstamina">SetMaxStamina</a></li>
-<li><a href="#setmaxmana">SetMaxMana</a></li>
-<li><a href="#setmaxhealth">SetMaxHealth</a></li>
-<li><a href="#setmanapercentage">SetManaPercentage</a></li>
-<li><a href="#setmana">SetMana</a></li>
-<li><a href="#sethealthpercentage">SetHealthPercentage</a></li>
-<li><a href="#sethealth">SetHealth</a></li>
-<li><a href="#initfromcharacter">InitFromCharacter</a></li>
-</ul>
-</li>
-</ul>
 <h2 id="properties" tabindex="-1">Properties <a class="direct-link" href="#properties">#</a></h2>
 <h3 id="healthtext" tabindex="-1">HealthText <a class="direct-link" href="#healthtext">#</a></h3>
 <p><strong>Type</strong> <code>UTextBlock*</code></p>
@@ -330,7 +299,7 @@ Health / Stamina / Mana attributes from UGSCAttributeSet.</p>
 
 
     <hr />
-    <p>Generated on Sun, 24 Apr 2022 23:42:22 GMT</p>
+    <p>Generated on Sun, 24 Apr 2022 23:57:25 GMT</p>
 
 </article
 
