@@ -25,9 +25,32 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#character-/-controller-setup" class="ActionList-item-label no-underline">Character / Controller Setup</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#character" class="ActionList-item-label no-underline">Character</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#ai-controller" class="ActionList-item-label no-underline">AI Controller</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#tasks" class="ActionList-item-label no-underline">Tasks</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#dealing-with-finish-execute" class="ActionList-item-label no-underline">Dealing with Finish Execute</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#bttask_triggerabilitybyclass" class="ActionList-item-label no-underline">BTTask_TriggerAbilityByClass</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#bttask_triggerabilitybytags" class="ActionList-item-label no-underline">BTTask_TriggerAbilityByTags</a>
+            </span></li></ul></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,12 +66,11 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
     <p>In this section, we'll go through very briefly on the usage of GAS and GAS Companion in the context of AI and Behavior Trees.</p>
-<h2 id="character-%2F-controller-setup" tabindex="-1">Character / Controller Setup</h2>
-<h3 id="character" tabindex="-1">Character</h3>
+<h2 id="character-/-controller-setup" tabindex="-1">Character / Controller Setup <a class="direct-link" href="#character-/-controller-setup">#</a></h2>
+<h3 id="character" tabindex="-1">Character <a class="direct-link" href="#character">#</a></h3>
 <p>For AI/NPC Characters that are intended to use Gameplay Abilities, they need to inherit from <code>GSCModularCharacter</code>.</p>
 <p>This class has all the necessary Gameplay Ability System setup (such as initialization of the Ability System Component and Attribute Sets). <code>GSCModularCharacter</code> differs from <code>GSCModularPlayerStateCharacter</code> by not relying on a PlayerState for GAS setup, and the ASC / Attribute Sets are attached directly to the Pawn Character.</p>
 <p>Create a new Blueprint Class with <code>GSCModularCharacter</code> as a parent class (or re-parent your AI Character blueprint to use <code>GSCModularCharacter</code>):</p>
@@ -56,7 +78,7 @@
 <p><img src="create_bp_ai_character.png" alt=""></p>
 </div>
 <p>Once done, don't forget to configure your Character Abilities, Attributes and Effects if you have them in the ASC properties, like we did in the <a href="/quick-start">Quick Start section</a>.</p>
-<h3 id="ai-controller" tabindex="-1">AI Controller</h3>
+<h3 id="ai-controller" tabindex="-1">AI Controller <a class="direct-link" href="#ai-controller">#</a></h3>
 <p>To setup Behavior Tree, we need an <code>AIController</code> for this Pawn, from which we'll be able to run a Behavior Tree.</p>
 <p>Create a new Blueprint with <code>AIController</code> as a parent class:</p>
 <p><img src="create-bp-ai-controller.png" alt=""></p>
@@ -64,21 +86,21 @@
 <p><img src="bp-ai-controller-begin-play.png" alt=""></p>
 <p>Finally, update your Character Blueprint to use this <code>AIController</code>, in <code>Details &gt; Pawn &gt; AI Controller Class</code>:</p>
 <p><img src="ai-character-details-aicontroller.png" alt=""></p>
-<h2 id="tasks" tabindex="-1">Tasks</h2>
+<h2 id="tasks" tabindex="-1">Tasks <a class="direct-link" href="#tasks">#</a></h2>
 <p>When you want to trigger abilities from BT, it is most likely done via Behavior Tree Tasks.</p>
-<h3 id="dealing-with-finish-execute" tabindex="-1">Dealing with Finish Execute</h3>
+<h3 id="dealing-with-finish-execute" tabindex="-1">Dealing with Finish Execute <a class="direct-link" href="#dealing-with-finish-execute">#</a></h3>
 <p>Tasks need to notify the Behavior Tree that they have finished the execution of their task, which requires knowing when an ability ends.</p>
 <p>To that end, GAS Companion <code>GSCGameplayAbility</code> exposes a <code>OnAbilityEnded</code> delegate you can bind an event to from within your BT Tasks.</p>
 <p>You can decide to activate abilities either by Class, or by Tags. The latter providing a much more flexible way to deal with activation (Like trying to activate any ability with the Tags <code>Ability.Meleee</code> or <code>Ability.Range</code>)</p>
 <p>GAS Companion provides both option as simple Blueprint-based Behavior Tree Tasks you can use directly.</p>
-<h3 id="bttask_triggerabilitybyclass" tabindex="-1">BTTask_TriggerAbilityByClass</h3>
+<h3 id="bttask_triggerabilitybyclass" tabindex="-1">BTTask_TriggerAbilityByClass <a class="direct-link" href="#bttask_triggerabilitybyclass">#</a></h3>
 <p>If you want to activate a specific Gameplay Ability, you can make use of this task.</p>
 <p><img src="ability-by-class.png" alt=""></p>
 <p>which exposes a single <code>AbilityToActivate</code> property</p>
 <p><img src="bttask-triggerabilitybyclass-details.png" alt=""></p>
 <p>The Blueprint Graph for this task, if you would like to use your own Blueprint-based variation:</p>
 <p><img src="BTTask_TriggerAbilityByClass.png" alt=""></p>
-<h3 id="bttask_triggerabilitybytags" tabindex="-1">BTTask_TriggerAbilityByTags</h3>
+<h3 id="bttask_triggerabilitybytags" tabindex="-1">BTTask_TriggerAbilityByTags <a class="direct-link" href="#bttask_triggerabilitybytags">#</a></h3>
 <p>This one will try to activate an ability by tags.</p>
 <p><img src="ability-by-tags.png" alt=""></p>
 <p>A Gameplay Tag Container is exposed for you to specify from the Behavior Tree any number of tags to search for.</p>
@@ -89,17 +111,19 @@
 
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -480,7 +504,6 @@
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

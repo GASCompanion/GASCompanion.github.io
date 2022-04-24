@@ -25,9 +25,20 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#ability-system-globals-(optional)" class="ActionList-item-label no-underline">Ability System Globals (optional)</a>
+            </span></li></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,8 +54,7 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
     <p>Plugin configuration described in this page is saved and loaded from your <strong>Config/DefaultGame.ini</strong> file.</p>
 <ul>
@@ -53,7 +63,7 @@
 <p>You can access exposed configuration for the plugin in <code>Project Settings &gt; Game &gt; GAS Companion</code>.</p>
 <p>Alternately, you can use the dropdown in the top right corner of the level editor.</p>
 <p><img src="dropdown.png" alt=""></p>
-<h3 id="ability-system-globals-(optional)" tabindex="-1">Ability System Globals (optional)</h3>
+<h3 id="ability-system-globals-(optional)" tabindex="-1">Ability System Globals (optional) <a class="direct-link" href="#ability-system-globals-(optional)">#</a></h3>
 <p>Initialization of Ability System Globals for GAS is important and usually done in an Asset Manager subclass.</p>
 <p>GAS Companion does it by default in a PostEngineInit delegate (after engine is fully initialized) as a failsafe mechanism. And only do so if Ability System Globals wasn't initialized previously in the engine lifecycle.</p>
 <p>There is one configuration property that lets you customize this. If you turn on <code>bPreventGlobalDataInitialization</code> (Default is false), the editor will display the following notification, with a clickable link</p>
@@ -65,17 +75,19 @@
 
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -456,7 +468,6 @@
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

@@ -25,9 +25,26 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#table-of-contents" class="ActionList-item-label no-underline">Table of Contents</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#properties" class="ActionList-item-label no-underline">Properties</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#replicationmode" class="ActionList-item-label no-underline">ReplicationMode</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#abilitysystemcomponent" class="ActionList-item-label no-underline">AbilitySystemComponent</a>
+            </span></li></ul></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,14 +60,13 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
 
-    <h1 id="gscmodularcharacter" tabindex="-1">GSCModularCharacter</h1>
+    <h1 id="gscmodularcharacter" tabindex="-1">GSCModularCharacter <a class="direct-link" href="#gscmodularcharacter">#</a></h1>
 <p>Minimal class that supports extension by game feature plugins</p>
 <p>Intended to be used for ACharacters using AbilitySystemComponent living on Pawns</p>
-<h2 id="table-of-contents" tabindex="-1">Table of Contents</h2>
+<h2 id="table-of-contents" tabindex="-1">Table of Contents <a class="direct-link" href="#table-of-contents">#</a></h2>
 <ul>
 <li>
 <p><a href="#properties">Properties</a></p>
@@ -60,8 +76,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="properties" tabindex="-1">Properties</h2>
-<h3 id="replicationmode" tabindex="-1">ReplicationMode</h3>
+<h2 id="properties" tabindex="-1">Properties <a class="direct-link" href="#properties">#</a></h2>
+<h3 id="replicationmode" tabindex="-1">ReplicationMode <a class="direct-link" href="#replicationmode">#</a></h3>
 <p><strong>Type</strong> <code>EGameplayEffectReplicationMode</code></p>
 <p>Replication Mode:<br>
 Ability System Replication Mode: How gameplay effects will be replicated to clients</p>
@@ -76,28 +92,30 @@ GameplayEffects are never replicated to anyone. Only GameplayTags and GameplayCu
 (Recommended for Multiplayer on AI controlled Actors)</li>
 </ul>
 <p>See: <a href="https://github.com/tranek/GASDocumentation#concepts-asc-rm">https://github.com/tranek/GASDocumentation#concepts-asc-rm</a> for more information</p>
-<h3 id="abilitysystemcomponent" tabindex="-1">AbilitySystemComponent</h3>
+<h3 id="abilitysystemcomponent" tabindex="-1">AbilitySystemComponent <a class="direct-link" href="#abilitysystemcomponent">#</a></h3>
 <p><strong>Type</strong> <code>UGSCAbilitySystemComponent*</code></p>
 <p>Ability System Component</p>
 
 
     <hr />
-    <p>Generated on Sun, 24 Apr 2022 11:35:33 GMT</p>
+    <p>Generated on Sun, 24 Apr 2022 22:56:46 GMT</p>
 
 </article
 
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -478,7 +496,6 @@ GameplayEffects are never replicated to anyone. Only GameplayTags and GameplayCu
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

@@ -25,9 +25,26 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#for-5.0" class="ActionList-item-label no-underline">For 5.0</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#as-an-engine-plugin" class="ActionList-item-label no-underline">As an Engine Plugin</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#as-a-project-plugin" class="ActionList-item-label no-underline">As a Project Plugin</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#first-opening" class="ActionList-item-label no-underline">First opening</a>
+            </span></li></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,13 +60,12 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
-    <h2 id="for-5.0" tabindex="-1">For 5.0</h2>
-<h3 id="as-an-engine-plugin" tabindex="-1">As an Engine Plugin</h3>
+    <h2 id="for-5.0" tabindex="-1">For 5.0 <a class="direct-link" href="#for-5.0">#</a></h2>
+<h3 id="as-an-engine-plugin" tabindex="-1">As an Engine Plugin <a class="direct-link" href="#as-an-engine-plugin">#</a></h3>
 <p>Download Plugin from <a href="https://www.unrealengine.com/marketplace/en-US/product/gas-companion">Marketplace</a> and make sure it's enabled in your Plugins window: <code>Edit &gt; Plugins &gt; Gameplay &gt; GASCompanion</code>.</p>
-<h3 id="as-a-project-plugin" tabindex="-1">As a Project Plugin</h3>
+<h3 id="as-a-project-plugin" tabindex="-1">As a Project Plugin <a class="direct-link" href="#as-a-project-plugin">#</a></h3>
 <ol>
 <li>Download the latest version of GAS Companion for 5.0 from <a href="https://www.unrealengine.com/marketplace/en-US/product/gas-companion">Marketplace</a></li>
 <li>Navigate to the installation folder. By default it's <code>C:\Program Files (x86)\Epic Games\UE_5.0\Engine\Plugins\Marketplace\GASCompanion</code></li>
@@ -59,7 +75,7 @@
 </ol>
 <p>The advantage of using it as a Project plugin is that you can easily edit the code if you need to. If the plugin gets updated on the marketplace though, your project plugin won't be updated (which can be a good thing if you want to lock down the version).</p>
 <p>If you're using the plugin as a Project plugin, it is recommended to uninstall the Engine version.</p>
-<h2 id="first-opening" tabindex="-1">First opening</h2>
+<h2 id="first-opening" tabindex="-1">First opening <a class="direct-link" href="#first-opening">#</a></h2>
 <p>When first opening a project with GAS Companion plugin enabled, you'll be granted with the following in the message log:</p>
 <p><img src="first_opening.png" alt=""></p>
 <p>This is not really an error but rather validation checks to ensure proper configuration for Modular Gameplay and Game Features.</p>
@@ -68,17 +84,19 @@
 
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                          aria-current="page" 
@@ -459,7 +477,6 @@
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

@@ -25,9 +25,22 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#gameplay-effect-definitions" class="ActionList-item-label no-underline">Gameplay Effect Definitions</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#create-your-own-definitions" class="ActionList-item-label no-underline">Create your own Definitions</a>
+            </span></li></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,15 +56,14 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
-    <h2 id="gameplay-effect-definitions" tabindex="-1">Gameplay Effect Definitions</h2>
+    <h2 id="gameplay-effect-definitions" tabindex="-1">Gameplay Effect Definitions <a class="direct-link" href="#gameplay-effect-definitions">#</a></h2>
 <p>Similar to the <a href="/config/ga-definitions/">Gameplay Ability Definitions</a>, you can do the same with Gameplay Effects.</p>
 <p>Here is the default one included in GAS Companion.</p>
 <p><img src="config.png" alt=""></p>
 <p>Remember that you can create your own definitions, edit the default ones or even remove them if you'd like. This configuration is stored in <code>DefaultGame.ini</code>.</p>
-<h2 id="create-your-own-definitions" tabindex="-1">Create your own Definitions</h2>
+<h2 id="create-your-own-definitions" tabindex="-1">Create your own Definitions <a class="direct-link" href="#create-your-own-definitions">#</a></h2>
 <p>You can create your own template for Gameplay Effect and make them available via the context menu.</p>
 <p>To do so, you need to create a Blueprint child of <a href="/api/Templates/GSCTemplate_GameplayEffectDefinition"><code>GSCTemplate_GameplayEffectDefinition</code></a>, and modify the template as you wish. Any new Gameplay Effect created from Context Menu using this template as a base will be created using the template properties.</p>
 <p>Create Gameplay Effect will be a direct child of <code>UGameplayEffect</code>.</p>
@@ -86,17 +98,19 @@
 
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -477,7 +491,6 @@
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

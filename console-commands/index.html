@@ -25,9 +25,26 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#gas-companion-commands" class="ActionList-item-label no-underline">GAS Companion Commands</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#gascompanion.debug.abilityqueue" class="ActionList-item-label no-underline">GASCompanion.Debug.AbilityQueue</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#gascompanion.debug.combo" class="ActionList-item-label no-underline">GASCompanion.Debug.Combo</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#gas-gameplay-debugger" class="ActionList-item-label no-underline">GAS Gameplay Debugger</a>
+            </span></li></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,13 +60,12 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
     <p>GAS Companion provides a few Console Commands to help in debugging you can access via the built-in debug console. This is done via an Engine Subsystem that registers custom commands to the Console Manager.</p>
-<h2 id="gas-companion-commands" tabindex="-1">GAS Companion Commands</h2>
+<h2 id="gas-companion-commands" tabindex="-1">GAS Companion Commands <a class="direct-link" href="#gas-companion-commands">#</a></h2>
 <p><img src="commands.png" alt=""></p>
-<h3 id="gascompanion.debug.abilityqueue" tabindex="-1">GASCompanion.Debug.AbilityQueue</h3>
+<h3 id="gascompanion.debug.abilityqueue" tabindex="-1">GASCompanion.Debug.AbilityQueue <a class="direct-link" href="#gascompanion.debug.abilityqueue">#</a></h3>
 <p>This command shows / hides the <a href="/ability-queue-system#debug-widget">Ability Queue Debug Widget</a></p>
 <p><img src="ability-queue-debug-widget.png" alt=""></p>
 <p>Here is a brief description of the debug widget:</p>
@@ -62,7 +78,7 @@
 </ul>
 <p>When using this command, make sure your Character Blueprint has the corresponding component available. If not the command will fail and warn you about the missing component.</p>
 <p><img src="no_ability_queue_component.png" alt=""></p>
-<h3 id="gascompanion.debug.combo" tabindex="-1">GASCompanion.Debug.Combo</h3>
+<h3 id="gascompanion.debug.combo" tabindex="-1">GASCompanion.Debug.Combo <a class="direct-link" href="#gascompanion.debug.combo">#</a></h3>
 <p>This command shows / hides the <a href="/melee-ability/#debug-combo-widget">Combo Debug Widget</a></p>
 <p><img src="../melee-ability/combo.gif" alt=""></p>
 <p>Here is a brief description of the debug widget:</p>
@@ -75,7 +91,7 @@
 </ul>
 <p>When using this command, make sure your Character Blueprint has the corresponding component available. If not the command will fail and warn you about the missing component.</p>
 <p><img src="no_combo_component.png" alt=""></p>
-<h2 id="gas-gameplay-debugger" tabindex="-1">GAS Gameplay Debugger</h2>
+<h2 id="gas-gameplay-debugger" tabindex="-1">GAS Gameplay Debugger <a class="direct-link" href="#gas-gameplay-debugger">#</a></h2>
 <p>Alongside GAS Companion custom commands, the engine's gameplay debugger for GAS is an invaluable resource to help debugging your Attributes, Abilities and Effects.</p>
 <p>See <a href="https://github.com/tranek/GASDocumentation#debugging">GASDocumentation Debugging section</a> for more information about the two below commands.</p>
 <ul>
@@ -86,17 +102,19 @@
 
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -477,7 +495,6 @@
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

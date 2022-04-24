@@ -25,9 +25,32 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#why-using-an-ability-queue-system" class="ActionList-item-label no-underline">Why using an Ability Queue System</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#high-level-concepts" class="ActionList-item-label no-underline">High Level Concepts</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#enable-ability-queue" class="ActionList-item-label no-underline">Enable Ability Queue</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#adding-the-ability-queue-component" class="ActionList-item-label no-underline">Adding the Ability Queue Component</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#with-anim-notify-state" class="ActionList-item-label no-underline">with Anim Notify State</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#with-enable-ability-queue-property-on-abilities" class="ActionList-item-label no-underline">with Enable Ability Queue property on Abilities</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#debug-widget" class="ActionList-item-label no-underline">Debug Widget</a>
+            </span></li></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,27 +66,26 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
     <p>GAS Companion comes with an Ability Queueing System that allows your characters to buffer up an ability for activation.</p>
-<h2 id="why-using-an-ability-queue-system" tabindex="-1">Why using an Ability Queue System</h2>
+<h2 id="why-using-an-ability-queue-system" tabindex="-1">Why using an Ability Queue System <a class="direct-link" href="#why-using-an-ability-queue-system">#</a></h2>
 <p>Imagine using a potion to gain some health, and an enemy is about to attack you so you're spamming the dodge button to not get harmed. Depending on how you designed your abilities, your healing ability (here using a potion) might block other abilities such as dodge preventing the activation until the first ability is ended. Usually nothing happens, and the gameplay feels unresponsive.</p>
 <p>With Ability Queueing, the dodge ability in this example would trigger immediately after the potion ability, even if the input was pressed during the first ability.</p>
 <p>This is a feature commonly implemented in a lot of games, such as Action RPG games like Souls-like game. You can see how it was implemented for Mortal Shell in this <a href="https://www.youtube.com/watch?v=8yLq7jlVCAY&amp;t=6090s&amp;ab_channel=UnrealEngine">Behind the Scenes of Mortal Shell | Inside Unreal</a> stream.</p>
 <p>The Ability Queue System of GAS Companion is inspired by their Input Queue System, and adapted to work with the Gameplay Ability System. The main difference about the two systems is that we don't really queue the input, but rather the Gameplay Abilities in the perspective of GAS.</p>
-<h2 id="high-level-concepts" tabindex="-1">High Level Concepts</h2>
+<h2 id="high-level-concepts" tabindex="-1">High Level Concepts <a class="direct-link" href="#high-level-concepts">#</a></h2>
 <p>How it's done internally is rather simple. This works mainly by listening for ability failure and completion.</p>
 <p>We listen for any failed ability (usually because another ability is currently running and blocking other abilities via Blocking Tags) and store a reference to it. When any ability ends, we check if we have a queued ability and, if so, try to activate it again.</p>
 <p><strong>Note</strong> <em>Only one ability is queued. When multiples abilities are triggered when the Ability Queue is opened, only the last one is considered for activation.</em></p>
-<h2 id="enable-ability-queue" tabindex="-1">Enable Ability Queue</h2>
+<h2 id="enable-ability-queue" tabindex="-1">Enable Ability Queue <a class="direct-link" href="#enable-ability-queue">#</a></h2>
 <p>The bulk of setting up the Ability Queue revolves around using an Animation Notify State <code>AbilityQueueWindow</code> in your Animation Montages, or turn on the <code>Enable Ability Queue</code> property in your abilities. If the ability uses Animation Montages, it is recommended to use the Anim Notify State method as it provides more control on when and how the ability is queued.</p>
-<h2 id="adding-the-ability-queue-component" tabindex="-1">Adding the Ability Queue Component</h2>
+<h2 id="adding-the-ability-queue-component" tabindex="-1">Adding the Ability Queue Component <a class="direct-link" href="#adding-the-ability-queue-component">#</a></h2>
 <p>First, you need to ensure your Pawn / Characters have <code>GSCAbilityQueue</code> actor component. This component is required for the Ability Queue System to work properly.</p>
 <p><code>GSCAbilityQueue</code> is not added to the Modular Actors classes by default, which means that this is something you need to do manually in your Blueprints.</p>
 <p>To do so, simply click the <code>Add Component</code> button in the components view, and search for <code>GSCAbilityQueue</code></p>
 <p><img src="add_components_v3.png" alt=""></p>
-<h3 id="with-anim-notify-state" tabindex="-1">with Anim Notify State</h3>
+<h3 id="with-anim-notify-state" tabindex="-1">with Anim Notify State <a class="direct-link" href="#with-anim-notify-state">#</a></h3>
 <p>This is the recommended method when your abilities are using Anim Montages.</p>
 <p>Open the Anim Montage that is played by your ability, and add an <code>AbilityQueueWindow</code> Notify State in one of the Notifies Tracks.</p>
 <p><img src="add-ability-queue-window.png" alt=""></p>
@@ -78,12 +100,12 @@
 </ul>
 <p>Don't forget to configure one of the above properties.</p>
 <p><strong>Note</strong> <em>If you ever have the issue of the notify state being called twice, make sure to change the Montage Tick Type to Branching Points (<a href="https://forums.unrealengine.com/t/queued-anim-notify-state-triggers-twice-bug-or-am-i-misunderstanding-it/142233">see this forum post</a>). Although, the queue system won't be affected, you might just see the Anim Montages registered twice with the <a href="#debug-widget">Debug Widget</a>.</em></p>
-<h3 id="with-enable-ability-queue-property-on-abilities" tabindex="-1">with Enable Ability Queue property on Abilities</h3>
+<h3 id="with-enable-ability-queue-property-on-abilities" tabindex="-1">with Enable Ability Queue property on Abilities <a class="direct-link" href="#with-enable-ability-queue-property-on-abilities">#</a></h3>
 <p>If your ability doesn't use an Anim Montage, this is where the <code>bEnableAbilityQueue</code> property on Abilities (<code>GSCGameplayAbility</code>) comes in handy, or if you want to quickly turn on queueing on your abilities.</p>
 <p>In the Ability Details Panel, turn on <code>Enable Ability Queue</code> property:</p>
 <p><img src="enable-ability-queue-prop.png" alt=""></p>
 <p>When turned on, it will essentially open the ability queue at the beginning of activation and close it when the ability ends, with all abilities allowed.</p>
-<h2 id="debug-widget" tabindex="-1">Debug Widget</h2>
+<h2 id="debug-widget" tabindex="-1">Debug Widget <a class="direct-link" href="#debug-widget">#</a></h2>
 <p>You can show / hide the Ability Queue Debug Widget with the <code>GASCompanion.Debug.AbilityQueue</code> command</p>
 <p><img src="debug_command.png" alt=""></p>
 <p>Hit <code>²</code> while the game is running to open the Console Command (more info in the <a href="/console-commands">Console Commands</a> page), and type <code>GASCompanion.Debug.AbilityQueue</code>. It will display the debug widget from where you can see the state of the Ability Queue (enabled, opened, allowed abilities, currently queued ability and montages)</p>
@@ -93,17 +115,19 @@
 
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -484,7 +508,6 @@
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

@@ -25,9 +25,32 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#add-attributeset-c++-class-wizard" class="ActionList-item-label no-underline">Add AttributeSet C++ Class Wizard</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#configure-class-name-and-path" class="ActionList-item-label no-underline">Configure Class name and path</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#configure-the-gameplay-attributes-to-generate" class="ActionList-item-label no-underline">Configure the Gameplay Attributes to generate</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#generate!" class="ActionList-item-label no-underline">Generate!</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#notes-on-build.cs" class="ActionList-item-label no-underline">Notes on Build.cs</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#test-the-newly-added-attributes" class="ActionList-item-label no-underline">Test the newly added Attributes</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#attributeset-configuration" class="ActionList-item-label no-underline">AttributeSet Configuration</a>
+            </span></li></ul></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,25 +66,24 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
     <p>The <code>1.2.1</code> version of GAS Companion introduces an Editor Module, which adds a new dropdown menu in the Level Editor Toolbar.</p>
 <p><img src="toolbar.png" alt=""></p>
 <p>From there, you can get quick access to the <a href="/configuration">Plugin Configuration in Project Settings</a>, View online documentation, <a href="https://discord.gg/d4rs4vcX6t">Join our Discord Server</a> or <a href="mailto:daniel.mickael@gmail.com?subject=GASCompanion">Send an email for support</a>.</p>
 <p>More importantly is the addition of a custom AttributeSet C++ Class creation wizard. Click the <code>New C++ AttributeSet Class...</code> button from the dropdown menu.</p>
-<h2 id="add-attributeset-c%2B%2B-class-wizard" tabindex="-1">Add AttributeSet C++ Class Wizard</h2>
+<h2 id="add-attributeset-c++-class-wizard" tabindex="-1">Add AttributeSet C++ Class Wizard <a class="direct-link" href="#add-attributeset-c++-class-wizard">#</a></h2>
 <p>With GAS, one of the only thing that requires C++ no matter what is the creation of AttributeSet and Gameplay Attributes. This is the main blocking point for non c++ programmers willing to use GAS in their project.</p>
 <p>This AttributeSet C++ Class generation feature aims to alleviate that.</p>
 <p><img src="attributeset-new-class-dialog.png" alt=""></p>
 <p>It works the same way as the standard Editor <code>New C++ Class...</code> action from File Menu or Content Browser, except it is customized to generate a valid AttributeSet with the Gameplay Attributes you can configure through the Class creation dialog.</p>
 <p>Here is a quick demonstration of the creation of a new AttributeSet:</p>
 <div id="heaTnGvBZHA" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/heaTnGvBZHA" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-<h3 id="configure-class-name-and-path" tabindex="-1">Configure Class name and path</h3>
+<h3 id="configure-class-name-and-path" tabindex="-1">Configure Class name and path <a class="direct-link" href="#configure-class-name-and-path">#</a></h3>
 <p>Define here the name for your new AttributeSet class, and its location. You can choose in which C++ module you want it to be generated (eg. all the local C++ module for your game and plugins, when in doubt use the default value which is your main game module).</p>
 <p><img src="class-dialog-name-and-path.png" alt=""></p>
 <p>The wizard will warn you if the name / path are invalid, or if the Class name is already used.</p>
-<h3 id="configure-the-gameplay-attributes-to-generate" tabindex="-1">Configure the Gameplay Attributes to generate</h3>
+<h3 id="configure-the-gameplay-attributes-to-generate" tabindex="-1">Configure the Gameplay Attributes to generate <a class="direct-link" href="#configure-the-gameplay-attributes-to-generate">#</a></h3>
 <p>Next, you need to define at least one Attribute for your new AttributeSet.</p>
 <p>Click the <code>+</code> icon next to the <code>Attributes</code> property, and configure here the Attribute Name, its default value and Category specifier.</p>
 <p><img src="attributes.png" alt=""></p>
@@ -73,7 +95,7 @@
 ~ <a href="https://docs.unrealengine.com/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/index.html">Property Specifiers</a></p>
 </blockquote>
 <p>Gameplay Attributes are replicated by default, and will work for both Single Player and Multiplayer scenarios.</p>
-<h3 id="generate!" tabindex="-1">Generate!</h3>
+<h3 id="generate!" tabindex="-1">Generate! <a class="direct-link" href="#generate!">#</a></h3>
 <p>When you're ready to start the generation process, click the <code>Create Class</code> button. If it is disabled, it means that there are some validation errors you need to fix beforehand.</p>
 <p><img src="create-class.png" alt=""></p>
 <p>The engine will start adding code to your project</p>
@@ -82,7 +104,7 @@
 <p>And try to compile the project</p>
 <p><img src="compile-progress.png" alt=""></p>
 <p>If the compilation goes fine, the engine will hot reload your project and you'll be able to use your new Attributes right away.</p>
-<h3 id="notes-on-build.cs" tabindex="-1">Notes on Build.cs</h3>
+<h3 id="notes-on-build.cs" tabindex="-1">Notes on Build.cs <a class="direct-link" href="#notes-on-build.cs">#</a></h3>
 <p>If there is a compilation error, this is most likely due to the fact you already have a c++ project, and don't have <code>GASCompanion</code> and related GAS modules in your <code>Build.cs</code> file. The generated AttributeSet inherits from <code>GSCAttributeSetBase</code> which requires you adding <code>GASCompanion</code> module dependency to your game module (as well as <code>GameplayAbilities</code>, <code>GameplayTasks</code> and <code>GameplayTags</code>)</p>
 <pre><code class="language-clike">PrivateDependencyModuleNames.AddRange(new string[] {
     &quot;GASCompanion&quot;,
@@ -94,11 +116,11 @@
 <p>Once done, re-compile.</p>
 <p><strong>Note</strong> <em>For non code project (eg. pure Blueprint), the Wizard will create basic source code module for your project and handle the generation of a valid <code>Build.cs</code> file for you.</em></p>
 <p>The Editor will open the newly added class header / source files in your IDE, which you might inspect or edit as you see fit.</p>
-<h2 id="test-the-newly-added-attributes" tabindex="-1">Test the newly added Attributes</h2>
+<h2 id="test-the-newly-added-attributes" tabindex="-1">Test the newly added Attributes <a class="direct-link" href="#test-the-newly-added-attributes">#</a></h2>
 <p>To quickly test the Attributes you generated, create or edit an existing Gameplay Effect and check if you see them in the modifiers list.</p>
 <p><img src="ge-attributes.png" alt=""></p>
 <p>Now, to properly use this new AttributeSet, you need to grant it to your Characters' ASC. You can can do so  <strong>per</strong> actor directly on the Ability System Component properties in Blueprints.</p>
-<h3 id="attributeset-configuration" tabindex="-1">AttributeSet Configuration</h3>
+<h3 id="attributeset-configuration" tabindex="-1">AttributeSet Configuration <a class="direct-link" href="#attributeset-configuration">#</a></h3>
 <p>Adding and granting a new AttributeSets for your Pawns is pretty straightforward.</p>
 <ol>
 <li>Navigate and open the Blueprint for your Character or Pawn (or PlayerState if you're using it to hold the Ability System Component)</li>
@@ -116,17 +138,19 @@
 
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -507,7 +531,6 @@
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

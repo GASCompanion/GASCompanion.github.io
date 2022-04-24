@@ -25,9 +25,28 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#create-melee-ability" class="ActionList-item-label no-underline">Create Melee Ability</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#adding-animation-notifiers-to-montages" class="ActionList-item-label no-underline">Adding Animation Notifiers to Montages</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#activate-combo-ability" class="ActionList-item-label no-underline">Activate Combo Ability</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#debug-combo-widget" class="ActionList-item-label no-underline">Debug Combo Widget</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#multiplayer" class="ActionList-item-label no-underline">Multiplayer</a>
+            </span></li></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,8 +62,7 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
     <p>Introduced in 2.0.0 version of the plugin, <code>GSCGameplayAbility_MeleeBase</code> is a GameplayAbility c++ class you can subclass and quickly create melee combo for your characters.</p>
 <p>Creating a new melee combo ability requires the following steps:</p>
@@ -58,7 +76,7 @@
 </ul>
 <p><strong>Quick demo</strong></p>
 <p><img src="combo.gif" alt=""></p>
-<h2 id="create-melee-ability" tabindex="-1">Create Melee Ability</h2>
+<h2 id="create-melee-ability" tabindex="-1">Create Melee Ability <a class="direct-link" href="#create-melee-ability">#</a></h2>
 <p>Right click in the Content Browser, and create a new <code>Gameplay &gt; Gameplay Ability Blueprint</code>.</p>
 <p><img src="new_ga.png" alt=""></p>
 <p>Choose <code>GSCGameplayAbility_MeleeBase</code> as your parent class</p>
@@ -76,7 +94,7 @@
 <li>WaitForEventTags: Any gameplay events matching this tag will activate the EventReceived callback and apply the gameplay effect containers for this ability</li>
 </ul>
 <p><img src="countess_melee_example.png" alt=""></p>
-<h2 id="adding-animation-notifiers-to-montages" tabindex="-1">Adding Animation Notifiers to Montages</h2>
+<h2 id="adding-animation-notifiers-to-montages" tabindex="-1">Adding Animation Notifiers to Montages <a class="direct-link" href="#adding-animation-notifiers-to-montages">#</a></h2>
 <p>The combo system relies on two Animation Notifiers:</p>
 <ul>
 <li><code>GSCComboWindowNotifyState</code> Opens the combo window during which players can register the activation of the next part of the combo</li>
@@ -96,34 +114,36 @@ Montage</li>
 <p><img src="trigger_combo_notify.png" alt=""></p>
 <p>Don't forget to &quot;end&quot; the combo in your last montages by turning on the Combo Window Notify State parameter <code>End Combo</code> in the details panel (when the notify state is selected in Persona)</p>
 <p><img src="persona_end_combo_window.png" alt=""></p>
-<h2 id="activate-combo-ability" tabindex="-1">Activate Combo Ability</h2>
+<h2 id="activate-combo-ability" tabindex="-1">Activate Combo Ability <a class="direct-link" href="#activate-combo-ability">#</a></h2>
 <p>We're almost done. The last step is to actually activate the ability from your Character Blueprints.</p>
 <p>This must be done via the Combo Manager Component <a href="/api/Components/GSCComboManagerComponent#activatecomboability"><code>ActivateComboAbility</code></a> method.</p>
 <p><img src="activate_combo_ability.png" alt=""></p>
 <p>You can right click in your Blueprint graph and search for &quot;combo ability&quot;</p>
 <p><img src="context_menu_activate_combo_ability.png" alt=""></p>
-<h2 id="debug-combo-widget" tabindex="-1">Debug Combo Widget</h2>
+<h2 id="debug-combo-widget" tabindex="-1">Debug Combo Widget <a class="direct-link" href="#debug-combo-widget">#</a></h2>
 <p>The combo system comes in with a simple &quot;Debug&quot; widget, similar to the ability queue debug widget.</p>
 <p><img src="combo.gif" alt=""></p>
 <p>You can show / hide it with <code>GASCompanion.Debug.Combo</code> command</p>
 <p><img src="debug_widget_command_v3.png" alt=""></p>
-<h2 id="multiplayer" tabindex="-1">Multiplayer</h2>
+<h2 id="multiplayer" tabindex="-1">Multiplayer <a class="direct-link" href="#multiplayer">#</a></h2>
 <p>The melee combo ability is working in a networked environment and is resilient to network lag up until something like 200-250 ping.</p>
 <p><img src="Melee_Combo_Ability_network_test.gif" alt=""></p>
 
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -504,7 +524,6 @@ Montage</li>
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

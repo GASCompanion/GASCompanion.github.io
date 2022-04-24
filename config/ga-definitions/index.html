@@ -25,9 +25,22 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#gameplay-ability-definitions" class="ActionList-item-label no-underline">Gameplay Ability Definitions</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#create-your-own-definitions" class="ActionList-item-label no-underline">Create your own Definitions</a>
+            </span></li></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,14 +56,13 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
-    <h2 id="gameplay-ability-definitions" tabindex="-1">Gameplay Ability Definitions</h2>
+    <h2 id="gameplay-ability-definitions" tabindex="-1">Gameplay Ability Definitions <a class="direct-link" href="#gameplay-ability-definitions">#</a></h2>
 <p>The configuration section &quot;GAS Companion - Gameplay Abilities&quot; provides a data driven way of specifying common parent Gameplay Ability classes that are accessible through File menu. By default, only the Melee ability coming with the plugin is defined: <a href="/melee-ability">Melee Ability</a></p>
 <p><img src="config_ga.png" alt=""></p>
 <p>You can even create your own definition, this results in a quick way to create new abilities based on the appropriate class from the context menu</p>
-<h2 id="create-your-own-definitions" tabindex="-1">Create your own Definitions</h2>
+<h2 id="create-your-own-definitions" tabindex="-1">Create your own Definitions <a class="direct-link" href="#create-your-own-definitions">#</a></h2>
 <p>The best part is that this system allows you to add your own Gameplay Ability Definitions. Or even edit / remove the default ones.</p>
 <p><img src="custom_definitions_dabpng.png" alt=""></p>
 <table>
@@ -80,17 +92,19 @@
 
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -471,7 +485,6 @@
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

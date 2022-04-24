@@ -25,9 +25,70 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#setup-map-and-game-mode" class="ActionList-item-label no-underline">Setup Map and Game Mode</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#setup-pawn-class-(player-character)" class="ActionList-item-label no-underline">Setup Pawn Class (Player Character)</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#create-new-modular-character-blueprint" class="ActionList-item-label no-underline">Create new Modular Character Blueprint</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#update-gamemode-default-pawn-class" class="ActionList-item-label no-underline">Update GameMode Default Pawn Class</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#ability-system-component" class="ActionList-item-label no-underline">Ability System Component</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#overview" class="ActionList-item-label no-underline">Overview</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#granting-player-attributes" class="ActionList-item-label no-underline">Granting Player Attributes</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#adding-gscattributeset" class="ActionList-item-label no-underline">Adding GSCAttributeSet</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#initialization-with-data-table" class="ActionList-item-label no-underline">Initialization with Data Table</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#create-hud" class="ActionList-item-label no-underline">Create HUD</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#first-ability-jump" class="ActionList-item-label no-underline">First Ability - Jump</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#notes-on-gscgameplayability" class="ActionList-item-label no-underline">Notes on GSCGameplayAbility</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#gameplay-ability-blueprint" class="ActionList-item-label no-underline">Gameplay Ability Blueprint</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#granting-ability" class="ActionList-item-label no-underline">Granting Ability</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#manual-activation" class="ActionList-item-label no-underline">Manual Activation</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#using-input-binding-with-enhanced-input" class="ActionList-item-label no-underline">Using Input Binding with Enhanced Input</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#project-setup" class="ActionList-item-label no-underline">Project Setup</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#ability-input-binding-component" class="ActionList-item-label no-underline">Ability Input Binding Component</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#input-action-and-mapping-context" class="ActionList-item-label no-underline">Input Action and Mapping Context</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#ability-binding-for-jump" class="ActionList-item-label no-underline">Ability Binding for Jump</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#rework-jump-ability" class="ActionList-item-label no-underline">Rework Jump Ability</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#using-input-release-task" class="ActionList-item-label no-underline">Using Input Release Task</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#using-gameplay-event-on-landed" class="ActionList-item-label no-underline">Using Gameplay Event on Landed</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#stamina-cost" class="ActionList-item-label no-underline">Stamina Cost</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#cooldown" class="ActionList-item-label no-underline">Cooldown</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#stamina-regen-gameplay-effect" class="ActionList-item-label no-underline">Stamina Regen Gameplay Effect</a>
+            </span></li></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,15 +104,14 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
     <div id="yWOnfzufkag" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/yWOnfzufkag" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <hr>
 <p>For the purpose of this guide, we'll rely on the Third Person Character Template of Unreal in a blank new Blueprint project. You can either create a new Project using this template, or add it later on with <code>Add/Import &gt; Add Feature or Content Pack &gt; Blueprint Feature &gt; Third Person</code>.</p>
 <p><img src="add_third_person_template.png" alt=""></p>
 <hr>
-<h2 id="setup-map-and-game-mode" tabindex="-1">Setup Map and Game Mode</h2>
+<h2 id="setup-map-and-game-mode" tabindex="-1">Setup Map and Game Mode <a class="direct-link" href="#setup-map-and-game-mode">#</a></h2>
 <p>First thing we're going to do is to create our own gameplay debug map by duplicating the default map in the Third Person Template.</p>
 <p>Navigate to <code>/Content/ThirdPersonBP/Maps</code> and duplicate the map to your desired folder. Here we'll copy paste that map to <code>/Content/GettingStarted/Maps</code>. Then open it up, we'll go now over the creation of a Game Mode for our newly created map.</p>
 <p><strong>Warning</strong> Before going through the creation of a new Game Mode, make sure to remove the <code>ThirdPersonCharacter</code> Actor from the map we copied over. By default, it is setup to auto possess player and will completely bypass our Game Mode Pawn Class.</p>
@@ -72,10 +132,10 @@
 </ul>
 <p><img src="game_mode.png" alt=""></p>
 <p>Now, we need to configure our Map to use this <code>BP_GameMode</code>. To do so, go into your World Settings Panel (if you don't see it, open it with <code>Window &gt; World Settings</code>) and select your GameMode in <code>GameMode Override</code>.</p>
-<h2 id="setup-pawn-class-(player-character)" tabindex="-1">Setup Pawn Class (Player Character)</h2>
+<h2 id="setup-pawn-class-(player-character)" tabindex="-1">Setup Pawn Class (Player Character) <a class="direct-link" href="#setup-pawn-class-(player-character)">#</a></h2>
 <p>In this example, we're going to use Epic's Third Person Blueprint Template.</p>
 <p>If you haven't started your project using this template, add it now with <code>Add / Import &gt; Blueprint Feature &gt; Third Person</code> from the Content Browser.</p>
-<h3 id="create-new-modular-character-blueprint" tabindex="-1">Create new Modular Character Blueprint</h3>
+<h3 id="create-new-modular-character-blueprint" tabindex="-1">Create new Modular Character Blueprint <a class="direct-link" href="#create-new-modular-character-blueprint">#</a></h3>
 <p><strong>Note</strong> If you want to skip all this section, you can reparent the <code>ThirdPersonCharacter</code> directly to <code>GSCModularCharacter</code>.</p>
 <p>Open <code>ThirdPersonCharacter</code> Blueprint (by default located in <code>Content/ThirdPersonBP</code>), we won't make changes to it but it's going to be handy to have so that we can copy part of it to the new Character Blueprint class we're about to create.</p>
 <p>Now, like we did for the Game Mode, right click anywhere in the Content Browser to bring up the File Context Menu, choose new <code>Blueprint Class</code>, and this time, make sure to select <code>GSCModularCharacter</code> as the parent class. Name it however you wish, here I'm gonna use <code>BP_Modular_Character</code>.</p>
@@ -105,12 +165,12 @@
 </li>
 <li>Compile and Save.</li>
 </ol>
-<h3 id="update-gamemode-default-pawn-class" tabindex="-1">Update GameMode Default Pawn Class</h3>
+<h3 id="update-gamemode-default-pawn-class" tabindex="-1">Update GameMode Default Pawn Class <a class="direct-link" href="#update-gamemode-default-pawn-class">#</a></h3>
 <p>Now that the Character Blueprint is done, make sure to tell the Game Mode to use it as a <code>Default Pawn Class</code>.</p>
 <p><img src="game_mode_02.png" alt=""></p>
 <p>If we hit play now, we have a working character with an Ability System Component attached to it, without any Attributes or Abilities yet.</p>
-<h2 id="ability-system-component" tabindex="-1">Ability System Component</h2>
-<h3 id="overview" tabindex="-1">Overview</h3>
+<h2 id="ability-system-component" tabindex="-1">Ability System Component <a class="direct-link" href="#ability-system-component">#</a></h2>
+<h3 id="overview" tabindex="-1">Overview <a class="direct-link" href="#overview">#</a></h3>
 <p><code>GSCAbilitySystemComponent</code> is a child of <code>AbilitySystemComponent</code> from GAS, and automatically created for you in <code>GSCModularCharacter</code> and <code>GSCModularPawn</code> (as well as <code>GSCModularPlayerState</code> if you wish to have ASC living on PlayerState)</p>
 <p><img src="MGCAbilitySystemComponent.png" alt=""></p>
 <p>It exposes some properties available in <code>Modular GAS Companion | Abilities</code>. If you select the component from the components view, you'll be able to see and edit those to:</p>
@@ -121,17 +181,17 @@
 </ul>
 <p><img src="modular_gas_companion_abilities.png" alt=""></p>
 <p><strong>Note</strong> If you're used to GAS Companion v2, those were part of <code>GSCCoreComponent</code>, which is still available. It's just now that those BP exposed properties in Core Component are getting deprecated since they're a bit redundant with the new setup.</p>
-<h4 id="granting-attributes" tabindex="-1">Granting Attributes</h4>
+<h4 id="granting-attributes" tabindex="-1">Granting Attributes <a class="direct-link" href="#granting-attributes">#</a></h4>
 <p>Unlike in previous version, where Attribute Sets to grant to actors were configured in Project Settings, you now have the possibility to configure and grant attribute sets <strong>per</strong> actor. Another difference is that now the default <code>GSCAttributeSet</code> is not added by default to Modular Actors.</p>
 <p><code>GSCAttributeSet</code> is an Attribute Set coming with GAS Companion with commonly found Gameplay Attributes such as <code>Health</code>, <code>Stamina</code> and <code>Mana</code> (and their associated Max attribute).</p>
-<h4 id="granting-abilities" tabindex="-1">Granting Abilities</h4>
+<h4 id="granting-abilities" tabindex="-1">Granting Abilities <a class="direct-link" href="#granting-abilities">#</a></h4>
 <p>To activate abilities for a given Actor, they must be &quot;granted&quot; before being used.</p>
 <p>The <code>GrantedAbilities</code> property lets you specify a list of Gameplay Ability to Actor's Ability System on spawn.</p>
 <p>This is a list of Gameplay Abilities with an optional Enhanced Input Action to bind the activation of the ability to.</p>
-<h4 id="granting-effects" tabindex="-1">Granting Effects</h4>
+<h4 id="granting-effects" tabindex="-1">Granting Effects <a class="direct-link" href="#granting-effects">#</a></h4>
 <p>The <code>GrantedEffects</code> lets you specify a list of Gameplay Effects to apply to the Actor on spawn, typically on Begin Play. This is useful to setup some Infinite, always running, Gameplay Effect for your actor such as regeneration effect. We'll cover that by creating a Stamina Regen effect later on.</p>
-<h2 id="granting-player-attributes" tabindex="-1">Granting Player Attributes</h2>
-<h3 id="adding-gscattributeset" tabindex="-1">Adding GSCAttributeSet</h3>
+<h2 id="granting-player-attributes" tabindex="-1">Granting Player Attributes <a class="direct-link" href="#granting-player-attributes">#</a></h2>
+<h3 id="adding-gscattributeset" tabindex="-1">Adding GSCAttributeSet <a class="direct-link" href="#adding-gscattributeset">#</a></h3>
 <p>In this section, we'll describe how we can grant this Attribute Set to our Player Character and initialize the default Base values of each Attributes.</p>
 <ol>
 <li>Next to the <code>Granted Attributes</code>, click the <code>+</code> icon to add a new entry.</li>
@@ -140,7 +200,7 @@
 <p>If you hit play now, and open up the gameplay debugger for GAS with <code>showdebug abilitysystem</code>, you should see each Gameplay Attribute we just configured by configuring the Ability System Component to use <code>GSCAttributeSet</code> for this actor.</p>
 <p><img src="showdebug_attributes.png" alt=""></p>
 <p>If you have other AttributeSets you'd like to grant to the character, or even use instead of <code>GSCAttributeSet</code>, simply add them here in the <code>Granted Attributes</code> list.</p>
-<h3 id="initialization-with-data-table" tabindex="-1">Initialization with Data Table</h3>
+<h3 id="initialization-with-data-table" tabindex="-1">Initialization with Data Table <a class="direct-link" href="#initialization-with-data-table">#</a></h3>
 <p>They're all with their default <code>0</code> value. Let's change that by creating a DataTable to initialize them. From the File Context menu, choose <code>Miscellaneous &gt; DataTable</code></p>
 <p><img src="file_menu_datatable.png" alt=""></p>
 <p>And in the next window, make sure to select <code>AttributeMetaData</code> for the Row Structure.</p>
@@ -155,7 +215,7 @@
 <p><img src="datatable.png" alt=""></p>
 <p>If you hit play now, and open up the gameplay debugger for GAS with <code>showdebug abilitysystem</code>, we should see values for each Gameplay Attribute we configured in the Data Table updated accordingly.</p>
 <p><img src="showdebug_attributes_dt.png" alt=""></p>
-<h2 id="create-hud" tabindex="-1">Create HUD</h2>
+<h2 id="create-hud" tabindex="-1">Create HUD <a class="direct-link" href="#create-hud">#</a></h2>
 <p>Before going through the setup of a new Ability and Gameplay Effect cost for our ability to spend some Stamina on jump activation, it would be nice to see the values of our Attributes visually on the screen (without having to use the gameplay debugger).</p>
 <p>Now is a good time to talk about Player HUD and create the widget on Begin Play.</p>
 <p>Compared to previous <code>v2</code> version and setup, the HUD Widget is not created automatically anymore with Modular Actors to provide more flexibility and control to where and when you want the HUD widget to be created and added to the player screen.</p>
@@ -167,7 +227,7 @@
 <p><img src="create_hud_test_multi.png" alt=""></p>
 <p>Even though it is not strictly necessary, I would highly recommend that you pass in the <code>Owning Player</code> reference to the Pawn Player Controller. It will handle the creation of the Widget only on client since the following cast to Player Controller will silently fail on server for clients.</p>
 <p><img src="create_widget_hud_PC.png" alt=""></p>
-<h2 id="first-ability---jump" tabindex="-1">First Ability - Jump</h2>
+<h2 id="first-ability-jump" tabindex="-1">First Ability - Jump <a class="direct-link" href="#first-ability-jump">#</a></h2>
 <p>In this section, we'll implement our first ability. To keep things simple, it is going to be a Jump ability and will cost a set amount of Stamina to activate.</p>
 <p>For now, our jump mechanism is done in <code>BP_Modular_Character</code> BP, which is coming from the Third Person Template (if you copied over the inputs from <code>ThirdPersonCharacter</code>).</p>
 <p><img src="jump.png" alt=""></p>
@@ -178,7 +238,7 @@
 <p>And in the next window, pick up the parent class.</p>
 <p><img src="create_gameplay_ability_blueprint.png" alt=""></p>
 <p>You can either choose <code>GameplayAbility</code> or <code>GSCGameplayAbility</code>.</p>
-<h3 id="notes-on-gscgameplayability" tabindex="-1">Notes on GSCGameplayAbility</h3>
+<h3 id="notes-on-gscgameplayability" tabindex="-1">Notes on GSCGameplayAbility <a class="direct-link" href="#notes-on-gscgameplayability">#</a></h3>
 <p><code>GSCGameplayAbility</code> is a Companion specific subclass of <code>GameplayAbility</code>, and is recommend to use with GAS Companion.</p>
 <p>Added functionality compared to regular <code>UGameplayAbility</code> includes:</p>
 <ul>
@@ -189,7 +249,7 @@
 <li>Activate On Granted: Support for &quot;Passive&quot; abilities, an ability that automatically activates and run continuously (eg. not calling EndAbility).</li>
 </ul>
 <p>For the purpose of this tutorial, it is not strictly needed and you would be fine with going with just <code>GameplayAbility</code>.</p>
-<h3 id="gameplay-ability-blueprint" tabindex="-1">Gameplay Ability Blueprint</h3>
+<h3 id="gameplay-ability-blueprint" tabindex="-1">Gameplay Ability Blueprint <a class="direct-link" href="#gameplay-ability-blueprint">#</a></h3>
 <p>Name the Ability Blueprint <code>GA_Jump</code> and open it. From there, you'll see two events you can implement <code>ActivateAbility</code> and <code>OnEndAbility</code>.</p>
 <p>We basically want to trigger the <code>Jump</code> method from our Character in the <code>ActivateAbility</code> event. To do so, wire up your Blueprint do be like:</p>
 <p><img src="ga_jump_activate_ability.png" alt=""></p>
@@ -203,7 +263,7 @@
 <p>Last thing I would recommend you to do is to change the <code>Instancing Policy</code> of the Ability to <code>Instanced Per Actor</code>. It will basically tell the system that only one instance of this ability can be active at anytime for the owner of the ability. Which makes sense for a basic jumping ability.</p>
 <p><img src="ga_jump_instancing_policy.png" alt=""></p>
 <p>You can find those settings in the <code>Class Defaults</code> and the <code>Advanced</code> category.</p>
-<h3 id="granting-ability" tabindex="-1">Granting Ability</h3>
+<h3 id="granting-ability" tabindex="-1">Granting Ability <a class="direct-link" href="#granting-ability">#</a></h3>
 <p>We can test if our newly created Ability is working.</p>
 <p>First thing first, we need to grant the ability to our Character (actually to its Ability System Component). Go back to the Character BP, and:</p>
 <ol>
@@ -213,14 +273,14 @@
 <li>For <code>Ability</code>, pick up the <code>GA_Jump</code> ability we just created</li>
 </ol>
 <p><img src="asc_grant_ga_jump.png" alt=""></p>
-<h3 id="manual-activation" tabindex="-1">Manual Activation</h3>
+<h3 id="manual-activation" tabindex="-1">Manual Activation <a class="direct-link" href="#manual-activation">#</a></h3>
 <p>We need to activate it somehow, we can simply use the <code>InputAction Jump</code> in our Character BP to do that.</p>
 <p><img src="ga_jump_activate.png" alt=""></p>
 <p>We can use the Ability System Component <code>TryActivateAbilityByClass</code> method.</p>
 <p>If you hit play now, you should be able to see the character jumping when you press Spacebar.</p>
-<h2 id="using-input-binding-with-enhanced-input" tabindex="-1">Using Input Binding with Enhanced Input</h2>
+<h2 id="using-input-binding-with-enhanced-input" tabindex="-1">Using Input Binding with Enhanced Input <a class="direct-link" href="#using-input-binding-with-enhanced-input">#</a></h2>
 <p>Now, we'll rework the way we activate the ability to do that with the automatic input binding available in v3 using the new Enhanced Input integration.</p>
-<h3 id="project-setup" tabindex="-1">Project Setup</h3>
+<h3 id="project-setup" tabindex="-1">Project Setup <a class="direct-link" href="#project-setup">#</a></h3>
 <p>Before being able to use it though, we have a bit of Project setup to do. Open up the Project's Setting and navigate to <code>Engine &gt; Input</code> category.</p>
 <p>There, make sure you are using</p>
 <ul>
@@ -229,7 +289,7 @@
 </ul>
 <p><img src="enhanced_input_project_settings.png" alt=""></p>
 <p><strong>Note</strong> You'll be able to find a lot more information on the official documentation for Enhanced Input (<a href="https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Input/EnhancedInput/">4.27</a> / <a href="https://docs.unrealengine.com/5.0/en-US/GameplayFeatures/EnhancedInput/">5.0</a> the 5.0 documentation has more information about Blueprint setup and usage)</p>
-<h3 id="ability-input-binding-component" tabindex="-1">Ability Input Binding Component</h3>
+<h3 id="ability-input-binding-component" tabindex="-1">Ability Input Binding Component <a class="direct-link" href="#ability-input-binding-component">#</a></h3>
 <p>If you take a look at the mentioned official docs, you'll see that you need to Add an InputMapping context to the Enhanced Input Subsystem. That's something we'll handle using an Actor Component: <code>GSCAbilityInputBinding</code>.</p>
 <p>Click the <code>Add Component</code> button in the components panel, and add <code>GSCAbilityInputBinding</code> to your Character BP</p>
 <p><img src="add_mgcabilityinputbinding.png" alt=""></p>
@@ -237,7 +297,7 @@
 <p><img src="player_controls_mgcabilityinputbinding.png" alt=""><br>
 <em>Enhanced Input related settings available in <code>Player Controls</code> category of <code>GSCAbilityInputBinding</code> component</em></p>
 <p><strong>Note</strong> If you're using a Game Feature to grant abilities, the <code>AddInputMapping</code> action will handle the registering of this component if it is not available on the target Actor class.</p>
-<h3 id="input-action-and-mapping-context" tabindex="-1">Input Action and Mapping Context</h3>
+<h3 id="input-action-and-mapping-context" tabindex="-1">Input Action and Mapping Context <a class="direct-link" href="#input-action-and-mapping-context">#</a></h3>
 <p>We'll now go through over the creation of the bare minimum assets we need to handle the activation of our Jump Ability via Enhanced Input, and how you can register the Input Action to automatically activate the ability when it is triggered.</p>
 <ol>
 <li>First, let's create the Input Action. From the Content Browser, right-click and bring up the File Context Menu, and create a new Input Action with <code>Inputs &gt; Input Action</code>.</li>
@@ -249,16 +309,16 @@
 </ol>
 <p>Name it however you wish, here I'm going to use <code>MC_Player_Controls</code>. Open up the Mapping Context Data Asset we just created and set it up like so:</p>
 <p><img src="mc_player_controls.png" alt=""></p>
-<h3 id="ability-binding-for-jump" tabindex="-1">Ability Binding for Jump</h3>
+<h3 id="ability-binding-for-jump" tabindex="-1">Ability Binding for Jump <a class="direct-link" href="#ability-binding-for-jump">#</a></h3>
 <p>Last thing we need to do is to ensure our Pawn has the Mapping Context added to the Player Controller Enhanced Input Subsystem. Go back to the Character BP, select the <code>GSCAbilityInputBinding</code> component in the components list, and set the <code>Input Mapping Context</code> property to the context we created.</p>
 <p><img src="mc_player_controls_component.png" alt=""></p>
 <p>And finally, we can edit the Ability System Component <code>Granted Abilities</code> list and the <code>GA_Jump</code> entry to use <code>IA_Jump</code> for the Input Action.</p>
 <p><img src="input_granted_abilities.png" alt=""></p>
 <p>For good measure, make sure to remove the old input binding that we used before to activate the jump ability in the Event Graph, and test it out in game.</p>
 <p>You should see the character jumping and the ability activated whenever you hit Spacebar, which triggers the <code>IA_Jump</code> input action.</p>
-<h2 id="rework-jump-ability" tabindex="-1">Rework Jump Ability</h2>
+<h2 id="rework-jump-ability" tabindex="-1">Rework Jump Ability <a class="direct-link" href="#rework-jump-ability">#</a></h2>
 <p>Now that we have Enhanced Input setup to activate the ability, we can revisit the ability to invoke the <code>StopJumping</code> method on input release. We'll also go over the concept of Gameplay Event to properly handle the ending of the ability whenever the character lands.</p>
-<h3 id="using-input-release-task" tabindex="-1">Using Input Release Task</h3>
+<h3 id="using-input-release-task" tabindex="-1">Using Input Release Task <a class="direct-link" href="#using-input-release-task">#</a></h3>
 <p>Open up the <code>GA_Jump</code> Blueprint, and change it like so</p>
 <ol>
 <li>First we store a reference to the Character we cast to as <code>AvatarCharacter</code> just so we can use it later on, because we now need it in several places (two actually).</li>
@@ -272,7 +332,7 @@
 <li>Another slight variation is that we now end the ability after a slight delay (that we'll change quickly after to use a Gameplay Event). If we were to end the ability right after the Jump in a synchronous way, the <code>Wait Input Release</code> would be destroyed along the ability and not able to react to our input being released.</li>
 </ol>
 <p>If you test it out in game now, you should see the appropriate debug messages &quot;Jump&quot; and &quot;Stop Jumping&quot; printed on screen depending on your input press / release. And if you were to hold the input more than 2 seconds, you wouldn't see the &quot;Stop Jumping&quot; one.</p>
-<h3 id="using-gameplay-event-on-landed" tabindex="-1">Using Gameplay Event on Landed</h3>
+<h3 id="using-gameplay-event-on-landed" tabindex="-1">Using Gameplay Event on Landed <a class="direct-link" href="#using-gameplay-event-on-landed">#</a></h3>
 <p>Now, we'll finish up the implementation of the Jump Ability by properly handling the ending of the ability when the character lands on the ground.</p>
 <p>To do that, we first register the event <code>OnLanded</code> in our Character BP to send a gameplay event to the actor.</p>
 <ol>
@@ -290,7 +350,7 @@
 </ol>
 <p><img src="gameplay_event_end_ability.png" alt=""></p>
 <p>You can now test it out in game, and should see the &quot;Gameplay Event Landed received, End Ability&quot; debug message whenever the Character lands on the ground, thus ending the ability correctly.</p>
-<h2 id="stamina-cost" tabindex="-1">Stamina Cost</h2>
+<h2 id="stamina-cost" tabindex="-1">Stamina Cost <a class="direct-link" href="#stamina-cost">#</a></h2>
 <p>To make things a bit more interesting, let's associate a Stamina cost to this ability.</p>
 <p>Costs are applied through GameplayEffects. To associate a Stamina cost with the ability, we need to create the associated GameplayEffect and provide it in the <code>Cost Gameplay Effect Class</code> property.</p>
 <p>You can quickly create a new GameplayEffect with the little <code>+</code> icon next to the property:</p>
@@ -301,7 +361,7 @@
 <p>You can also decide to use other attributes, or even multiple attributes to spend on each jump.</p>
 <p>Hit Play, each jump should now cost 40 stamina, until you have not enough resource to jump.</p>
 <p><img src="test-jump-cost.png" alt=""></p>
-<h2 id="cooldown" tabindex="-1">Cooldown</h2>
+<h2 id="cooldown" tabindex="-1">Cooldown <a class="direct-link" href="#cooldown">#</a></h2>
 <p>You might want to associate a cooldown to an Ability. In this section, we'll go over very quickly how you can associate a Gameplay Effect to be used as the cooldown of our Jump Ability.</p>
 <p>Abilities have a special <code>GameplayEffect</code> property specifically designed to be used as a cooldown.</p>
 <p><img src="cooldown-prop.png" alt=""></p>
@@ -314,7 +374,7 @@
 <p>Finally, make sure your ability is using this <code>Cooldown GE</code> in the <code>Cooldown Gameplay Effect Class</code> property.</p>
 <p><img src="ga-cooldown-prop.png" alt=""></p>
 <p>For more information about Cooldown Gameplay Effect, please refer to <a href="https://github.com/tranek/GASDocumentation#4515-cooldown-gameplay-effect">GASDocumentation section on this</a> as it explains the concept much better than I can do.</p>
-<h2 id="stamina-regen-gameplay-effect" tabindex="-1">Stamina Regen Gameplay Effect</h2>
+<h2 id="stamina-regen-gameplay-effect" tabindex="-1">Stamina Regen Gameplay Effect <a class="direct-link" href="#stamina-regen-gameplay-effect">#</a></h2>
 <p>Now that we have a jump ability and an associated Stamina cost, how about setting up a &quot;passive&quot; effect to regenerate the stamina ?</p>
 <p>Create a new GameplayEffect, named <code>GE_StaminaRegen</code> with the following values:</p>
 <p><img src="ge-stamina-regen.png" alt=""></p>
@@ -332,17 +392,19 @@
 
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -723,7 +785,6 @@
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

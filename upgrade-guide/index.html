@@ -25,9 +25,40 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#config" class="ActionList-item-label no-underline">Config</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#actors" class="ActionList-item-label no-underline">Actors</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#gscplayercharacter" class="ActionList-item-label no-underline">GSCPlayerCharacter</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#gscaicharacter" class="ActionList-item-label no-underline">GSCAICharacter</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#gscdefaultpawn" class="ActionList-item-label no-underline">GSCDefaultPawn</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#gscactor" class="ActionList-item-label no-underline">GSCActor</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#gscplayercontroller" class="ActionList-item-label no-underline">GSCPlayerController</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#agschud" class="ActionList-item-label no-underline">AGSCHUD</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#game-mode" class="ActionList-item-label no-underline">Game Mode</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#agscgamemodebase" class="ActionList-item-label no-underline">AGSCGameModeBase</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#attribute-sets" class="ActionList-item-label no-underline">Attribute Sets</a>
+            </span></li></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,8 +74,7 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
     <p>This upgrade guide is mostly geared towards 2.x users willing to upgrade from 4.26 to 5.0 (or 4.27 users still using deprecated classes / API)</p>
 <p>Most noticeable change for 4.27 users is related to the <code>ReceiveCharacterRestarted</code> / <code>ReceiveCharacterControllerChanged</code> events (See GSCPlayerCharacter section 6.)</p>
@@ -64,12 +94,12 @@
 <li>4.0.0 version for GAS Companion will be the equivalent of 5.0.0, but for 4.27. Deprecated classes removal and API will happen at that moment (and will probably de delayed until UE 5.1 hits).</li>
 </ul>
 </div>
-<h2 id="config" tabindex="-1">Config</h2>
+<h2 id="config" tabindex="-1">Config <a class="direct-link" href="#config">#</a></h2>
 <p>If you converted your project from 4.27, you can remove these lines from <code>DefaultGame.ini</code>:</p>
 <p><img src="default_game_ini.png" alt=""></p>
 <p>This class has been removed and was only used in 4.27 to backport ue5 functionality regarding Game Feature Data assets, now done in the engine directly.</p>
-<h2 id="actors" tabindex="-1">Actors</h2>
-<h3 id="gscplayercharacter" tabindex="-1">GSCPlayerCharacter</h3>
+<h2 id="actors" tabindex="-1">Actors <a class="direct-link" href="#actors">#</a></h2>
+<h3 id="gscplayercharacter" tabindex="-1">GSCPlayerCharacter <a class="direct-link" href="#gscplayercharacter">#</a></h3>
 <p><em>redirected with class redirects to GSCModularCharacter</em></p>
 <ol>
 <li>Open Blueprint, and you'll most likely have BP compilation errors about missing &quot;GSCCoreComponent&quot;<br>
@@ -131,7 +161,7 @@
 <ol start="6">
 <li>If you were using <code>ReceiveCharacterRestarted</code> or <code>ReceiveCharacterControllerChanged</code> events or delegates, replace them with <code>ReceiveRestarted</code> and <code>ReceiveControllerChanged</code>. Those were added in 4.27 as backport of ue5 code, and now added in the engine by default (in <code>APawn</code>).</li>
 </ol>
-<h3 id="gscaicharacter" tabindex="-1">GSCAICharacter</h3>
+<h3 id="gscaicharacter" tabindex="-1">GSCAICharacter <a class="direct-link" href="#gscaicharacter">#</a></h3>
 <p><em>redirected with class redirects to GSCModularCharacter</em></p>
 <ol>
 <li>Same Step as <code>GSCPlayerCharacter</code> 1. section</li>
@@ -142,26 +172,26 @@
 <ol start="4">
 <li>Same step as <code>GSCPlayerCharacter</code> 4. / 5. / 6. section</li>
 </ol>
-<h3 id="gscdefaultpawn" tabindex="-1">GSCDefaultPawn</h3>
+<h3 id="gscdefaultpawn" tabindex="-1">GSCDefaultPawn <a class="direct-link" href="#gscdefaultpawn">#</a></h3>
 <p><em>redirected with class redirects to GSCModularDefaultPawn</em></p>
 <ol>
 <li>Same Step as <code>GSCPlayerCharacter</code> 1. section</li>
 <li>Same Step as <code>GSCPlayerCharacter</code> 2. section</li>
 <li>Same Step as <code>GSCAICharacter</code> 3. section</li>
 </ol>
-<h3 id="gscactor" tabindex="-1">GSCActor</h3>
+<h3 id="gscactor" tabindex="-1">GSCActor <a class="direct-link" href="#gscactor">#</a></h3>
 <p><em>redirected with class redirects to GSCModularActor</em></p>
 <ol>
 <li>Same Step as <code>GSCPlayerCharacter</code> 1. section</li>
 <li>Same Step as <code>GSCPlayerCharacter</code> 2. section</li>
 <li>Same Step as <code>GSCAICharacter</code> 3. section</li>
 </ol>
-<h3 id="gscplayercontroller" tabindex="-1">GSCPlayerController</h3>
+<h3 id="gscplayercontroller" tabindex="-1">GSCPlayerController <a class="direct-link" href="#gscplayercontroller">#</a></h3>
 <p><em>redirected with class redirects to GSCModularPlayerController</em></p>
 <ol>
 <li>No particular step to do.</li>
 </ol>
-<h3 id="agschud" tabindex="-1">AGSCHUD</h3>
+<h3 id="agschud" tabindex="-1">AGSCHUD <a class="direct-link" href="#agschud">#</a></h3>
 <p><em>redirected with class redirects to AHUD (Engine Class)</em></p>
 <ul>
 <li>AGSCHUD is no longer used by GASCompanion and is removed in v4 (for UE 4.27) / v5 (for UE 5.0) (v4 scheduled release when UE 5.1 hits)</li>
@@ -174,13 +204,13 @@
 <li>If you were using it to show / hide debug widgets (Ability Queue / Combo), you can use <code>GSCConsoleManagerSubsystem</code> instead.</li>
 </ul>
 <p><img src="gsc_console_manager_subsystem.png" alt=""></p>
-<h2 id="game-mode" tabindex="-1">Game Mode</h2>
-<h3 id="agscgamemodebase" tabindex="-1">AGSCGameModeBase</h3>
+<h2 id="game-mode" tabindex="-1">Game Mode <a class="direct-link" href="#game-mode">#</a></h2>
+<h3 id="agscgamemodebase" tabindex="-1">AGSCGameModeBase <a class="direct-link" href="#agscgamemodebase">#</a></h3>
 <p><em>redirected with class redirects to GSCModularGameModeBase</em></p>
 <ol>
 <li>No particular step to do. Your BP subclass for this GameMode should already override gameplay framework specific classes suited for your game. GSCModularGameModeBase (as well as removed GSCGameModeBase) doesn't provide any logic and only sets up default classes, which should be already overridden in Blueprint to match your game specific classes.</li>
 </ol>
-<h2 id="attribute-sets" tabindex="-1">Attribute Sets</h2>
+<h2 id="attribute-sets" tabindex="-1">Attribute Sets <a class="direct-link" href="#attribute-sets">#</a></h2>
 <ol>
 <li>If you generated your custom attributes with GAS Companion Attribute wizard before 3.1.1 version (09/12/2021), you'll need to edit your <code>PostGameplayEffectExecute</code> method from:</li>
 </ol>
@@ -206,17 +236,19 @@
 
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -597,7 +629,6 @@
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

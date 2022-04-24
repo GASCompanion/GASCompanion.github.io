@@ -25,9 +25,15 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,10 +49,9 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
-    <div id="MDX_ROOT_efa7f0be-8e5f-4e79-b526-857ccfab0815"><p>The plugin comes with a basic HUD UI and User Widgets set up to work with Character Attributes from GAS.</p>
+    <div id="MDX_ROOT_5a5d9682-63ce-4c68-9bcd-7ee4f2229768"><p>The plugin comes with a basic HUD UI and User Widgets set up to work with Character Attributes from GAS.</p>
 <p>They are driven by C++ with Companion Core Component using <a href="https://github.com/tranek/GASDocumentation#434-responding-to-attribute-changes">AttributeChangeDelegate</a> to update the HUD and respond to changes in Player Attribute values.</p>
 <h2>GSCUWHud</h2>
 <p>GAS Companion provides three basic HUD Widget Blueprint for demonstration purpose:</p>
@@ -86,17 +91,19 @@
 <div id="f0BoSDBhGi8" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/f0BoSDBhGi8" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -477,7 +484,6 @@
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

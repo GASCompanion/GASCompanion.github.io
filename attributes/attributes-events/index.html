@@ -25,9 +25,30 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#adding-the-core-component" class="ActionList-item-label no-underline">Adding the Core Component</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#postgameplayeffectexecute" class="ActionList-item-label no-underline">PostGameplayEffectExecute</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#preattributechange" class="ActionList-item-label no-underline">PreAttributeChange</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#test-in-game" class="ActionList-item-label no-underline">Test in Game</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#test-the-clamp-(in-postgameplayeffectexecute)" class="ActionList-item-label no-underline">Test the Clamp (in PostGameplayEffectExecute)</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#test-the-adjustment-(in-preattributechange)" class="ActionList-item-label no-underline">Test the Adjustment (in PreAttributeChange)</a>
+            </span></li></ul></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,17 +64,16 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
     <p>Custom attributes, either created manually or generated through the <a href="/attributes/attributes-wizard/">Attributes Wizard</a>, may need to implement some attributes management.</p>
 <p>To that end, <code>GSC Core Component</code>, exposes Blueprint Assignable Events for <a href="https://github.com/tranek/GASDocumentation#concepts-as-preattributechange"><code>PreAttributeChange</code></a> and <a href="https://github.com/tranek/GASDocumentation#concepts-as-postgameplayeffectexecute"><code>PostGamepayEffectExecute</code></a> that lets you handle attribute changes from Blueprints, like clamp or adjust the value of an attribute when it's associated max attribute changes.</p>
 <p><em><strong>Note:</strong></em> <em>The use of these events are totally optional, you can use the generated c++ attribute set to handle attribute changes in c++, like you would usually do in vanilla GAS.</em></p>
-<h2 id="adding-the-core-component" tabindex="-1">Adding the Core Component</h2>
+<h2 id="adding-the-core-component" tabindex="-1">Adding the Core Component <a class="direct-link" href="#adding-the-core-component">#</a></h2>
 <p><code>GSCCoreComponent</code> is not added to the new Modular Actors classes by default, which means that this is something you need to do manually in your Blueprints.</p>
 <p>To do so, simply click the <code>Add Component</code> button in the components view, and search for <code>GSCCore</code></p>
 <p><img src="add_component.png" alt=""></p>
-<h3 id="postgameplayeffectexecute" tabindex="-1">PostGameplayEffectExecute</h3>
+<h3 id="postgameplayeffectexecute" tabindex="-1">PostGameplayEffectExecute <a class="direct-link" href="#postgameplayeffectexecute">#</a></h3>
 <p>Let's start with <code>PostGameplayEffectExecute</code> event. Open your Player Character Blueprint.</p>
 <p>To implement the event, you need to select <code>GSC Core Component</code>, right-click and choose <code>Add Event &gt; OnPostGameplayEffectExecute</code></p>
 <p><img src="component_add_event.png" alt=""></p>
@@ -79,7 +99,7 @@
 <p>You can add as many Attribute switch case as you want, and clamp all the attributes you wish. To improve readability, it is then advised to collapse some of those nodes in their own Blueprint function.</p>
 <p><img src="collapse-nodes-to-function.png" alt=""></p>
 <p><img src="postge-execute-with-collapsed-function.png" alt=""></p>
-<h3 id="preattributechange" tabindex="-1">PreAttributeChange</h3>
+<h3 id="preattributechange" tabindex="-1">PreAttributeChange <a class="direct-link" href="#preattributechange">#</a></h3>
 <p>This event is commonly used to adjust the value of an Attribute when its Max associated Attribute change. For instance, you have the Vitality Attribute current value set to 40% of MaxVitality Attribute value (eg. Vitality: 50, MaxVitality: 200).</p>
 <p>If the MaxVitality Attribute changes (with a level up or another Gameplay Effect), you might want to adjust the value of Vitality to reflect that. Let's demonstrate that use case.</p>
 <p><em><strong>Note:</strong></em> <em>&quot;Default&quot; attributes PreAttribute change for Health, Stamina and Mana is already handled by the plugin.</em></p>
@@ -87,8 +107,8 @@
 <p><img src="on-preattribute-change.png" alt=""></p>
 <p>Make sure to react to <strong>Max Attributes</strong> though and to affect the related attribute. It's easy to enter an infinite loop if you misuse attributes there, in which case the Engine will warn you.</p>
 <p>In this case, we only react when MaxVitality changes, and we adjust the related Vitality attribute using MaxVitality as the Max Attribute parameter of <a href="/api/Components/GSCCoreComponent#adjustattributeformaxchange"><code>AdjustAttributeForMaxChange</code></a>. Lastly, we use the <code>NewValue</code> float from the event as the <code>NewMaxValue</code> of <a href="/api/Components/GSCCoreComponent#adjustattributeformaxchange"><code>AdjustAttributeForMaxChange</code></a>.</p>
-<h2 id="test-in-game" tabindex="-1">Test in Game</h2>
-<h3 id="test-the-clamp-(in-postgameplayeffectexecute)" tabindex="-1">Test the Clamp (in PostGameplayEffectExecute)</h3>
+<h2 id="test-in-game" tabindex="-1">Test in Game <a class="direct-link" href="#test-in-game">#</a></h2>
+<h3 id="test-the-clamp-(in-postgameplayeffectexecute)" tabindex="-1">Test the Clamp (in PostGameplayEffectExecute) <a class="direct-link" href="#test-the-clamp-(in-postgameplayeffectexecute)">#</a></h3>
 <p>Initialize the value of your attributes with a Gameplay Effect, and set this effect as the <code>Startup Attributes</code> of your character (if you haven't one already)</p>
 <p><img src="character-startup-attributes.png" alt=""></p>
 <p>Here's the attribute modifiers from my <code>GE_Player_Attributes</code> effect.</p>
@@ -104,7 +124,7 @@
 <p>Now, launch the Game in PIE (Play in Editor) and use the <code>GSC_ShowDebugAbilitySystem</code> command (or <code>showdebug abilitysystem</code>). Type <code>²</code> within the game to open the command prompt.</p>
 <p><img src="vitality-attributes.png" alt=""></p>
 <p>You should see the Vitality attribute going from 50 to 200 (the MaxVitality value) if we did everything correctly. If we didn't clamp, Vitality would increase forever.</p>
-<h3 id="test-the-adjustment-(in-preattributechange)" tabindex="-1">Test the Adjustment (in PreAttributeChange)</h3>
+<h3 id="test-the-adjustment-(in-preattributechange)" tabindex="-1">Test the Adjustment (in PreAttributeChange) <a class="direct-link" href="#test-the-adjustment-(in-preattributechange)">#</a></h3>
 <p>We'll now do a similar setup, but instead of creating a regenerate effect, we'll create a GameplayEffect that increase the MaxVitality attribute to apply when we hit a Keyboard input, to see if the related Vitality value is changed accordingly.</p>
 <p>First, let's create the test GameplayEffect. This is going to be an <code>Instant</code> GameplayEffect with <code>StatsAttributeSet.MaxVitality</code> as an <code>Additive</code> modifier and a scalable float magnitude of <code>100</code>.</p>
 <p><img src="ge-test-addmax.png" alt=""></p>
@@ -119,17 +139,19 @@
 
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -510,7 +532,6 @@
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

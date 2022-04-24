@@ -25,9 +25,44 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#recommended-reading" class="ActionList-item-label no-underline">Recommended reading</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#overview" class="ActionList-item-label no-underline">Overview</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#demo-project" class="ActionList-item-label no-underline">Demo Project</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#summary" class="ActionList-item-label no-underline">Summary</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#character" class="ActionList-item-label no-underline">Character</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#player-state" class="ActionList-item-label no-underline">Player State</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#replication-mode" class="ActionList-item-label no-underline">Replication Mode</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#granted-abilities-/-attributes-/-effects" class="ActionList-item-label no-underline">Granted Abilities / Attributes / Effects</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#game-mode" class="ActionList-item-label no-underline">Game Mode</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#test" class="ActionList-item-label no-underline">Test</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#grant-abilities-and-attributes" class="ActionList-item-label no-underline">Grant Abilities and Attributes</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#add-hud-widget" class="ActionList-item-label no-underline">Add HUD widget</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#pie" class="ActionList-item-label no-underline">PIE</a>
+            </span></li></ul></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,11 +78,10 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
     <p>This page describes the minimal amount of setup to do with GAS Companion for ASC living on Player State. It is a direct follow-up of the <a href="/quick-start">Quick Start</a> page where we setup the project to use an ASC living on the player character.</p>
-<h2 id="recommended-reading" tabindex="-1">Recommended reading</h2>
+<h2 id="recommended-reading" tabindex="-1">Recommended reading <a class="direct-link" href="#recommended-reading">#</a></h2>
 <p>Ability System Component (ASC) from GAS defines the concept of Owner and Avatar actor. It is recommended to read through <a href="https://github.com/tranek/GASDocumentation#41-ability-system-component">4.1 section of Tranek's GAS Documentation on GitHub</a> which explains the concept really well. Setting up the the ASC to live on Player States basically involves setting up the Owner Actor to be the Player State, and Avatar Actor to be the Character or Pawn.</p>
 <p><strong>What is then the recommended setup to use regarding ASC living on Player State or Characters / Pawns ?</strong></p>
 <p>Well, there is a section at the bottom of GAS Documentation readme with excerpts from a Q&amp;A session with Epic Game's Dave Ratti which includes a question covering this topic:</p>
@@ -66,11 +100,11 @@
 <blockquote>
 <p>~ <a href="https://epicgames.ent.box.com/s/m1egifkxv3he3u3xezb9hzbgroxyhx89">https://epicgames.ent.box.com/s/m1egifkxv3he3u3xezb9hzbgroxyhx89</a></p>
 </blockquote>
-<h2 id="overview" tabindex="-1">Overview</h2>
-<h3 id="demo-project" tabindex="-1">Demo Project</h3>
+<h2 id="overview" tabindex="-1">Overview <a class="direct-link" href="#overview">#</a></h2>
+<h3 id="demo-project" tabindex="-1">Demo Project <a class="direct-link" href="#demo-project">#</a></h3>
 <p><em><strong>Note</strong></em>: <em>You can download this <a href="https://drive.google.com/file/d/1XAeUp4MPhBxhPQHitaNJ93DD0awcnDTv/view">4.27 project</a> which contains the bare minimum amount of setup in a BP only project to have the ASC living on Player State with GAS Companion <code>3.x.x</code> version.</em></p>
 <p>This page will go over how to do the same in a blank project based on the third person template.</p>
-<h3 id="summary" tabindex="-1">Summary</h3>
+<h3 id="summary" tabindex="-1">Summary <a class="direct-link" href="#summary">#</a></h3>
 <p>Game Mode Setup for ASC living on PlayerState:</p>
 <ul>
 <li><strong>Pawn</strong>: <code>GSCModularPlayerStateCharacter</code> (bp child of it)</li>
@@ -83,7 +117,7 @@
 <li>You can call <code>GetAbilitySystemComponent</code> with your actor, it should return the ASC living on PlayerState.</li>
 <li>You can add <code>GSCCoreComponent</code> as an actor component on your character and the exposed API (methods, events, etc.) should behave as if ASC was living on the Character.</li>
 </ul>
-<h2 id="character" tabindex="-1">Character</h2>
+<h2 id="character" tabindex="-1">Character <a class="direct-link" href="#character">#</a></h2>
 <p>Create a Character Blueprint inheriting from <code>GSCModularPlayerStateCharacter</code> either:</p>
 <ul>
 <li>From scratch using <code>GSCModularPlayerStateCharacter</code> as the parent class (or your project specific Character class child of <code>GSCModularPlayerStateCharacter</code>).</li>
@@ -97,7 +131,7 @@
 <div style="max-width: 280px">
 <p><img src="components.png" alt=""></p>
 </div>
-<h2 id="player-state" tabindex="-1">Player State</h2>
+<h2 id="player-state" tabindex="-1">Player State <a class="direct-link" href="#player-state">#</a></h2>
 <p>With the ASC living on Player State, you'll need to create a child Blueprint of <code>GSCModularPlayerState</code> to be able to access the Ability System Component in order to grant abilities and attributes.</p>
 <p>Create a new Blueprint class with <code>GSCModularPlayerState</code> for the Parent class. Once done, you should see <code>GSCAbilitySystemComponent</code> in the components list.</p>
 <div style="max-width: 480px;">
@@ -123,7 +157,7 @@
 <div style="max-width: 720px">
 <p><img src="ps_data_only.png" alt=""></p>
 </div>
-<h3 id="replication-mode" tabindex="-1">Replication Mode</h3>
+<h3 id="replication-mode" tabindex="-1">Replication Mode <a class="direct-link" href="#replication-mode">#</a></h3>
 <p>Player State exposes a <code>ReplicationMode</code> property in case you need to change it from the default <code>Mixed</code> mode. You can mouseover the property to get a brief description on each possible value, and / or head over <a href="https://github.com/tranek/GASDocumentation#concepts-asc-rm">GAS Documentation related section</a> to know more about it.</p>
 <p>As a general rule of thumb, you want:</p>
 <ul>
@@ -131,7 +165,7 @@
 <li><code>Mixed</code> - for multiplayer, player controlled actors</li>
 <li><code>Minimal</code> - for multiplayer, AI controlled actors</li>
 </ul>
-<h3 id="granted-abilities-%2F-attributes-%2F-effects" tabindex="-1">Granted Abilities / Attributes / Effects</h3>
+<h3 id="granted-abilities-/-attributes-/-effects" tabindex="-1">Granted Abilities / Attributes / Effects <a class="direct-link" href="#granted-abilities-/-attributes-/-effects">#</a></h3>
 <p><code>GSCAbilitySystemComponent</code> provides three array properties for abilities, attributes and effects to be granted to the Owner Actor (in this case, the Player State).</p>
 <p>Here is the tooltip for each of those:</p>
 <table>
@@ -158,22 +192,22 @@
 </table>
 <p>Abilities and Attributes are granted when <code>InitAbilityActorInfo()</code> is called, typically on Character Possession for server, and on Player State replication for clients.</p>
 <p>Know that attributes (and abilities) are removed and granted again to their default value whenever this method is invoked (you can override this behavior in a project specific ASC c++ class by overriding <code>GrantDefaultAbilitiesAndAttributes</code> which is virtual)</p>
-<h2 id="game-mode" tabindex="-1">Game Mode</h2>
+<h2 id="game-mode" tabindex="-1">Game Mode <a class="direct-link" href="#game-mode">#</a></h2>
 <p>Now that we have both the Pawn and Player State created, we can update or create a new Game Mode blueprint with the following configuration:</p>
 <p><img src="game_mode.png" alt=""><br>
 <em>Game Mode recommended to be based on <code>Game Mode Base</code></em></p>
-<h2 id="test" tabindex="-1">Test</h2>
+<h2 id="test" tabindex="-1">Test <a class="direct-link" href="#test">#</a></h2>
 <p>Let's test out the setup really quickly.</p>
-<h3 id="grant-abilities-and-attributes" tabindex="-1">Grant Abilities and Attributes</h3>
+<h3 id="grant-abilities-and-attributes" tabindex="-1">Grant Abilities and Attributes <a class="direct-link" href="#grant-abilities-and-attributes">#</a></h3>
 <p>Open up the Player State Blueprint, then if you're not in data-only mode, select the Ability System Component in the components list, and add some abilities and attribute sets as shown below:</p>
 <p><img src="test_ps_abilities.png" alt=""><br>
 <em>First we'll grant some abilities and attribute set on the Player State Owner, just as we did in the <a href="/quick-start">Quick Start</a> page for ASC on Characters.</em></p>
-<h3 id="add-hud-widget" tabindex="-1">Add HUD widget</h3>
+<h3 id="add-hud-widget" tabindex="-1">Add HUD widget <a class="direct-link" href="#add-hud-widget">#</a></h3>
 <p>For the Character Blueprint, if you want to create an HUD UMG User Widget and add it to viewport, you can follow the below implementation. Additionally, you may want to define an input to manually activate an ability (here <code>GA_Jump</code>).</p>
 <p><img src="bp_character_event_graph.png" alt=""><br>
 <em><strong>Note</strong> In 5.0, Receive Character Restarted was removed and Receive Restarted available in engine should be used instead.</em></p>
 <p><em>You can choose any User Widget child of <code>GSCUserWidget</code> (there are 3 different UMG implementation in GAS Companion Content folder), or your own one.</em></p>
-<h3 id="pie" tabindex="-1">PIE</h3>
+<h3 id="pie" tabindex="-1">PIE <a class="direct-link" href="#pie">#</a></h3>
 <p>If we test in PIE, we should see the HUD widget initialized with the values set by the initialization Datatable (here <code>DT_Player_Attributes</code>)</p>
 <p><img src="test_pie_hud.png" alt=""><br>
 <em>HUD widget should be initialized with values defined in <code>GrantedAttributes</code> for the Player State's ASC</em></p>
@@ -188,17 +222,19 @@
 
 </article>
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -579,7 +615,6 @@
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>

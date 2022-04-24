@@ -25,9 +25,26 @@
     
 <div class="Layout">
     <div class="Layout-main">
-        <main class="container-xl p-6">
+        <div class="container-xl px-md-6">
+            <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
+                <div class="Layout-sidebar py-6">
+                    <nav class="position-sticky top-4" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#table-of-contents" class="ActionList-item-label no-underline">Table of Contents</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#properties" class="ActionList-item-label no-underline">Properties</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#ballowallabilities" class="ActionList-item-label no-underline">bAllowAllAbilities</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#allowedabilities" class="ActionList-item-label no-underline">AllowedAbilities</a>
+            </span></li></ul></ul>
+      </nav>
+                </div>
 
-            
+                <div class="Layout-main">
+                    <main class="py-6 pr-6">
+                        
     
     <nav aria-label="Breadcrumb" class="mb-3">
         <ol>
@@ -43,15 +60,14 @@
         </ol>
     </nav>
 
-
-            
+                        
 <article class="markdown-body">
 
-    <h1 id="gscabilityqueuenotifystate" tabindex="-1">GSCAbilityQueueNotifyState</h1>
+    <h1 id="gscabilityqueuenotifystate" tabindex="-1">GSCAbilityQueueNotifyState <a class="direct-link" href="#gscabilityqueuenotifystate">#</a></h1>
 <p>Use this notify state to open and close the ability queue window for your montage.</p>
 <p>If this montage is triggered from within a Gameplay Ability, any ability that is failing to<br>
 activate during this window will be queued for activation when the current active one ends.</p>
-<h2 id="table-of-contents" tabindex="-1">Table of Contents</h2>
+<h2 id="table-of-contents" tabindex="-1">Table of Contents <a class="direct-link" href="#table-of-contents">#</a></h2>
 <ul>
 <li>
 <p><a href="#properties">Properties</a></p>
@@ -61,34 +77,36 @@ activate during this window will be queued for activation when the current activ
 </ul>
 </li>
 </ul>
-<h2 id="properties" tabindex="-1">Properties</h2>
-<h3 id="ballowallabilities" tabindex="-1">bAllowAllAbilities</h3>
+<h2 id="properties" tabindex="-1">Properties <a class="direct-link" href="#properties">#</a></h2>
+<h3 id="ballowallabilities" tabindex="-1">bAllowAllAbilities <a class="direct-link" href="#ballowallabilities">#</a></h3>
 <p><strong>Type</strong> <code>bool</code></p>
 <p>Allow All Abilities:<br>
 If true, enable queueing of all abilities, otherwise only allow Abilities that are defined in AllowedAbilities array.</p>
-<h3 id="allowedabilities" tabindex="-1">AllowedAbilities</h3>
+<h3 id="allowedabilities" tabindex="-1">AllowedAbilities <a class="direct-link" href="#allowedabilities">#</a></h3>
 <p><strong>Type</strong> <code>Array of UGameplayAbility</code></p>
 <p>Allowed Abilities:<br>
 The set of Abilities that can be queued for this window (has no effect if bAllowAllAbilities is set to true)</p>
 
 
     <hr />
-    <p>Generated on Sun, 24 Apr 2022 11:35:33 GMT</p>
+    <p>Generated on Sun, 24 Apr 2022 22:56:46 GMT</p>
 
 </article
 
 
-        </main>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="Layout-sidebar color-bg-subtle ">
+    <div class="Layout-sidebar color-bg-subtle">
         
         
         
-
         
-
-        <aside class="color-bg-subtle p-3 mt-6"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
+        
+        
+        <aside class="color-bg-subtle pt-4 px-3 position-sticky overflow-y-auto top-4" style="height: 100vh;"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Overview</h5>
             <nav class="SideNav"><span class="Truncate d-block">
                     <a class="SideNav-subItem Truncate-text mb-6"
                         
@@ -469,7 +487,6 @@ The set of Abilities that can be queued for this window (has no effect if bAllow
                 </span></nav></aside>
     </div>
 </div>
-
 </body>
 
 </html>
