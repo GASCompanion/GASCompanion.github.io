@@ -167,20 +167,6 @@
 <p><img src="create_hud_test_multi.png" alt=""></p>
 <p>Even though it is not strictly necessary, I would highly recommend that you pass in the <code>Owning Player</code> reference to the Pawn Player Controller. It will handle the creation of the Widget only on client since the following cast to Player Controller will silently fail on server for clients.</p>
 <p><img src="create_widget_hud_PC.png" alt=""></p>
-<h3 id="gschud" tabindex="-1">GSCHUD</h3>
-<p>For the sake of completeness, let's talk about <code>GSCHUD</code> that you can setup in your Game Mode, either using it directly or using a subclass.</p>
-<p><a href="https://www.tomlooman.com/ue4-gameplay-framework/#HUD">HUD classes</a> are different than UserWidget (or UMG) HUD widget we are usually referring to. They're part of Unreal Gameplay Framework and contain a lot of code to draw widgets before UMG was a thing.</p>
-<p>Still, Companion uses it to store reference to the various UMG widgets used across the plugin. Think of it kind of as a manager for any UI related thing you might think of. In Companion, it's responsible for the lifecycle of various debug widgets (like the Ability Queue or Combo Debug Widget) and has the possibility to manage the HUD widget for you (that we created manually just before).</p>
-<p>To get back to the topic of Player HUD Widget, if you'd like to use <code>GSCHUD</code> to do what we did previously:</p>
-<ol>
-<li>Make sure your Game Mode is using <code>GSCHUD</code> for the HUD class</li>
-<li>Change the logic of the previous Being Play HUD creation to</li>
-</ol>
-<p><img src="gschud_create_hud_begin_play.png" alt=""></p>
-<p>Results:</p>
-<p><img src="gschud_create_widget.png" alt=""></p>
-<p>The only difference with previous implementation is that <code>GSCHUD</code> is using <code>WB_HUD_Minimalist</code> that you can configure by using a subclass of <code>GSCHUD</code> and changing the value of <code>HUDWidget Class</code> in <code>GAS Companion | UI</code> category.</p>
-<p><img src="bp_gsc_hud.png" alt=""></p>
 <h2 id="first-ability---jump" tabindex="-1">First Ability - Jump</h2>
 <p>In this section, we'll implement our first ability. To keep things simple, it is going to be a Jump ability and will cost a set amount of Stamina to activate.</p>
 <p>For now, our jump mechanism is done in <code>BP_Modular_Character</code> BP, which is coming from the Third Person Template (if you copied over the inputs from <code>ThirdPersonCharacter</code>).</p>
