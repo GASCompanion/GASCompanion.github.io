@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en" data-color-mode="dark" data-dark-theme="dark_dimmed">
 
@@ -23,12 +22,28 @@
 
 <body>
     
-<div class="Layout">
+<div class="Layout Layout--gutter-none">
     <div class="Layout-main">
+        <header class="Header color-bg-default px-3 px-md-6 pt-3 pb-3 position-sticky top-0 z-3 border-bottom">
+    <div class="Header-item Header-item--full">
+        
+    </div>
+    <div class="Header-item mx-3">
+        <a href="/changelog" class="Header-link">Changelog</a>
+    </div>
+    <div class="Header-item mx-3">
+        <a href="https://github.com/GASCompanion" class="Header-link">GitHub</a>
+    </div>
+    <div class="Header-item mx-3">
+        <a href="https://discord.gg/d4rs4vcX6t" class="Header-link">Discord</a>
+    </div>
+
+    
+</header>
+
         <div class="container-xl px-md-6">
             <div class="Layout-main">
                 <main class="py-6 pr-6">
-                    
                     
 <article class="markdown-body">
     
@@ -137,7 +152,8 @@
             <a class="SideNav-subItem Truncate-text mb-6"  href="/upgrade-guide/">
                 v5 Upgrade Guide
             </a>
-        </span></nav><h4 class="color-fg-muted mt-4 mb-2 h3">API</h4><h5 class="color-fg-muted mb-2 pb-1 border-bottom">AI</h5>
+        </span></nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">API</h5>
+        <nav class="SideNav"><h5 class="color-fg-muted mb-2 pb-1 border-bottom">AI</h5>
         <nav class="SideNav"><span class="Truncate d-block">
             <a class="SideNav-subItem Truncate-text mb-6"  href="/api/AI/GSCBTTask_BlueprintBase/">
                 GSCBTTask_BlueprintBase
@@ -282,7 +298,8 @@
             <a class="SideNav-subItem Truncate-text mb-6"  href="/api/UI/GSCUserWidget/">
                 GSCUserWidget
             </a>
-        </span></nav></aside>
+        </span></nav></nav>
+        </aside>
     </div>
 
 </div>
