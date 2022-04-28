@@ -60,7 +60,26 @@
         <div class="container-xl px-md-6">
             <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
                 <div class="Layout-sidebar py-6 position-lg-sticky top-6 overflow-y-auto" style="height: 100vh;">
-                    
+                    <nav class="" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#gscuwhud" class="ActionList-item-label no-underline">GSCUWHud</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#wb_hud" class="ActionList-item-label no-underline">WB_HUD</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#wb_hud_topleft" class="ActionList-item-label no-underline">WB_HUD_TopLeft</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#wb_hud_minimalist" class="ActionList-item-label no-underline">WB_HUD_Minimalist</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#adding-to-viewport" class="ActionList-item-label no-underline">Adding to Viewport</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#designing-your-own-widget" class="ActionList-item-label no-underline">Designing your own Widget</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#exposed-events" class="ActionList-item-label no-underline">Exposed Events</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#launchpad-customhud" class="ActionList-item-label no-underline">LaunchPad: CustomHUD</a>
+            </span></li></ul></ul>
+      </nav>
                 </div>
 
                 <div class="Layout-main">
@@ -74,44 +93,45 @@
 
                         
 <article class="markdown-body">
-    <div id="MDX_ROOT_409641f2-56bd-480e-8774-732f5aecc0f6"><p>The plugin comes with a basic HUD UI and User Widgets set up to work with Character Attributes from GAS.</p>
+    <p>The plugin comes with a basic HUD UI and User Widgets set up to work with Character Attributes from GAS.</p>
 <p>They are driven by C++ with Companion Core Component using <a href="https://github.com/tranek/GASDocumentation#434-responding-to-attribute-changes">AttributeChangeDelegate</a> to update the HUD and respond to changes in Player Attribute values.</p>
-<h2>GSCUWHud</h2>
+<h2 id="gscuwhud" tabindex="-1">GSCUWHud <a class="direct-link" href="#gscuwhud">#</a></h2>
 <p>GAS Companion provides three basic HUD Widget Blueprint for demonstration purpose:</p>
 <ul>
 <li><code>WB_HUD</code> Default Widget as seen in the above picture</li>
 <li><code>WH_HUD_TopLeft</code> Same Widget but with a slight variation in the positioning of the attributes progress bar</li>
 <li><code>WB_HUD_Minimalist</code> Another HUD variation, this time with a minimalist feel</li>
 </ul>
-<p>They all inherit from <a href=""><code>GSCUWHud</code></a>, a class providing a set of Blueprint exposed events related to Ability System (Attribute Changes, Cooldowns, Gameplay Effects or Tags added / removed, etc.). It also binds three progress bars (<code>{Health, Stamina, Mana}ProgressBar</code>) and Text (<code>{Health, Stamina, Mana}Text</code>) widgets, these are optional but if the User Widget (UMG) Blueprint is defining in the Widget Tree progress bars or text widget with the same name, those widgets will be bound to related attribute changes in <code>GSCAttributeSet</code>, without having to implement the Blueprint logic in the UMG event graph for those attributes.</p>
-<h3>WB_HUD</h3>
-<p><img src="hud.png" alt=""/></p>
-<h3>WB_HUD_TopLeft</h3>
-<p><img src="hud-topleft.png" alt=""/></p>
-<h3>WB_HUD_Minimalist</h3>
-<p><img src="hud-minimalist.png" alt=""/></p>
+<p>They all inherit from <a href="/api/UI/GSCUserWidget"><code>GSCUserWidget</code></a> and <a href="/api/UI/GSCUWHud"><code>GSCUWHud</code></a>, a class providing a set of Blueprint exposed events related to Ability System (Attribute Changes, Cooldowns, Gameplay Effects or Tags added / removed, etc.). It also binds three progress bars (<code>{Health, Stamina, Mana}ProgressBar</code>) and Text (<code>{Health, Stamina, Mana}Text</code>) widgets, these are optional but if the User Widget (UMG) Blueprint is defining in the Widget Tree progress bars or text widget with the same name, those widgets will be bound to related attribute changes in <code>GSCAttributeSet</code>, without having to implement the Blueprint logic in the UMG event graph for those attributes.</p>
+<h3 id="wb_hud" tabindex="-1">WB_HUD <a class="direct-link" href="#wb_hud">#</a></h3>
+<p><img src="hud.png" alt=""></p>
+<h3 id="wb_hud_topleft" tabindex="-1">WB_HUD_TopLeft <a class="direct-link" href="#wb_hud_topleft">#</a></h3>
+<p><img src="hud-topleft.png" alt=""></p>
+<h3 id="wb_hud_minimalist" tabindex="-1">WB_HUD_Minimalist <a class="direct-link" href="#wb_hud_minimalist">#</a></h3>
+<p><img src="hud-minimalist.png" alt=""></p>
 <p><em>Icons licensed under CC BY 3.0 (<a href="https://game-icons.net/">game-icons.net</a> - authors: Skoll, <a href="https://opengameart.org/content/95-game-icons">sbed</a> and <a href="https://delapouite.com/">Delapouite</a>)</em></p>
-<h2>Adding to Viewport</h2>
+<h2 id="adding-to-viewport" tabindex="-1">Adding to Viewport <a class="direct-link" href="#adding-to-viewport">#</a></h2>
 <p>Creating the widget and adding to viewport can be done from the Pawn Blueprint, on <code>BeginPlay</code> for standalone single player game, or <code>ReceiveCharacterRestarted</code> (or Pawn Restarted for Pawns) for remote clients.</p>
-<p><img src="add_viewport.png" alt=""/></p>
-<h2>Designing your own Widget</h2>
+<p><img src="add_viewport.png" alt=""></p>
+<h2 id="designing-your-own-widget" tabindex="-1">Designing your own Widget <a class="direct-link" href="#designing-your-own-widget">#</a></h2>
 <p>Regarding UI, GAS Companion tries to follow the <a href="https://benui.ca/unreal/ui-best-practices/#logic-in-c-visuals-in-blueprints">Logic in C++, Visuals in Blueprints</a> recommendation.</p>
-<p>That&#x27;s why the three Widget Blueprints we saw earlier all inherit from <code>UGSCUWHud</code> which is responsible for all the logic, and uses several <code>meta=(BindWidget)</code> UPROPERTY to communicate with Blueprints.</p>
+<p>That's why the three Widget Blueprints we saw earlier all inherit from <code>UGSCUWHud</code> which is responsible for all the logic, and uses several <code>meta=(BindWidget)</code> UPROPERTY to communicate with Blueprints.</p>
 <p>If you create a Widget Blueprint with <code>UGSCUWHud</code> as a parent class (<em>Right Click in Content Browser &gt; Blueprint Class &gt; GSCUWHud</em>)</p>
-<p><img src="create-wbp.png" alt="Right Click in Content Browser &gt; Blueprint Class &gt; GSCUWHud"/></p>
-<p>And open the widget, you&#x27;ll see a bunch of warnings</p>
-<p><img src="widget_optional_bindings.png" alt=""/></p>
+<p><img src="create-wbp.png" alt="Right Click in Content Browser &gt; Blueprint Class &gt; GSCUWHud"></p>
+<p>And open the widget, you'll see a bunch of warnings</p>
+<p><img src="widget_optional_bindings.png" alt=""></p>
 <p>Those are all the <code>meta=(BindWidgetOptional)</code> UPROPERTY <code>UGSCUWHud</code> is using to update the UI. You just need to create the appropriate Widget with the exact same name in your UserWidget hierarchy.</p>
-<p><img src="uw-hierarchy.png" alt=""/></p>
+<p><img src="uw-hierarchy.png" alt=""></p>
 <p>Once defined, all the warnings will disappear and your newly created HUD should be fully functional (assuming your using GAS Companion default attributes)</p>
-<h3>Exposed Events</h3>
+<h3 id="exposed-events" tabindex="-1">Exposed Events <a class="direct-link" href="#exposed-events">#</a></h3>
 <p>Introduced in 2.1.0, <code>GSCUWHud</code> is now able to respond to a lot more events related to the Gameplay Ability System.</p>
-<p><img src="events_dropdown.png" alt=""/></p>
-<p><img src="hud_events.png" alt=""/></p>
-<h3>LaunchPad: CustomHUD</h3>
-<p>New addition to the launch pad is the &quot;CustomHUD&quot; map, which demonstrates advanced use case for HUD Widgets. The implementation is basic and one of many possible ways of doing it, but they&#x27;re all using the exposed events we mentioned previously.</p>
-<p>You&#x27;ll see examples of custom attributes handling with the XP bar, listening for Gameplay Effect changes, added / removed / time change (or refresh) with the burning effect, and cooldown UI display with three basic abilities.</p>
-<div id="f0BoSDBhGi8" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/f0BoSDBhGi8" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+<p><img src="events_dropdown.png" alt=""></p>
+<p><img src="hud_events.png" alt=""></p>
+<h3 id="launchpad-customhud" tabindex="-1">LaunchPad: CustomHUD <a class="direct-link" href="#launchpad-customhud">#</a></h3>
+<p>New addition to the launch pad is the &quot;CustomHUD&quot; map, which demonstrates advanced use case for HUD Widgets. The implementation is basic and one of many possible ways of doing it, but they're all using the exposed events we mentioned previously.</p>
+<p>You'll see examples of custom attributes handling with the XP bar, listening for Gameplay Effect changes, added / removed / time change (or refresh) with the burning effect, and cooldown UI display with three basic abilities.</p>
+<div id="f0BoSDBhGi8" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/f0BoSDBhGi8" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
 </article>
 
                     </main>
