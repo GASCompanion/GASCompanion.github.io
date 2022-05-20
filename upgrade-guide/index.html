@@ -5,10 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/_static/css/primer.css">
+    <link rel="stylesheet" href="/_static/css/prism.css">
     <style>
         .markdown-content {
             box-sizing: border-box;
             margin: 0 auto;
+        }
+
+        .markdown-body .language-cpp code br {
+            display: block;
         }
 
         @media (max-width: 767px) {
@@ -240,22 +245,12 @@
 <p><img src="attribute_sets_01.png" alt=""></p>
 <p>to:</p>
 <p><img src="attribute_sets_02.png" alt=""></p>
-<pre><code class="language-cpp">    Super::PostGameplayEffectExecute(Data);
-
-    FGSCAttributeSetExecutionData ExecutionData;
-    GetExecutionDataFromMod(Data, ExecutionData);
-
-    AActor* SourceActor = ExecutionData.SourceActor;
-    AActor* TargetActor = ExecutionData.TargetActor;
-
-    // And cast SourceActor / TargetActor to whatever Character classes you may be using and need access to
-</code></pre>
+<pre class="language-cpp"><code class="language-cpp">    <span class="token class-name">Super</span><span class="token double-colon punctuation">::</span><span class="token function">PostGameplayEffectExecute</span><span class="token punctuation">(</span>Data<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    FGSCAttributeSetExecutionData ExecutionData<span class="token punctuation">;</span><br>    <span class="token function">GetExecutionDataFromMod</span><span class="token punctuation">(</span>Data<span class="token punctuation">,</span> ExecutionData<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    AActor<span class="token operator">*</span> SourceActor <span class="token operator">=</span> ExecutionData<span class="token punctuation">.</span>SourceActor<span class="token punctuation">;</span><br>    AActor<span class="token operator">*</span> TargetActor <span class="token operator">=</span> ExecutionData<span class="token punctuation">.</span>TargetActor<span class="token punctuation">;</span><br><br>    <span class="token comment">// And cast SourceActor / TargetActor to whatever Character classes you may be using and need access to</span></code></pre>
 <p>or even remove those lines within <code>PostGameplayEffectExecute</code> if you don't use Source / Target character or don't implement any attribute related logic here in cpp.</p>
 <ol start="2">
 <li>Remove <code>GSCCharacterBase</code> include:</li>
 </ol>
-<pre><code class="language-cpp">#include &quot;Actors/Characters/GSCCharacterBase.h&quot; // remove this line
-</code></pre>
+<pre class="language-cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"Actors/Characters/GSCCharacterBase.h"</span> <span class="token comment">// remove this line</span></span></code></pre>
 
 </article>
 
@@ -349,8 +344,18 @@
                     </a>
                 </span>
                     <span class="Truncate d-block">
-                    <a class="SideNav-subItem Truncate-text mb-6"  href="/working-with-ui/">
+                    <a class="SideNav-subItem Truncate-text"  href="/working-with-ui/">
                         Working with UI
+                    </a>
+                </span>
+                    <span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"  href="/animations/">
+                        Anim Instance
+                    </a>
+                </span>
+                    <span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"  href="/reset-attributes-abilities/">
+                        Reset Attributes / Abilities configuration
                     </a>
                 </span>
                     </nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">More</h5>
@@ -432,8 +437,13 @@
                     </a>
                 </span>
                     <span class="Truncate d-block">
-                    <a class="SideNav-subItem Truncate-text mb-6"  href="/api/Animations/GSCComboWindowNotifyState/">
+                    <a class="SideNav-subItem Truncate-text"  href="/api/Animations/GSCComboWindowNotifyState/">
                         GSCComboWindowNotifyState
+                    </a>
+                </span>
+                    <span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"  href="/api/Animations/GSCNativeAnimInstance/">
+                        GSCNativeAnimInstance
                     </a>
                 </span>
                     </nav>

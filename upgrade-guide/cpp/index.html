@@ -5,10 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/_static/css/primer.css">
+    <link rel="stylesheet" href="/_static/css/prism.css">
     <style>
         .markdown-content {
             box-sizing: border-box;
             margin: 0 auto;
+        }
+
+        .markdown-body .language-cpp code br {
+            display: block;
         }
 
         @media (max-width: 767px) {
@@ -74,7 +79,7 @@
 
                         
 <article class="markdown-body">
-    <div id="MDX_ROOT_1d819cce-024e-4d85-9517-674131bdc9c9"><p><strong>Summary</strong></p>
+    <div id="MDX_ROOT_1ef5ac01-ce7c-4435-8f3a-926c5029fbad"><p><strong>Summary</strong></p>
 <ul>
 <li>All deprecated classes and API have been removed</li>
 <li>Runtime modules have been consolidated into a single one. <code>ModularGASCompanion</code> module has been removed and all classes from that module moved to <code>GASCompanion</code> module.</li>
@@ -94,8 +99,8 @@
 <p>Example:</p>
 <p><img src="modular_character.png" alt=""/></p>
 <h3>GSCAbilitySystemComponent / MGCAbilitySystemComponent</h3>
-<p>Previous implementation of <code>GSCAbilitySystemComponent</code> has been replaced by <code>GSCAbilitySystemComponent</code>.</p>
-<p><code>GSCAbilitySystemComponent</code> has been renamed to <code>GSCAbilitySystemComponent</code> and moved to <code>GASCompanion</code> runtime module.</p></div>
+<p>Previous implementation of <code>GSCAbilitySystemComponent</code> has been replaced by <code>MGCAbilitySystemComponent</code>.</p>
+<p><code>MGCAbilitySystemComponent</code> has been renamed to <code>GSCAbilitySystemComponent</code> and moved to <code>GASCompanion</code> runtime module.</p></div>
 </article>
 
                     </main>
@@ -188,8 +193,18 @@
                     </a>
                 </span>
                     <span class="Truncate d-block">
-                    <a class="SideNav-subItem Truncate-text mb-6"  href="/working-with-ui/">
+                    <a class="SideNav-subItem Truncate-text"  href="/working-with-ui/">
                         Working with UI
+                    </a>
+                </span>
+                    <span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"  href="/animations/">
+                        Anim Instance
+                    </a>
+                </span>
+                    <span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"  href="/reset-attributes-abilities/">
+                        Reset Attributes / Abilities configuration
                     </a>
                 </span>
                     </nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">More</h5>
@@ -271,8 +286,13 @@
                     </a>
                 </span>
                     <span class="Truncate d-block">
-                    <a class="SideNav-subItem Truncate-text mb-6"  href="/api/Animations/GSCComboWindowNotifyState/">
+                    <a class="SideNav-subItem Truncate-text"  href="/api/Animations/GSCComboWindowNotifyState/">
                         GSCComboWindowNotifyState
+                    </a>
+                </span>
+                    <span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"  href="/api/Animations/GSCNativeAnimInstance/">
+                        GSCNativeAnimInstance
                     </a>
                 </span>
                     </nav>

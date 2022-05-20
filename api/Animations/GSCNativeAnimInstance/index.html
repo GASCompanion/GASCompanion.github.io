@@ -43,10 +43,10 @@
                     <a href="/api/">API</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="/api/Abilities/">Abilities</a>
+                    <a href="/api/Animations/">Animations</a>
                 </li>
                 <li class="breadcrumb-item breadcrumb-item-selected">
-                    <a href="/api/Abilities/GSCTargetType/">GSCTargetType</a>
+                    <a href="/api/Animations/GSCNativeAnimInstance/">GSCNativeAnimInstance</a>
                 </li>
         </ol>
     </nav>
@@ -71,9 +71,9 @@
                     <nav class="" >
         <h2 class="f5 pl-2">On this page</h2>
         <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
-                <a href="#events" class="ActionList-item-label no-underline">Events</a>
+                <a href="#properties" class="ActionList-item-label no-underline">Properties</a>
             </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
-                <a href="#gettargets" class="ActionList-item-label no-underline">GetTargets</a>
+                <a href="#gameplaytagpropertymap" class="ActionList-item-label no-underline">GameplayTagPropertyMap</a>
             </span></li></ul></ul>
       </nav>
                 </div>
@@ -85,47 +85,17 @@
                         
 <article class="markdown-body">
 
-    <h1 id="gsctargettype" tabindex="-1">GSCTargetType <a class="direct-link" href="#gsctargettype">#</a></h1>
-<p>Class that is used to determine targeting for abilities</p>
-<p>It is meant to be blueprinted to run target logic</p>
-<p>This does not subclass GameplayAbilityTargetActor because this class is never instanced into the world</p>
-<p>This can be used as a basis for a game-specific targeting blueprint .If your targeting is more complicated<br>
-you may need to instance into the world once or as a pooled actor</p>
-<h2 id="events" tabindex="-1">Events <a class="direct-link" href="#events">#</a></h2>
-<h3 id="gettargets" tabindex="-1">GetTargets <a class="direct-link" href="#gettargets">#</a></h3>
-<p>Called to determine targets to apply gameplay effects to</p>
-<p><strong>Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TargetingActor</td>
-<td>AActor*</td>
-<td></td>
-</tr>
-<tr>
-<td>EventData</td>
-<td>FGameplayEventData</td>
-<td></td>
-</tr>
-<tr>
-<td>OutHitResults</td>
-<td>Array of FHitResult</td>
-<td></td>
-</tr>
-<tr>
-<td>OutActors</td>
-<td>Array of AActor</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+    <h1 id="gscnativeaniminstance" tabindex="-1">GSCNativeAnimInstance <a class="direct-link" href="#gscnativeaniminstance">#</a></h1>
+<p>Anim instance implementing IGSCNativeAnimInstanceInterface to allow Gameplay Tag Blueprint Property Mapping.</p>
+<p>The interface has only one overridable method <code>InitializeWithAbilitySystem()</code> that must be implemented in subclasses.</p>
+<p>GSCAbilitySystemComponent will call this method via an interface call when InitAbilityActorInfo happens.</p>
+<p>The same pattern is used in both Lyra and the Ancient Demo, only difference here is that we rely on an interface to be able to operate better with other plugins / assets.</p>
+<h2 id="properties" tabindex="-1">Properties <a class="direct-link" href="#properties">#</a></h2>
+<h3 id="gameplaytagpropertymap" tabindex="-1">GameplayTagPropertyMap <a class="direct-link" href="#gameplaytagpropertymap">#</a></h3>
+<p><strong>Type</strong> <code>FGameplayTagBlueprintPropertyMap</code></p>
+<p>Gameplay Tag Property Map:<br>
+Gameplay tags that can be mapped to blueprint variables. The variables will automatically update as the tags are added or removed.</p>
+<p>These should be used instead of manually querying for the gameplay tags.</p>
 
 
     <hr />
@@ -304,8 +274,7 @@ you may need to instance into the world once or as a pooled actor</p>
                     </a>
                 </span>
                     <span class="Truncate d-block">
-                    <a class="SideNav-subItem Truncate-text mb-6" 
-                aria-current="page"  href="/api/Abilities/GSCTargetType/">
+                    <a class="SideNav-subItem Truncate-text mb-6"  href="/api/Abilities/GSCTargetType/">
                         GSCTargetType
                     </a>
                 </span>
@@ -322,7 +291,8 @@ you may need to instance into the world once or as a pooled actor</p>
                     </a>
                 </span>
                     <span class="Truncate d-block">
-                    <a class="SideNav-subItem Truncate-text mb-6"  href="/api/Animations/GSCNativeAnimInstance/">
+                    <a class="SideNav-subItem Truncate-text mb-6" 
+                aria-current="page"  href="/api/Animations/GSCNativeAnimInstance/">
                         GSCNativeAnimInstance
                     </a>
                 </span>

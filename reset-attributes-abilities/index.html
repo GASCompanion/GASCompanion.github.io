@@ -22,7 +22,7 @@
             }
         }
     </style>
-    <title></title>
+    <title>Reset Attributes / Abilities configuration</title>
 </head>
 
 <body>
@@ -40,13 +40,10 @@
                     <a href="/">Home</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="/api/">API</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="/api/Abilities/">Abilities</a>
+                    <a href="/topics/">Topics</a>
                 </li>
                 <li class="breadcrumb-item breadcrumb-item-selected">
-                    <a href="/api/Abilities/GSCTargetType/">GSCTargetType</a>
+                    <a href="/reset-attributes-abilities/">Reset Attributes / Abilities configuration</a>
                 </li>
         </ol>
     </nav>
@@ -71,68 +68,41 @@
                     <nav class="" >
         <h2 class="f5 pl-2">On this page</h2>
         <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
-                <a href="#events" class="ActionList-item-label no-underline">Events</a>
-            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
-                <a href="#gettargets" class="ActionList-item-label no-underline">GetTargets</a>
-            </span></li></ul></ul>
+                <a href="#how-to-use" class="ActionList-item-label no-underline">How to Use</a>
+            </span></li></ul>
       </nav>
                 </div>
 
                 <div class="Layout-main">
                     <main class="py-6 pr-6">
                         
+                            <h1 class="">Reset Attributes / Abilities configuration</h1>
+                            <div class="f2 color-fg-muted mb-3 Lead_container__7YW6Y" data-testid="lead" data-search="lead">
+                                <p>Make it possible to persist attributes or abilities across respawns or possessions.</p>
+                            </div>
+                        
 
                         
 <article class="markdown-body">
+    <p><strong>Note</strong> Introduced in 5.2.0</p>
+<p>See <a href="/api/Abilities/GSCAbilitySystemComponent#bresetabilitiesonspawn"><code>bResetAbilitiesOnSpawn</code></a> / <a href="/api/Abilities/GSCAbilitySystemComponent#bresetattributesonspawn"><code>bResetAttributesOnSpawn</code></a></p>
+<p><code>5.2.0</code> now exposes two new booleans on the Ability System component you can use to customize how abilities and attributes are handled across respawns, to make it possible to persist attributes or abilities across respawns or possessions.</p>
+<p>When this is set to false, abilities or attributes will only be granted the first time InitAbilityActor is called. This is the default<br>
+behavior for ASC living on Player States (GSCModularPlayerState specifically).</p>
+<p>Also fixes an issue with PlayerState's ASC and ability input binding when player is respawned (in case of abilities cleared and granted again). In that case, PlayerState's ASC must keep <code>bResetAbilitiesOnSpawn</code> to false.</p>
+<h2 id="how-to-use" tabindex="-1">How to Use <a class="direct-link" href="#how-to-use">#</a></h2>
+<p><strong>For Player State's ASC, reset abilities is set to false by default.</strong></p>
+<p><img src="https://user-images.githubusercontent.com/113832/166147778-f54e6ea3-40bc-47da-bea4-40ae1b0b0bcf.png" alt="image"></p>
+<p>Making both attributes and abilities to persist across Pawn's respawn and / or possessions.</p>
+<p>For abilities, in case of ASC living on Player States, it is required to not reset them (<code>bResetAbilitiesOnSpawn</code> should remain false) for ability input binding to continue working (ASC living on Pawns doesn't have this problem)</p>
+<p>For attributes, if not set to reset, game logic has to decide whether they need to be initialized again to their default values (for example on death, you may want to have Health to be at max level again).</p>
+<p>Example:<br>
+<img src="https://user-images.githubusercontent.com/113832/166148946-9b0254df-22d3-4d65-8931-8df0f399bb3c.png" alt="image"></p>
+<p><strong>For ASC living on Pawns, they are both set to true by default (matches previous behavior).</strong></p>
+<p><img src="https://user-images.githubusercontent.com/113832/166147864-034b1522-ec27-4807-b6c9-7f3a0c97a73e.png" alt="image"></p>
+<p>But you are free to change this. In this case, since ASC is living on Pawns, this is only relevant for possession changes. In case of respawn (on death for instance), both abilities / attributes are wiped out since ASC is recreated as part of the Actor being destroyed / respawned.</p>
 
-    <h1 id="gsctargettype" tabindex="-1">GSCTargetType <a class="direct-link" href="#gsctargettype">#</a></h1>
-<p>Class that is used to determine targeting for abilities</p>
-<p>It is meant to be blueprinted to run target logic</p>
-<p>This does not subclass GameplayAbilityTargetActor because this class is never instanced into the world</p>
-<p>This can be used as a basis for a game-specific targeting blueprint .If your targeting is more complicated<br>
-you may need to instance into the world once or as a pooled actor</p>
-<h2 id="events" tabindex="-1">Events <a class="direct-link" href="#events">#</a></h2>
-<h3 id="gettargets" tabindex="-1">GetTargets <a class="direct-link" href="#gettargets">#</a></h3>
-<p>Called to determine targets to apply gameplay effects to</p>
-<p><strong>Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TargetingActor</td>
-<td>AActor*</td>
-<td></td>
-</tr>
-<tr>
-<td>EventData</td>
-<td>FGameplayEventData</td>
-<td></td>
-</tr>
-<tr>
-<td>OutHitResults</td>
-<td>Array of FHitResult</td>
-<td></td>
-</tr>
-<tr>
-<td>OutActors</td>
-<td>Array of AActor</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-
-    <hr />
-    <p>Generated on Fri, 20 May 2022 18:54:59 GMT</p>
-
-</article
-
+</article>
 
                     </main>
                 </div>
@@ -234,7 +204,8 @@ you may need to instance into the world once or as a pooled actor</p>
                     </a>
                 </span>
                     <span class="Truncate d-block">
-                    <a class="SideNav-subItem Truncate-text mb-6"  href="/reset-attributes-abilities/">
+                    <a class="SideNav-subItem Truncate-text mb-6" 
+                aria-current="page"  href="/reset-attributes-abilities/">
                         Reset Attributes / Abilities configuration
                     </a>
                 </span>
@@ -304,8 +275,7 @@ you may need to instance into the world once or as a pooled actor</p>
                     </a>
                 </span>
                     <span class="Truncate d-block">
-                    <a class="SideNav-subItem Truncate-text mb-6" 
-                aria-current="page"  href="/api/Abilities/GSCTargetType/">
+                    <a class="SideNav-subItem Truncate-text mb-6"  href="/api/Abilities/GSCTargetType/">
                         GSCTargetType
                     </a>
                 </span>

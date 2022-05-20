@@ -5,10 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/_static/css/primer.css">
+    <link rel="stylesheet" href="/_static/css/prism.css">
     <style>
         .markdown-content {
             box-sizing: border-box;
             margin: 0 auto;
+        }
+
+        .markdown-body .language-cpp code br {
+            display: block;
         }
 
         @media (max-width: 767px) {
@@ -63,6 +68,8 @@
                     <nav class="" >
         <h2 class="f5 pl-2">On this page</h2>
         <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#5.2.0-(2022-05-20)" class="ActionList-item-label no-underline">5.2.0 (2022-05-20)</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#5.1.0-(2022-04-14)" class="ActionList-item-label no-underline">5.1.0 (2022-04-14)</a>
             </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#5.0.0-(2022-04-07)" class="ActionList-item-label no-underline">5.0.0 (2022-04-07)</a>
@@ -116,6 +123,24 @@
 </blockquote>
 <hr>
 <p><a href="https://github.com/GASCompanion/GASCompanion-Documentation/blob/master/CHANGELOG.md">Full Changelog</a></p>
+<h2 id="5.2.0-(2022-05-20)" tabindex="-1">5.2.0 (2022-05-20) <a class="direct-link" href="#5.2.0-(2022-05-20)">#</a></h2>
+<h5>New Features</h5>
+<ul>
+<li><strong>AbilitySystemComponent:</strong> Expose bResetAbilitiesOnSpawn / bResetAttributesOnSpawn to make it possible to persist attributes or abilities across respawns or possessions.
+<ul>
+<li>See <a href="/reset-attributes-abilities/">Topics &gt; Reset Attributes / Abilities configuration</a></li>
+</ul>
+</li>
+<li><strong>Animations:</strong> Add Gameplay Tag Blueprint Property Mapping support. Added UGSCNativeAnimInstance and IGSCNativeAnimInstanceInterface.
+<ul>
+<li>See <a href="/animations/">Topics &gt; Anim Instance</a></li>
+</ul>
+</li>
+</ul>
+<h5>Bug Fixes</h5>
+<ul>
+<li><strong>Combo Manager:</strong> Combo ability and component had an issue when used with ASC living on PlayerState.</li>
+</ul>
 <h2 id="5.1.0-(2022-04-14)" tabindex="-1">5.1.0 (2022-04-14) <a class="direct-link" href="#5.1.0-(2022-04-14)">#</a></h2>
 <h5>New Features</h5>
 <ul>
@@ -704,8 +729,18 @@
                     </a>
                 </span>
                     <span class="Truncate d-block">
-                    <a class="SideNav-subItem Truncate-text mb-6"  href="/working-with-ui/">
+                    <a class="SideNav-subItem Truncate-text"  href="/working-with-ui/">
                         Working with UI
+                    </a>
+                </span>
+                    <span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"  href="/animations/">
+                        Anim Instance
+                    </a>
+                </span>
+                    <span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"  href="/reset-attributes-abilities/">
+                        Reset Attributes / Abilities configuration
                     </a>
                 </span>
                     </nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">More</h5>
@@ -787,8 +822,13 @@
                     </a>
                 </span>
                     <span class="Truncate d-block">
-                    <a class="SideNav-subItem Truncate-text mb-6"  href="/api/Animations/GSCComboWindowNotifyState/">
+                    <a class="SideNav-subItem Truncate-text"  href="/api/Animations/GSCComboWindowNotifyState/">
                         GSCComboWindowNotifyState
+                    </a>
+                </span>
+                    <span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"  href="/api/Animations/GSCNativeAnimInstance/">
+                        GSCNativeAnimInstance
                     </a>
                 </span>
                     </nav>

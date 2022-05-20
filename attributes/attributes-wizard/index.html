@@ -5,10 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/_static/css/primer.css">
+    <link rel="stylesheet" href="/_static/css/prism.css">
     <style>
         .markdown-content {
             box-sizing: border-box;
             margin: 0 auto;
+        }
+
+        .markdown-body .language-cpp code br {
+            display: block;
         }
 
         @media (max-width: 767px) {
@@ -129,13 +134,7 @@
 <p>If the compilation goes fine, the engine will hot reload your project and you'll be able to use your new Attributes right away.</p>
 <h3 id="notes-on-build.cs" tabindex="-1">Notes on Build.cs <a class="direct-link" href="#notes-on-build.cs">#</a></h3>
 <p>If there is a compilation error, this is most likely due to the fact you already have a c++ project, and don't have <code>GASCompanion</code> and related GAS modules in your <code>Build.cs</code> file. The generated AttributeSet inherits from <code>GSCAttributeSetBase</code> which requires you adding <code>GASCompanion</code> module dependency to your game module (as well as <code>GameplayAbilities</code>, <code>GameplayTasks</code> and <code>GameplayTags</code>)</p>
-<pre><code class="language-clike">PrivateDependencyModuleNames.AddRange(new string[] {
-    &quot;GASCompanion&quot;,
-    &quot;GameplayAbilities&quot;,
-    &quot;GameplayTasks&quot;,
-    &quot;GameplayTags&quot;
-});
-</code></pre>
+<pre class="language-clike"><code class="language-clike">PrivateDependencyModuleNames<span class="token punctuation">.</span><span class="token function">AddRange</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span><br>    <span class="token string">"GASCompanion"</span><span class="token punctuation">,</span><br>    <span class="token string">"GameplayAbilities"</span><span class="token punctuation">,</span><br>    <span class="token string">"GameplayTasks"</span><span class="token punctuation">,</span><br>    <span class="token string">"GameplayTags"</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Once done, re-compile.</p>
 <p><strong>Note</strong> <em>For non code project (eg. pure Blueprint), the Wizard will create basic source code module for your project and handle the generation of a valid <code>Build.cs</code> file for you.</em></p>
 <p>The Editor will open the newly added class header / source files in your IDE, which you might inspect or edit as you see fit.</p>
@@ -252,8 +251,18 @@
                     </a>
                 </span>
                     <span class="Truncate d-block">
-                    <a class="SideNav-subItem Truncate-text mb-6"  href="/working-with-ui/">
+                    <a class="SideNav-subItem Truncate-text"  href="/working-with-ui/">
                         Working with UI
+                    </a>
+                </span>
+                    <span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text"  href="/animations/">
+                        Anim Instance
+                    </a>
+                </span>
+                    <span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"  href="/reset-attributes-abilities/">
+                        Reset Attributes / Abilities configuration
                     </a>
                 </span>
                     </nav><h5 class="color-fg-muted mb-2 pb-1 border-bottom">More</h5>
@@ -334,8 +343,13 @@
                     </a>
                 </span>
                     <span class="Truncate d-block">
-                    <a class="SideNav-subItem Truncate-text mb-6"  href="/api/Animations/GSCComboWindowNotifyState/">
+                    <a class="SideNav-subItem Truncate-text"  href="/api/Animations/GSCComboWindowNotifyState/">
                         GSCComboWindowNotifyState
+                    </a>
+                </span>
+                    <span class="Truncate d-block">
+                    <a class="SideNav-subItem Truncate-text mb-6"  href="/api/Animations/GSCNativeAnimInstance/">
+                        GSCNativeAnimInstance
                     </a>
                 </span>
                     </nav>
