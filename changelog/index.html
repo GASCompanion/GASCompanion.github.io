@@ -68,6 +68,10 @@
                     <nav class="" >
         <h2 class="f5 pl-2">On this page</h2>
         <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#5.2.3-(2022-07-17)" class="ActionList-item-label no-underline">5.2.3 (2022-07-17)</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#5.2.2-(2022-07-10)" class="ActionList-item-label no-underline">5.2.2 (2022-07-10)</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#5.2.1-(2022-06-04)" class="ActionList-item-label no-underline">5.2.1 (2022-06-04)</a>
             </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#5.2.0-(2022-05-20)" class="ActionList-item-label no-underline">5.2.0 (2022-05-20)</a>
@@ -125,6 +129,42 @@
 </blockquote>
 <hr>
 <p><a href="https://github.com/GASCompanion/GASCompanion-Documentation/blob/master/CHANGELOG.md">Full Changelog</a></p>
+<h2 id="5.2.3-(2022-07-17)" tabindex="-1">5.2.3 (2022-07-17) <a class="direct-link" href="#5.2.3-(2022-07-17)">#</a></h2>
+<h5>Bug Fixes</h5>
+<ul>
+<li>Creation Menu: Make sure parent class of the created BP is the correct one
+<ul>
+<li>The fix for osx support introduced a regression here. This patch release aims to fix that.</li>
+</ul>
+</li>
+</ul>
+<h5>Tests</h5>
+<ul>
+<li>Setup automated test spec for GSCCreationMenu</li>
+</ul>
+<h2 id="5.2.2-(2022-07-10)" tabindex="-1">5.2.2 (2022-07-10) <a class="direct-link" href="#5.2.2-(2022-07-10)">#</a></h2>
+<h5>What's Changed</h5>
+<ul>
+<li>OSx support
+<ul>
+<li>Fix for OSx ambiguous return value in GSCCreationMenu.h</li>
+<li>Fix for NetCore module dependency (specific to OSx)</li>
+<li>Adding <code>Mac</code> in PlatformAllowList</li>
+</ul>
+</li>
+<li>Linux support &amp; Remove all LaunchPad related code
+<ul>
+<li>Fixup loop variable Wrange-loop-construct compilation errors on 4.27</li>
+<li>Add Linux to .uplugin PlatformAllowList</li>
+<li>Removed all LaunchPad related code
+<ul>
+<li>LaunchPad if re-added back will be done in a standalone plugin or module.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Internal: Setting up CI/CD process on github to check package build is successful on each supported platform (CI on Windows / Linux for now)</p>
 <h2 id="5.2.1-(2022-06-04)" tabindex="-1">5.2.1 (2022-06-04) <a class="direct-link" href="#5.2.1-(2022-06-04)">#</a></h2>
 <h5>Bug Fixes</h5>
 <ul>
