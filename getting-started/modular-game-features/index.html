@@ -72,7 +72,13 @@
         <h2 class="f5 pl-2">On this page</h2>
         <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#game-feature-actions" class="ActionList-item-label no-underline">Game Feature Actions</a>
-            </span></li></ul>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#add-abilities" class="ActionList-item-label no-underline">Add Abilities</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#add-input-mapping" class="ActionList-item-label no-underline">Add Input Mapping</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#add-anim-layers" class="ActionList-item-label no-underline">Add Anim Layers</a>
+            </span></li></ul></ul>
       </nav>
                 </div>
 
@@ -81,19 +87,35 @@
                         
                             <h1 class="">Modular Game Features | Getting Started</h1>
                             <div class="f2 color-fg-muted mb-3 Lead_container__7YW6Y" data-testid="lead" data-search="lead">
-                                <p>Learn how to get started with GAS Companion (v3) using Modular Gameplay and Game Features</p>
+                                <p>GAS Companion integration with Modular Gameplay and Game Features</p>
                             </div>
                         
 
                         
 <article class="markdown-body">
-    <div id="8R_YIpwNZgk" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/8R_YIpwNZgk" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-<h2 id="game-feature-actions" tabindex="-1">Game Feature Actions <a class="direct-link" href="#game-feature-actions">#</a></h2>
+    <h2 id="game-feature-actions" tabindex="-1">Game Feature Actions <a class="direct-link" href="#game-feature-actions">#</a></h2>
+<p>GAS Companion provides the following &quot;Actions&quot; that can be used from Game Features data assets.</p>
 <ul>
 <li><a href="/api/GameFeatures/Actions/GSCGameFeatureAction_AddAbilities/">GSCGameFeatureAction_AddAbilities</a></li>
 <li><a href="/api/GameFeatures/Actions/GSCGameFeatureAction_AddAnimLayers/">GSCGameFeatureAction_AddAnimLayers</a></li>
 <li><a href="/api/GameFeatures/Actions/GSCGameFeatureAction_AddInputMappingContext/">GSCGameFeatureAction_AddInputMappingContext</a></li>
 </ul>
+<h3 id="add-abilities" tabindex="-1">Add Abilities <a class="direct-link" href="#add-abilities">#</a></h3>
+<p><code>Add Abilities</code> can be used to grant abilities / attributes, when the feature is enabled and removed when the feature is disabled.</p>
+<p><img src="add_abilities.png" alt=""></p>
+<p><img src="add_abilities_01.png" alt=""></p>
+<p>The action definition is really similar to the one found in GAS Companion's ASC (when you define and grant abilities / attributes from Pawn or PlayerState class default with ASC selected)</p>
+<h3 id="add-input-mapping" tabindex="-1">Add Input Mapping <a class="direct-link" href="#add-input-mapping">#</a></h3>
+<p><code>Add Input Mapping</code> lets you add an Enhanced Input mapping context when the feature is enabled, and remove the context when the feature is disabled.</p>
+<p>This is useful to provide additional input mappings specific to a Game Feature. The priority can also be used (with a value higher than the mapping context previously added in the game code - Pawn or PlayerController) to override or take over a key input when the feature is enabled.</p>
+<p>It works in tandem with <code>Add Abilities</code> and the ability input binding (when an Ability is granted alongside an Input Action)</p>
+<p><img src="add_input_mapping.png" alt=""></p>
+<h3 id="add-anim-layers" tabindex="-1">Add Anim Layers <a class="direct-link" href="#add-anim-layers">#</a></h3>
+<p><code>Add Anim Layers</code> is a small Game Feature Action that lets you &quot;link&quot; anim instance layers when the game feature is enabled, and &quot;unlinked&quot; when the feature is disabled.</p>
+<p>This is useful if your Pawn's main Anim Blueprint is setup to be extended by anim layers, with extension points that a game feature can implement.</p>
+<p>Internally, when the feature is enabled, <code>LinkAnimClassLayers()</code> will be called on owner's Skeletal Mesh Component, and <code>UnlinkAnimClassLayers()</code> when the feature is disabled.</p>
+<p><img src="add_anim_layers.png" alt=""></p>
+<p><img src="add_anim_layers_01.png" alt=""></p>
 
 </article>
 
