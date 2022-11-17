@@ -71,6 +71,10 @@
                     <nav class="" >
         <h2 class="f5 pl-2">On this page</h2>
         <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#5.3.1-(2022-11-17)" class="ActionList-item-label no-underline">5.3.1 (2022-11-17)</a>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#whats-changed" class="ActionList-item-label no-underline">What's Changed</a>
+            </span></li></ul><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#5.3.0-(2022-08-16)" class="ActionList-item-label no-underline">5.3.0 (2022-08-16)</a>
             </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#5.2.3-(2022-07-17)" class="ActionList-item-label no-underline">5.2.3 (2022-07-17)</a>
@@ -134,6 +138,23 @@
 </blockquote>
 <hr>
 <p><a href="https://github.com/GASCompanion/GASCompanion-Documentation/blob/master/CHANGELOG.md">Full Changelog</a></p>
+<h2 id="5.3.1-(2022-11-17)" tabindex="-1">5.3.1 (2022-11-17) <a class="direct-link" href="#5.3.1-(2022-11-17)">#</a></h2>
+<p>Patch for Unreal 5.1 release. Includes fixes for compilation / warnings happening on 5.1.</p>
+<h3 id="whats-changed" tabindex="-1">What's Changed <a class="direct-link" href="#whats-changed">#</a></h3>
+<h4 id="other-changes" tabindex="-1">Other Changes <a class="direct-link" href="#other-changes">#</a></h4>
+<ul>
+<li>Fix compilation errors / warnings for 5.1 by in <a href="https://github.com/GASCompanion/GASCompanion-Plugin/pull/60">#60</a></li>
+</ul>
+<h5>Continuous Integration</h5>
+<ul>
+<li>Linux, switch image to dev-slim-5.1 (<a href="https://github.com/GASCompanion/GASCompanion-Plugin/commit/5fbea8fdc71587ad9b9e067654dc64c0932f5fed">5fbea8fd</a>)</li>
+</ul>
+<h5>Other Changes</h5>
+<ul>
+<li>Fix <code>Editor.GSCCreationMenu</code> functional tests (<a href="https://github.com/GASCompanion/GASCompanion-Plugin/commit/6b5321520f4ab435624a77e403a200d99122bbe9">6b532152</a>)</li>
+<li>Fix <code>GameFeature</code> functional tests (<a href="https://github.com/GASCompanion/GASCompanion-Plugin/commit/f0c3667c22a48a5db1bde6c143e6890522b8d1f1">f0c3667c</a>)</li>
+<li>Fix <code>Ability Input Binding</code> spec (<a href="https://github.com/GASCompanion/GASCompanion-Plugin/commit/7f973a92630e68b3ec7e13c502664d629247f1f5">7f973a92</a>)</li>
+</ul>
 <h2 id="5.3.0-(2022-08-16)" tabindex="-1">5.3.0 (2022-08-16) <a class="direct-link" href="#5.3.0-(2022-08-16)">#</a></h2>
 <p>This release includes improvements to the HUD widget, a new BP exposed OnInitAbilityActorInfo event in GSCAbilitySystemComponent / GSCCoreComponent to help in initialization of aforedmentioned HUD, and tweaks to GameFeature AddAbilities action that is now able to Apply / Remove Gameplay Effects on feature activation / deactivation along fixes for Ability Input binding via Game Feature and respawn of Player State characters.</p>
 <ul>
@@ -704,7 +725,7 @@
 <li>Fix toolbar icon when using small toolbar icons</li>
 <li>Check Attribute is owned by the character before trying to get its value</li>
 </ul>
-<h4 id="other-changes" tabindex="-1">Other Changes <a class="direct-link" href="#other-changes">#</a></h4>
+<h4 id="other-changes-1" tabindex="-1">Other Changes <a class="direct-link" href="#other-changes-1">#</a></h4>
 <ul>
 <li>Make UGSCUserWidget bindings optional</li>
 <li>Remove UI section in configuration, Widgets override should happen in HUD class / bp</li>
