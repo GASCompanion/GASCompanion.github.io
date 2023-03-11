@@ -122,7 +122,11 @@
                 <a href="#cooldown" class="ActionList-item-label no-underline">Cooldown</a>
             </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#stamina-regen-gameplay-effect" class="ActionList-item-label no-underline">Stamina Regen Gameplay Effect</a>
-            </span></li></ul>
+            </span></li><ul class="ActionList pl-3 py-0"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#definition" class="ActionList-item-label no-underline">Definition</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#bonus-disable-regen-while-an-ability-is-active" class="ActionList-item-label no-underline">Bonus: Disable regen while an Ability is active</a>
+            </span></li></ul></ul>
       </nav>
                 </div>
 
@@ -131,7 +135,7 @@
                         
                             <h1 class="">Getting Started</h1>
                             <div class="f2 color-fg-muted mb-3 Lead_container__7YW6Y" data-testid="lead" data-search="lead">
-                                <p>Learn how to get started with GAS Companion (v3)</p>
+                                <p>Learn how to get started with GAS Companion</p>
                             </div>
                         
 
@@ -200,15 +204,15 @@
 <h2 id="ability-system-component" tabindex="-1">Ability System Component <a class="direct-link" href="#ability-system-component">#</a></h2>
 <h3 id="overview" tabindex="-1">Overview <a class="direct-link" href="#overview">#</a></h3>
 <p><code>GSCAbilitySystemComponent</code> is a child of <code>AbilitySystemComponent</code> from GAS, and automatically created for you in <code>GSCModularCharacter</code> and <code>GSCModularPawn</code> (as well as <code>GSCModularPlayerState</code> if you wish to have ASC living on PlayerState)</p>
-<p><img src="MGCAbilitySystemComponent.png" alt=""></p>
-<p>It exposes some properties available in <code>Modular GAS Companion | Abilities</code>. If you select the component from the components view, you'll be able to see and edit those to:</p>
+<p><img src="GSCAbilitySystemComponent.png" alt=""></p>
+<p>It exposes some properties available in <code>GAS Companion | Abilities</code>. If you select the component from the components view, you'll be able to see and edit those to:</p>
 <ul>
 <li><code>Grant Abilities</code> - List of Gameplay Abilities to grant when the Ability System Component is initialized, with an optional Enhanced Input Action to bind the ability activation to.</li>
 <li><code>Grant Attributes</code> - List of Attribute Sets to grant when the Ability System Component is initialized, with optional initialization data.</li>
 <li><code>Grant Effects</code> - List of GameplayEffects to apply when the Ability System Component is initialized (typically on begin play)</li>
 </ul>
-<p><img src="modular_gas_companion_abilities.png" alt=""></p>
-<p><strong>Note</strong> If you're used to GAS Companion v2, those were part of <code>GSCCoreComponent</code>, which is still available. It's just now that those BP exposed properties in Core Component are getting deprecated since they're a bit redundant with the new setup.</p>
+<p><img src="gas_companion_abilities.png" alt=""></p>
+<p><strong>Note</strong> If you're used to GAS Companion v2, those were part of <code>GSCCoreComponent</code>, which is still available. It's just now that those BP exposed properties in Core Component were deprecated and removed since they're a bit redundant with the new setup.</p>
 <h4 id="granting-attributes" tabindex="-1">Granting Attributes <a class="direct-link" href="#granting-attributes">#</a></h4>
 <p>Unlike in previous version, where Attribute Sets to grant to actors were configured in Project Settings, you now have the possibility to configure and grant attribute sets <strong>per</strong> actor. Another difference is that now the default <code>GSCAttributeSet</code> is not added by default to Modular Actors.</p>
 <p><code>GSCAttributeSet</code> is an Attribute Set coming with GAS Companion with commonly found Gameplay Attributes such as <code>Health</code>, <code>Stamina</code> and <code>Mana</code> (and their associated Max attribute).</p>
@@ -236,7 +240,7 @@
 <p>Give it a name and open it up. I'm using <code>DT_Player_Attributes</code> in this case.</p>
 <p>From there, you can click the <code>+ Add</code> icon in the toolbar for all the attributes you want to initialize. The first two columns are the ones we want to setup:</p>
 <ul>
-<li><code>Row Name</code> -&gt; Needs to follow a specific syntax which is the name of the Attribute Set class and Gameplay Attribute value, separated by a dot (<code>GSCAttributeSet.Health</code>)</li>
+<li><code>Row Name</code> -&gt; Needs to follow a specific syntax which is the name of the Attribute Set class and Gameplay Attribute value, separated by a dot (<code>GSCAttributeSet.Health</code>) (<strong>without</strong> the C++ class prefix <code>U</code>, eg. <code>GSCAttributeSet</code> instead of <code>UGSCAttributeSet</code>)</li>
 <li><code>Base Value</code> -&gt; Is the actual float value for the Base and Current value of the gameplay attribute.</li>
 </ul>
 <p><strong>Note</strong> Other columns as far as I can tell are not implemented right now in engine. But that's something project specific code could leverage to adjust clamping done in Attribute Sets for instance.</p>
@@ -253,8 +257,6 @@
 <p><img src="create_widget_hud_test.png" alt=""></p>
 <p>And if we test that in multiplayer (clients or listen server), we should see the following (you could even slightly adjust the Data Table we created before to see how it affects the progress bars).</p>
 <p><img src="create_hud_test_multi.png" alt=""></p>
-<p>Even though it is not strictly necessary, I would highly recommend that you pass in the <code>Owning Player</code> reference to the Pawn Player Controller. It will handle the creation of the Widget only on client since the following cast to Player Controller will silently fail on server for clients.</p>
-<p><img src="create_widget_hud_PC.png" alt=""></p>
 <h2 id="first-ability-jump" tabindex="-1">First Ability - Jump <a class="direct-link" href="#first-ability-jump">#</a></h2>
 <p>In this section, we'll implement our first ability. To keep things simple, it is going to be a Jump ability and will cost a set amount of Stamina to activate.</p>
 <p>For now, our jump mechanism is done in <code>BP_Modular_Character</code> BP, which is coming from the Third Person Template (if you copied over the inputs from <code>ThirdPersonCharacter</code>).</p>
@@ -296,7 +298,7 @@
 <p>First thing first, we need to grant the ability to our Character (actually to its Ability System Component). Go back to the Character BP, and:</p>
 <ol>
 <li>Select the Ability System Component from the components list</li>
-<li>In the <code>Modular GAS Companion | Abilities</code> category, click the <code>+</code> icon close to <code>Granted Abilities</code></li>
+<li>In the <code>GAS Companion | Abilities</code> category, click the <code>+</code> icon close to <code>Granted Abilities</code></li>
 <li>Expand the entry to see both <code>Ability</code> and <code>Input Action</code> properties</li>
 <li>For <code>Ability</code>, pick up the <code>GA_Jump</code> ability we just created</li>
 </ol>
@@ -309,6 +311,7 @@
 <h2 id="using-input-binding-with-enhanced-input" tabindex="-1">Using Input Binding with Enhanced Input <a class="direct-link" href="#using-input-binding-with-enhanced-input">#</a></h2>
 <p>Now, we'll rework the way we activate the ability to do that with the automatic input binding available in v3 using the new Enhanced Input integration.</p>
 <h3 id="project-setup" tabindex="-1">Project Setup <a class="direct-link" href="#project-setup">#</a></h3>
+<p><strong>Only for Unreal versions 4.27 / 5.0 - Unreal 5.1 release made Enhanced Input the default</strong></p>
 <p>Before being able to use it though, we have a bit of Project setup to do. Open up the Project's Setting and navigate to <code>Engine &gt; Input</code> category.</p>
 <p>There, make sure you are using</p>
 <ul>
@@ -320,10 +323,13 @@
 <h3 id="ability-input-binding-component" tabindex="-1">Ability Input Binding Component <a class="direct-link" href="#ability-input-binding-component">#</a></h3>
 <p>If you take a look at the mentioned official docs, you'll see that you need to Add an InputMapping context to the Enhanced Input Subsystem. That's something we'll handle using an Actor Component: <code>GSCAbilityInputBinding</code>.</p>
 <p>Click the <code>Add Component</code> button in the components panel, and add <code>GSCAbilityInputBinding</code> to your Character BP</p>
-<p><img src="add_mgcabilityinputbinding.png" alt=""></p>
+<p><img src="add_gscabilityinputbinding.png" alt=""></p>
 <p>Aside from being required for the Ability System input binding to work with Enhanced Input, this component allow us to define an Input Mapping Context (something you would need to do manually with Enhanced Input Subsystem).</p>
-<p><img src="player_controls_mgcabilityinputbinding.png" alt=""><br>
+<p><img src="player_controls_gscabilityinputbinding_empty.png" alt=""><br>
 <em>Enhanced Input related settings available in <code>Player Controls</code> category of <code>GSCAbilityInputBinding</code> component</em></p>
+<p><code>Input Mapping Context</code> when defined here simply adds the mapping context to the Enhanded Input subsystem, something you'd find typically on Begin Play with the Third Person template for instance:</p>
+<p><img src="add_input_mapping.png" alt=""><br>
+<em>If <code>Input Mapping Context</code> option is defined in <code>GSCAbilityInputBinding</code> component (and of course using the same Input Mapping Context asset), you can remove this snippet of code.</em></p>
 <p><strong>Note</strong> If you're using a Game Feature to grant abilities, the <code>AddInputMapping</code> action will handle the registering of this component if it is not available on the target Actor class.</p>
 <h3 id="input-action-and-mapping-context" tabindex="-1">Input Action and Mapping Context <a class="direct-link" href="#input-action-and-mapping-context">#</a></h3>
 <p>We'll now go through over the creation of the bare minimum assets we need to handle the activation of our Jump Ability via Enhanced Input, and how you can register the Input Action to automatically activate the ability when it is triggered.</p>
@@ -335,11 +341,11 @@
 <ol start="2">
 <li>Then, we need a Mapping Context, this is where we'll configure the actual binding for the Input Actions. Like we did previously, open up the File Context Menu, and create a new Mapping Context with <code>Input &gt; Input Mapping Context</code></li>
 </ol>
-<p>Name it however you wish, here I'm going to use <code>MC_Player_Controls</code>. Open up the Mapping Context Data Asset we just created and set it up like so:</p>
-<p><img src="mc_player_controls.png" alt=""></p>
+<p>Name it however you wish, here I'm going to use <code>IMC_Default</code>. Open up the Mapping Context Data Asset we just created and set it up like so:</p>
+<p><img src="IMC_Default.png" alt=""></p>
 <h3 id="ability-binding-for-jump" tabindex="-1">Ability Binding for Jump <a class="direct-link" href="#ability-binding-for-jump">#</a></h3>
 <p>Last thing we need to do is to ensure our Pawn has the Mapping Context added to the Player Controller Enhanced Input Subsystem. Go back to the Character BP, select the <code>GSCAbilityInputBinding</code> component in the components list, and set the <code>Input Mapping Context</code> property to the context we created.</p>
-<p><img src="mc_player_controls_component.png" alt=""></p>
+<p><img src="player_controls_gscabilityinputbinding.png" alt=""></p>
 <p>And finally, we can edit the Ability System Component <code>Granted Abilities</code> list and the <code>GA_Jump</code> entry to use <code>IA_Jump</code> for the Input Action.</p>
 <p><img src="input_granted_abilities.png" alt=""></p>
 <p>For good measure, make sure to remove the old input binding that we used before to activate the jump ability in the Event Graph, and test it out in game.</p>
@@ -367,13 +373,13 @@
 <li>In the Character BP Event Graph, right click and implement the <code>OnLanded</code> event.</li>
 <li>Drag out the pin and search for <code>Send Gameplay Event to Actor</code></li>
 <li>For the Actor parameter, make sure to pass in <code>self</code> reference to it</li>
-<li>For the Event Tag, create a new one like <code>GameplayEvent.Landed</code>. You can choose to create and use another Gameplay Tag, just make sure to use the exact same later on when we go over the ability.</li>
+<li>For the Event Tag, create a new one like <code>Event.Character.Landed</code>. You can choose to create and use another Gameplay Tag, just make sure to use the exact same later on when we go over the ability.</li>
 </ol>
 <p><img src="on_landed.png" alt=""></p>
 <p>Then, we need to do a final edit to our <code>GA_Jump</code> ability.</p>
 <ol>
 <li>Replace the Delay node with <code>Wait Gameplay Event</code></li>
-<li>For the Event Tag, use the same one you're sending from the Character Blueprint (here, <code>GameplayEvent.Landed</code>)</li>
+<li>For the Event Tag, use the same one you're sending from the Character Blueprint (here, <code>Event.Character.Landed</code>)</li>
 <li>From the <code>Event Received</code> pin, drag out and invoke <code>End Ability</code></li>
 </ol>
 <p><img src="gameplay_event_end_ability.png" alt=""></p>
@@ -403,8 +409,9 @@
 <p><img src="ga-cooldown-prop.png" alt=""></p>
 <p>For more information about Cooldown Gameplay Effect, please refer to <a href="https://github.com/tranek/GASDocumentation#4515-cooldown-gameplay-effect">GASDocumentation section on this</a> as it explains the concept much better than I can do.</p>
 <h2 id="stamina-regen-gameplay-effect" tabindex="-1">Stamina Regen Gameplay Effect <a class="direct-link" href="#stamina-regen-gameplay-effect">#</a></h2>
+<h3 id="definition" tabindex="-1">Definition <a class="direct-link" href="#definition">#</a></h3>
 <p>Now that we have a jump ability and an associated Stamina cost, how about setting up a &quot;passive&quot; effect to regenerate the stamina ?</p>
-<p>Create a new GameplayEffect, named <code>GE_StaminaRegen</code> with the following values:</p>
+<p>Create a new GameplayEffect, named <code>GE_Stamina_Regen</code> with the following values:</p>
 <p><img src="ge-stamina-regen.png" alt=""></p>
 <ul>
 <li><strong>Duraction Policy</strong> Infinite</li>
@@ -417,6 +424,15 @@
 <p>We now need to apply this effect to our Character. The <code>Granted Effects</code> can be used to do that. Update the property in the Character BP for the Ability System Component:</p>
 <p><img src="granted_effects_stamina.png" alt=""></p>
 <p>If you Hit Play now, you should see the stamina regenerate after each Jump ;)</p>
+<h3 id="bonus-disable-regen-while-an-ability-is-active" tabindex="-1">Bonus: Disable regen while an Ability is active <a class="direct-link" href="#bonus-disable-regen-while-an-ability-is-active">#</a></h3>
+<p>One final tweak we could do to wrap this up: make it so that stamina regen is only active when the character is not jumping (eg. is still in air). We can do so by leveraging Gameplay Tags with the <code>Activation Owned Tags</code> (tags granted to the Owner Actor) of the Gameplay Ability, and <code>Ongoing Tag Requirements</code> of the regen Gameplay Effect.</p>
+<p>First, we setup the ability with a Gameplay Tag in its <code>Activation Owned Tags</code> container in class defaults:</p>
+<p><img src="ga_ability_tags.png" alt=""><br>
+<em>Although not required for this use case, we also identify the ability with its <code>Ability Tags</code> and make it block activation of any other Abilities that are identified with <code>Ability.*</code> tags via <code>Block Abilities with Tag</code> container.</em></p>
+<p>Secondly, we need to configure the <code>Ongoing Tag Requirements &gt; Ignore Tags</code> of the regen Gameplay Effect (it has an infinite duration), making it temporarily &quot;inactive&quot; when the owner actor (our character) is granted with any tags starting with <code>Ability.*</code>. In this example, when the character is jumping via the activation of <code>GA_Jump</code>, while the ability is active <code>Ability.Jump</code> tag is added to the character preventing the regen until the ability is ended.</p>
+<p><img src="ge_stamina_regen_ongoing_tag_requirements.png" alt=""></p>
+<p>This concludes the quick start guide of GAS Companion, and this gentle introduction to GAS in general ;)</p>
+<p>I hope you'll like the journey! ❤️</p>
 
 </article>
 
