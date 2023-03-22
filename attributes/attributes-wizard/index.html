@@ -1,32 +1,42 @@
 <!doctype html>
 <html lang="en" data-color-mode="dark" data-dark-theme="dark_dimmed">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/_static/css/primer.css">
-    <link rel="stylesheet" href="/_static/css/prism.css">
-    <style>
-        .markdown-content {
-            box-sizing: border-box;
-            margin: 0 auto;
-        }
-
-        .markdown-body .language-cpp code br {
-            display: block;
-        }
-
-        @media (max-width: 767px) {
-            .markdown-body {
-                padding: 15px;
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/_static/css/primer.css">
+        <link rel="stylesheet" href="/_static/css/prism.css">
+        <style>
+            .markdown-content {
+                box-sizing: border-box;
+                margin: 0 auto;
             }
-        }
-    </style>
-    <title>Attributes Wizard</title>
-</head>
 
-<body>
-    
+            .notes {
+                background: #ffedd5;
+                color: #292524;
+                padding: 16px 32px;
+                border: 4px solid #fdba74;
+            }
+
+            .notes ul {
+            }
+
+            .markdown-body .language-cpp code br {
+                display: block;
+            }
+
+            @media (max-width: 767px) {
+                .markdown-body {
+                    padding: 15px;
+                }
+            }
+        </style>
+        <title>Attributes Wizard</title>
+    </head>
+
+    <body>
+        
 <div class="Layout Layout--gutter-none">
 
     <div class="Layout-main">
@@ -103,6 +113,10 @@
 <p><img src="toolbar.png" alt=""></p>
 <p>From there, you can get quick access to the <a href="/configuration">Plugin Configuration in Project Settings</a>, View online documentation, <a href="https://discord.gg/d4rs4vcX6t">Join our Discord Server</a> or <a href="mailto:daniel.mickael@gmail.com?subject=GASCompanion">Send an email for support</a>.</p>
 <p>More importantly is the addition of a custom AttributeSet C++ Class creation wizard. Click the <code>New C++ AttributeSet Class...</code> button from the dropdown menu.</p>
+<div class="notes">
+<p>Keep in mind, that in order to be able to generate C++ classes and use the Wizard, you need Visual Studio installed and the compiler toolchain that goes with it. Prior to using the wizard, you'll have to go through the process outlined here: <a href="https://docs.unrealengine.com/5.1/en-US/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine/">https://docs.unrealengine.com/5.1/en-US/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine/</a></p>
+<p>Which you can then validate you did it properly with Unreal's default class wizard available in <code>Tools &gt; New C++ Class</code> and try to create a dummy Actor or &quot;None&quot; class. If you're able to generate and compile, you're good to go.</p>
+</div>
 <h2 id="add-attributeset-c++-class-wizard" tabindex="-1">Add AttributeSet C++ Class Wizard <a class="direct-link" href="#add-attributeset-c++-class-wizard">#</a></h2>
 <p>With GAS, one of the only thing that requires C++ no matter what is the creation of AttributeSet and Gameplay Attributes. This is the main blocking point for non c++ programmers willing to use GAS in their project.</p>
 <p>This AttributeSet C++ Class generation feature aims to alleviate that.</p>
@@ -486,6 +500,6 @@
         </aside>
     </div>
 </div>
-</body>
+    </body>
 
 </html>
