@@ -80,6 +80,8 @@
                     <nav class="" >
         <h2 class="f5 pl-2">On this page</h2>
         <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#6.0.1-(2023-09-05)" class="ActionList-item-label no-underline">6.0.1 (2023-09-05)</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#6.0.0-(2023-06-29)" class="ActionList-item-label no-underline">6.0.0 (2023-06-29)</a>
             </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
                 <a href="#5.3.2-(2022-11-27)" class="ActionList-item-label no-underline">5.3.2 (2022-11-27)</a>
@@ -146,6 +148,25 @@
 <p>They can often serve as the basics of documentation before the website is updated to reflect the changes.</p>
 </div>
 <!-- changelog-pr begin -->
+<h2 id="6.0.1-(2023-09-05)" tabindex="-1">6.0.1 (2023-09-05) <a class="direct-link" href="#6.0.1-(2023-09-05)">#</a></h2>
+<!-- Release notes generated using configuration in .github/release.yml at dev-ue5 -->
+<h5>Other Changes</h5>
+<p>Note: GameplayEffect went through some major refactoring with the introduction of GEComponents in 5.3, have to check GameplayEffects created via Context Menu and GSC Gameplay Effect Template are still working properly in 5.3</p>
+<ul>
+<li>Changes for 5.3-preview in <a href="./pull/81">#81</a>
+<ul>
+<li>CI: windows change matrix to 5.1, 5.2, 5.3</li>
+<li>GSCTemplate_GameplayEffectDefinition: Disable deprecation warnings with PRAGMA_DISABLE_DEPRECATION_WARNINGS</li>
+<li>Specs: Add missing include for UWorld in 5.3</li>
+<li>Fixes for 5.3 around DataValidation in GameFeature actions and GSCNativeAnimInstance</li>
+<li>Fix 5.3 GSCNativeAnimInstance missing declaration of FDataValidationContext and WITH_EDITOR wrapper in header</li>
+<li>GameplayEffects: Handle upgrade of pre-5.3 GE Template definitions to post-5.3 and the GEComponents introduced</li>
+<li>GameplayEffects: Make sure to reset all deprecated properties that were copied from GSC Template, to avoid GE components being re-created on further compiles.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Full Changelog</strong>: <a href="https://github.com/GASCompanion/GASCompanion-Plugin/compare/6.0.0...6.0.1">https://github.com/GASCompanion/GASCompanion-Plugin/compare/6.0.0...6.0.1</a></p>
+<!-- changelog-pr end -->
 <h2 id="6.0.0-(2023-06-29)" tabindex="-1">6.0.0 (2023-06-29) <a class="direct-link" href="#6.0.0-(2023-06-29)">#</a></h2>
 <!-- Release notes generated using configuration in .github/release.yml at ue5-main -->
 <h5>Breaking Changes 🛠</h5>
@@ -176,7 +197,6 @@
 <li>Fixes for non unity build in <a href="./pull/80">#80</a></li>
 </ul>
 <p><strong>Full Changelog</strong>: <a href="https://github.com/GASCompanion/GASCompanion-Plugin/compare/5.3.2...6.0.0">https://github.com/GASCompanion/GASCompanion-Plugin/compare/5.3.2...6.0.0</a></p>
-<!-- changelog-pr end -->
 <h2 id="5.3.2-(2022-11-27)" tabindex="-1">5.3.2 (2022-11-27) <a class="direct-link" href="#5.3.2-(2022-11-27)">#</a></h2>
 <p>Patch version to fix an issue with selection of a new datatable for attributes initialization (in ASC class default Granted Attributes).</p>
 <p>RequiredAssetDataTags metadata specifier needs to use the long form script name in 5.1, eg.</p>
