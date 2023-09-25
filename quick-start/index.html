@@ -411,6 +411,11 @@
 <p>We need to create a new <code>GameplayEffect</code> and make our ability use it as a <code>Cooldown GE</code> (you can click the &quot;+&quot; icon next to the property to quickly create one)</p>
 <p>This Cooldown GE should be a <code>Duration</code> effect with no <code>Modifiers</code> and a unique <code>GameplayTag</code> per <code>GameplayAbility</code>, in the <code>GrantedTags</code> slot.</p>
 <p><img src="cooldown-ge.png" alt=""></p>
+<div class="notes">
+<p>In 5.3, the structure of Gameplay Effects changed a bit with the introduction of GE Components. Most of the monolithic structure of UGameplayEffect has been split into individual smaller GE Component.</p>
+<p>You'll need to adjust this part, and use the appropriate GE Component to use the relevant properties that used to be part of the Gameplay Effect CDO. In this cooldown case, it means using &quot;Target Tags Gameplay Effect Component&quot; to grant the necessary tags to the Owner Actor.</p>
+<p><img src="cooldown-ge-53.png" alt=""></p>
+</div>
 <p>How long the cooldown will last is specified by the <code>Duration Magnitude</code>, here using a Scalable Float of 5.0 (meaning we'll be able to jump every 5 seconds).</p>
 <p>To add new Tag for the <code>GrantedTags</code> slot, click the &quot;Edit...&quot; button for the &quot;Added&quot; row and create it from there:</p>
 <p><img src="cooldown-add-tag.png" alt=""></p>
