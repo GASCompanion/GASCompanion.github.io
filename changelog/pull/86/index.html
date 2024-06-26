@@ -31,7 +31,7 @@
                 }
             }
         </style>
-        <title>v5 Upgrade Guide (CPP usage)</title>
+        <title>Pull Request #86</title>
     </head>
 
     <body>
@@ -45,15 +45,6 @@
     
     <nav aria-label="Breadcrumb">
         <ol>
-                <li class="breadcrumb-item">
-                    <a href="/">Home</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="/upgrade-guides/">Upgrade Guides</a>
-                </li>
-                <li class="breadcrumb-item breadcrumb-item-selected">
-                    <a href="/upgrade-guide/cpp/">v5 Upgrade Guide (CPP usage)</a>
-                </li>
         </ol>
     </nav>
 
@@ -77,42 +68,30 @@
         <div class="container-xl px-md-6">
             <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
                 <div class="Layout-sidebar py-6 position-lg-sticky top-6 overflow-y-auto" style="height: 100vh;">
-                    
+                    <nav class="" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#fix-ability-sets-input-binding-for-playerstate-owned-asc-in-case-of-respawns-or-possession-switch" class="ActionList-item-label no-underline">Fix ability sets input binding for PlayerState owned ASC in case of respawns or possession switch</a>
+            </span></li></ul>
+      </nav>
                 </div>
 
                 <div class="Layout-main">
                     <main class="py-6 pr-6">
                         
-                            <h1 class="">v5 Upgrade Guide (CPP usage)</h1>
+                            <h1 class="">Pull Request #86</h1>
                             <div class="f2 color-fg-muted mb-3 Lead_container__7YW6Y" data-testid="lead" data-search="lead">
-                                <p>Upgrade Guide for GAS Companion and ue5 release related to cpp required changes</p>
+                                <p>Fix ability sets input binding for PlayerState owned ASC in case of respawns or possession switch</p>
                             </div>
                         
 
                         
 <article class="markdown-body">
-    <div id="MDX_ROOT_a5b12bd8-294a-402b-9af9-feeddadf1bd2"><p><strong>Summary</strong></p>
-<ul>
-<li>All deprecated classes and API have been removed</li>
-<li>Runtime modules have been consolidated into a single one. <code>ModularGASCompanion</code> module has been removed and all classes from that module moved to <code>GASCompanion</code> module.</li>
-<li>All MGC prefixed classes have been renamed and now prefixed with GSC.</li>
-<li><code>ModularGASCompanionEditor</code> module removed. Only existed to backport ue5 functionality related to Game Features (now handled in engine directly)</li>
-</ul>
-<blockquote>
-<p>WIP</p>
-</blockquote>
-<h2>Gameplay Actors</h2>
-<ul>
-<li>All Modular Gameplay Actors have been moved from <code>ModularGASCompanion</code> to <code>GASCompanion</code> module.</li>
-<li>Renamed with GSC prefix (so for instance: <code>AModularCharacter</code> became <code>AGSCModularCharacter</code>)</li>
-<li>Relative path remains the same (eg. <code>ModularGameplayActors/...</code>)</li>
-</ul>
-<p>if you were using those classes, and subclassing them. You need to adjust the include and class name.</p>
-<p>Example:</p>
-<p><img src="modular_character.png" alt=""/></p>
-<h3>GSCAbilitySystemComponent / MGCAbilitySystemComponent</h3>
-<p>Previous implementation of <code>GSCAbilitySystemComponent</code> has been replaced by <code>MGCAbilitySystemComponent</code>.</p>
-<p><code>MGCAbilitySystemComponent</code> has been renamed to <code>GSCAbilitySystemComponent</code> and moved to <code>GASCompanion</code> runtime module.</p></div>
+    <p><em><a href="https://github.com/GASCompanion/GASCompanion-Plugin/pull/86">on June 25th, 2024</a></em></p>
+<h2 id="fix-ability-sets-input-binding-for-playerstate-owned-asc-in-case-of-respawns-or-possession-switch" tabindex="-1">Fix ability sets input binding for PlayerState owned ASC in case of respawns or possession switch <a class="direct-link" href="#fix-ability-sets-input-binding-for-playerstate-owned-asc-in-case-of-respawns-or-possession-switch">#</a></h2>
+<p>Forcefully re-grant ability sets in case owner is PlayerState. This is to ensure input binding still works after a respawn, or possession switch.</p>
+<p>ASC living on Pawns don't have this problem.</p>
+
 </article>
 
                     </main>
@@ -216,8 +195,7 @@
                     </a>
                 </span><h5 class="color-fg-muted mb-2 pb-1 border-bottom">Upgrade Guides</h5>
                 <nav class="SideNav"><span class="Truncate d-block">
-                    <a class="SideNav-subItem Truncate-text" 
-                aria-current="page"  href="/upgrade-guide/cpp/">
+                    <a class="SideNav-subItem Truncate-text"  href="/upgrade-guide/cpp/">
                         v5 Upgrade Guide (CPP usage)
                     </a>
                 </span><span class="Truncate d-block">
