@@ -31,7 +31,7 @@
                 }
             }
         </style>
-        <title></title>
+        <title>Pull Request #96</title>
     </head>
 
     <body>
@@ -45,15 +45,6 @@
     
     <nav aria-label="Breadcrumb">
         <ol>
-                <li class="breadcrumb-item">
-                    <a href="/">Home</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="/api/">API</a>
-                </li>
-                <li class="breadcrumb-item breadcrumb-item-selected">
-                    <a href="/api/Abilities/Attributes/">Abilities/Attributes</a>
-                </li>
         </ol>
     </nav>
 
@@ -77,27 +68,37 @@
         <div class="container-xl px-md-6">
             <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
                 <div class="Layout-sidebar py-6 position-lg-sticky top-6 overflow-y-auto" style="height: 100vh;">
-                    
+                    <nav class="" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#editor-deprecated-ugscassetmanager-and-removed-code-dealing-with-uabilitysystemglobals-initglobaldata()-call-(not-required-anymore-since-5.3)" class="ActionList-item-label no-underline">Editor: Deprecated UGSCAssetManager and removed code dealing with UAbilitySystemGlobals InitGlobalData() call (not required anymore since 5.3)</a>
+            </span></li></ul>
+      </nav>
                 </div>
 
                 <div class="Layout-main">
                     <main class="py-6 pr-6">
                         
+                            <h1 class="">Pull Request #96</h1>
+                            <div class="f2 color-fg-muted mb-3 Lead_container__7YW6Y" data-testid="lead" data-search="lead">
+                                <p>Editor: Deprecated UGSCAssetManager and removed code dealing with UAbilitySystemGlobals InitGlobalData() call (not required anymore since 5.3)</p>
+                            </div>
+                        
 
                         
 <article class="markdown-body">
-
-    <h1 id="abilities/attributes" tabindex="-1">Abilities/Attributes <a class="direct-link" href="#abilities/attributes">#</a></h1>
+    <p><em><a href="https://github.com/GASCompanion/GASCompanion-Plugin/pull/96">on December 5th, 2024</a></em></p>
+<h2 id="editor-deprecated-ugscassetmanager-and-removed-code-dealing-with-uabilitysystemglobals-initglobaldata()-call-(not-required-anymore-since-5.3)" tabindex="-1">Editor: Deprecated UGSCAssetManager and removed code dealing with UAbilitySystemGlobals InitGlobalData() call (not required anymore since 5.3) <a class="direct-link" href="#editor-deprecated-ugscassetmanager-and-removed-code-dealing-with-uabilitysystemglobals-initglobaldata()-call-(not-required-anymore-since-5.3)">#</a></h2>
 <ul>
-<li><a href="/api/Abilities/Attributes/GSCAttributeSet/">GSCAttributeSet</a></li>
+<li>Runtime: Deprecated UGSCAssetManager now that <code>UAbilitySystemGlobals::Get().InitGlobalData()</code> is not required to be called by user code anymore (since 5.3)</li>
+<li>Runtime: Removed UGSCDeveloperSettings and its <code>bPreventGlobalDataInitialization</code> config.</li>
+<li>Runtime: Removed UGSCDeveloperSettings handling in main module, e.g. updating AssetManagerClassName when <code>bPreventGlobalDataInitialization</code> value was changed.</li>
+<li>Editor: Renamed EDITOR_LOG macro to GSC_EDITOR_LOG and introduced GSC_EDITOR_PLOG (to prefix log with function name)</li>
+<li>Editor: Handle GSCAssetManager deprecation with a slate notification on project startup, allowing user to reset Engine.AssetManagerClassName to its default value (<code>/Script/Engine.AssetManager</code>)</li>
+<li>Editor: Fixing open settings in GAS Companion combo menu for first entry</li>
 </ul>
 
-
-    <hr />
-    <p>Generated on Wed, 11 Jun 2025 22:27:16 GMT</p>
-
-</article
-
+</article>
 
                     </main>
                 </div>
