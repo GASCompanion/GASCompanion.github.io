@@ -31,7 +31,7 @@
                 }
             }
         </style>
-        <title></title>
+        <title>Pull Request #103</title>
     </head>
 
     <body>
@@ -45,15 +45,6 @@
     
     <nav aria-label="Breadcrumb">
         <ol>
-                <li class="breadcrumb-item">
-                    <a href="/">Home</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="/api/">API</a>
-                </li>
-                <li class="breadcrumb-item breadcrumb-item-selected">
-                    <a href="/api/ModularGameplayActors/">ModularGameplayActors</a>
-                </li>
         </ol>
     </nav>
 
@@ -77,31 +68,51 @@
         <div class="container-xl px-md-6">
             <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
                 <div class="Layout-sidebar py-6 position-lg-sticky top-6 overflow-y-auto" style="height: 100vh;">
-                    
+                    <nav class="" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#respect-ability-set-tag-replication-and-update-loose-tag-api-for-ue-5.7" class="ActionList-item-label no-underline">Respect ability set tag replication and update loose tag API for UE 5.7</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#abilityset-tag-replication" class="ActionList-item-label no-underline">AbilitySet tag replication</a>
+            </span></li><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#ue-5.7-api-migration" class="ActionList-item-label no-underline">UE 5.7 API migration</a>
+            </span></li></ul>
+      </nav>
                 </div>
 
                 <div class="Layout-main">
                     <main class="py-6 pr-6">
                         
+                            <h1 class="">Pull Request #103</h1>
+                            <div class="f2 color-fg-muted mb-3 Lead_container__7YW6Y" data-testid="lead" data-search="lead">
+                                <p>Respect ability set tag replication and update loose tag API for UE 5.7</p>
+                            </div>
+                        
 
                         
 <article class="markdown-body">
-
-    <h1 id="modulargameplayactors" tabindex="-1">ModularGameplayActors <a class="direct-link" href="#modulargameplayactors">#</a></h1>
+    <p><em><a href="https://github.com/GASCompanion/GASCompanion-Plugin/pull/103">on May 4th, 2026</a></em></p>
+<h2 id="respect-ability-set-tag-replication-and-update-loose-tag-api-for-ue-5.7" tabindex="-1">Respect ability set tag replication and update loose tag API for UE 5.7 <a class="direct-link" href="#respect-ability-set-tag-replication-and-update-loose-tag-api-for-ue-5.7">#</a></h2>
+<p>Fix ability set tag replication handling and update for UE 5.7 loose tag API changes, plus indentation cleanup and CI improvement.</p>
+<h2 id="abilityset-tag-replication" tabindex="-1">AbilitySet tag replication <a class="direct-link" href="#abilityset-tag-replication">#</a></h2>
 <ul>
-<li><a href="/api/ModularGameplayActors/GSCModularActor/">GSCModularActor</a></li>
-<li><a href="/api/ModularGameplayActors/GSCModularCharacter/">GSCModularCharacter</a></li>
-<li><a href="/api/ModularGameplayActors/GSCModularDefaultPawn/">GSCModularDefaultPawn</a></li>
-<li><a href="/api/ModularGameplayActors/GSCModularPawn/">GSCModularPawn</a></li>
-<li><a href="/api/ModularGameplayActors/GSCModularPlayerState/">GSCModularPlayerState</a></li>
+<li><code>GrantToAbilitySystem</code> and <code>RemoveFromAbilitySystem</code> now respect <code>UAbilitySystemGlobals::Get().ShouldReplicateActivationOwnedTags()</code> when adding/removing owned gameplay tags</li>
+<li>Replication flag is passed through to <code>AddLooseGameplayTagsUnique</code> / <code>RemoveLooseGameplayTagsUnique</code></li>
 </ul>
+<h2 id="ue-5.7-api-migration" tabindex="-1">UE 5.7 API migration <a class="direct-link" href="#ue-5.7-api-migration">#</a></h2>
+<ul>
+<li><code>AddLooseGameplayTagsUnique</code> and <code>RemoveLooseGameplayTagsUnique</code> updated to use the new UE 5.7 <code>AddLooseGameplayTags</code>/<code>RemoveLooseGameplayTags</code> overloads with <code>EGameplayTagReplicationState</code> parameter</li>
+<li>Replaces the deprecated <code>AddReplicatedLooseGameplayTags</code>/<code>RemoveReplicatedLooseGameplayTags</code> in UE 5.7+</li>
+</ul>
+<!-- codesmith:footer -->
+<hr>
+<p><a href="https://app.blacksmith.sh/GASCompanion/codesmith/GASCompanion-Plugin/pr/103"><picture><source media="(prefers-color-scheme: dark)" srcset="https://pr-comments-assets.blacksmith.sh/codesmith/view-in-codesmith-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://pr-comments-assets.blacksmith.sh/codesmith/view-in-codesmith-light.svg"><img alt="View in Codesmith" src="https://pr-comments-assets.blacksmith.sh/codesmith/view-in-codesmith-dark.svg"></picture></a> <sup>Need help on this PR? Tag <code><a href="https://github.com/codesmith"><strong>@codesmith</strong></a></code> with what you need.</sup></p>
+<ul>
+<li>[ ] Let Codesmith autofix CI failures and bot reviews</li>
+</ul>
+<!-- /codesmith:footer -->
 
-
-    <hr />
-    <p>Generated on Mon, 04 May 2026 11:18:53 GMT</p>
-
-</article
-
+</article>
 
                     </main>
                 </div>

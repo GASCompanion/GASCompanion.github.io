@@ -91,7 +91,7 @@
 
                         
 <article class="markdown-body">
-    <div id="MDX_ROOT_54af9695-56ab-44bc-81a7-fdaaa2f5f1be"><p>Ability Sets are created from the Content Browser, right clicking to bring up the context menu and choosing <code>Miscellaneous &gt; Data Asset</code>, then <code>GSCAbilitySet</code> for the parent class.</p>
+    <div id="MDX_ROOT_7912a313-82cd-4909-ab80-d22b207acae3"><p>Ability Sets are created from the Content Browser, right clicking to bring up the context menu and choosing <code>Miscellaneous &gt; Data Asset</code>, then <code>GSCAbilitySet</code> for the parent class.</p>
 <h2>Usage</h2>
 <p>If ability sets need to be granted on spawn, the recommended way to do so is via <code>Ability Sets</code> property of <code>GSCAbilitySystemComponent</code>.</p>
 <p><a href="ability_sets_01.png"><img src="ability_sets_01.png" alt="Ability Sets"/></a></p>
@@ -100,13 +100,12 @@
 <li>Abilities, with optional enhanced input binding</li>
 <li>Attribute Sets</li>
 <li>Gameplay Effects</li>
-<li>Owned Tags</li>
+<li>Owned Tags (respects <code>UAbilitySystemGlobals::Get().ShouldReplicateActivationOwnedTags()</code>, defaults to true. Replicated by default and configurable via <code>UGameplayAbilitiesDeveloperSettings::ReplicateActivationOwnedTags</code> config.)</li>
 </ul>
 <p><a href="ability_sets_02.png"><img src="ability_sets_02.png" alt=""/></a></p>
 <p>Please note that for ability input binding to work, the Avatar Actor needs to have the required GSCAbilityInputBinding actor component added to it, otherwise you might see an error in the output log like so:</p>
 <pre><code>Error trying to grant ability set AS_Default_Test - The set contains Abilities with Input bindings but BP_Character_C_0 is missing the required UGSCAbilityInputBindingComponent actor component.
 </code></pre>
-<p>When try to grant an Ability Set with ability bound to an input action on an Actor without GSCAbilityInputBinding actor component.</p>
 <h2>API</h2>
 <p>Below section gives an overview of programmatic usage, when granting Ability Sets during actor initialization is not always suited.</p>
 <p>The common pattern of granting / clearing ability sets involves:</p>
