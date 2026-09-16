@@ -31,7 +31,7 @@
                 }
             }
         </style>
-        <title></title>
+        <title>Pull Request #107</title>
     </head>
 
     <body>
@@ -45,15 +45,6 @@
     
     <nav aria-label="Breadcrumb">
         <ol>
-                <li class="breadcrumb-item">
-                    <a href="/">Home</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="/api/">API</a>
-                </li>
-                <li class="breadcrumb-item breadcrumb-item-selected">
-                    <a href="/api/UI/">UI</a>
-                </li>
         </ol>
     </nav>
 
@@ -77,30 +68,60 @@
         <div class="container-xl px-md-6">
             <div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-lg Layout--sidebar-narrow">
                 <div class="Layout-sidebar py-6 position-lg-sticky top-6 overflow-y-auto" style="height: 100vh;">
-                    
+                    <nav class="" >
+        <h2 class="f5 pl-2">On this page</h2>
+        <ul class="ActionList"><li class="ActionList-item"><span class="ActionList-content px-0 py-1">
+                <a href="#fix-triggereventdata-not-forwarded-to-parent-call-in-preactivateability" class="ActionList-item-label no-underline">Fix TriggerEventData not forwarded to parent call in PreActivateAbility</a>
+            </span></li></ul>
+      </nav>
                 </div>
 
                 <div class="Layout-main">
                     <main class="py-6 pr-6">
                         
+                            <h1 class="">Pull Request #107</h1>
+                            <div class="f2 color-fg-muted mb-3 Lead_container__7YW6Y" data-testid="lead" data-search="lead">
+                                <p>Fix TriggerEventData not forwarded to parent call in PreActivateAbility</p>
+                            </div>
+                        
 
                         
 <article class="markdown-body">
-
-    <h1 id="ui" tabindex="-1">UI <a class="direct-link" href="#ui">#</a></h1>
+    <p><em><a href="https://github.com/GASCompanion/GASCompanion-Plugin/pull/107">on September 11th, 2026</a></em></p>
+<h2 id="fix-triggereventdata-not-forwarded-to-parent-call-in-preactivateability" tabindex="-1">Fix TriggerEventData not forwarded to parent call in PreActivateAbility <a class="direct-link" href="#fix-triggereventdata-not-forwarded-to-parent-call-in-preactivateability">#</a></h2>
+<p>This issue was originally created <a href="https://github.com/GASCompanion/GASCompanion-Documentation/issues/37">here</a> as I did not have access to this repository at the time.</p>
+<p><strong>Describe the bug</strong><br>
+The UGSCGameplayAbility does not forward the TriggerEventData in its super call. This results in CurrentEventData never being assigned.</p>
+<p>Specifically without passing it to the super, this line will not function correctly:<br>
+<a href="https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Plugins/Runtime/GameplayAbilities/Source/GameplayAbilities/Private/Abilities/GameplayAbility.cpp#L980">https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Plugins/Runtime/GameplayAbilities/Source/GameplayAbilities/Private/Abilities/GameplayAbility.cpp#L980</a></p>
+<p><strong>To Reproduce</strong></p>
+<ol>
+<li>Activate an ability subclassed from UGSCGameplayAbility.</li>
+<li>Perform some operation needing <code>CurrentEventData</code> from <code>UGameplayAbility</code></li>
+<li>Observe that it is null</li>
+</ol>
+<p><strong>Expected behavior</strong><br>
+<code>TriggerEventData</code> should be passed in the super call and <code>CurrentEventData</code> should be correctly assigned.</p>
+<p><strong>Actual behavior</strong><br>
+<code>CurrentEventData</code> is null.</p>
+<p><strong>Code</strong></p>
+<p>void UGSCGameplayAbility::PreActivate(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, FOnGameplayAbilityEnded::FDelegate* OnGameplayAbilityEndedDelegate, const FGameplayEventData* TriggerEventData)<br>
+{<br>
+Super::PreActivate(Handle, ActorInfo, ActivationInfo, OnGameplayAbilityEndedDelegate);</p>
+<p>Should instead be:</p>
+<p>void UGSCGameplayAbility::PreActivate(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, FOnGameplayAbilityEnded::FDelegate* OnGameplayAbilityEndedDelegate, const FGameplayEventData* TriggerEventData)<br>
+{<br>
+Super::PreActivate(Handle, ActorInfo, ActivationInfo, OnGameplayAbilityEndedDelegate, TriggerEventData);</p>
+<p><strong>Environment (please complete the following information):</strong></p>
 <ul>
-<li><a href="/api/UI/GSCUWDebugAbilityQueue/">GSCUWDebugAbilityQueue</a></li>
-<li><a href="/api/UI/GSCUWDebugComboWidget/">GSCUWDebugComboWidget</a></li>
-<li><a href="/api/UI/GSCUWHud/">GSCUWHud</a></li>
-<li><a href="/api/UI/GSCUserWidget/">GSCUserWidget</a></li>
+<li>Engine version: 5.7</li>
+<li>GAS Companion Plugin version:6.2.1+5.7</li>
+<li>OS: Windows</li>
 </ul>
+<p><strong>Additional context</strong><br>
+This is not likely to affect many other users. I am deferring ability activations via a delegate in C++, and when trying to handle the delegate callback the <code>CurrentEventData</code> is unassigned. Users implementing <code>void K2_ActivateAbilityFromEvent(const FGameplayEventData&amp; EventData)</code> are unaffected as it receives the current event data in parameters.</p>
 
-
-    <hr />
-    <p>Generated on Wed, 16 Sep 2026 15:27:14 GMT</p>
-
-</article
-
+</article>
 
                     </main>
                 </div>
